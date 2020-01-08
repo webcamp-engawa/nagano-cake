@@ -1,5 +1,5 @@
 class RenameCustomersIdColumnToOders < ActiveRecord::Migration[5.2]
   def change
-  	rename_column :Orders, :customers_id, :customer_id
+  	rename_column :orders, :customers_id, :customer_id
   end
 end
