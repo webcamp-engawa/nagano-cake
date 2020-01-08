@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 Admin.create(email: "a@a", password:"admins")
 Customer.create(last_name:"山田", first_name:"太郎", last_name_kana:"ヤマダ", first_name_kana:"タロウ", postcode:"123-4567", address:"東京都品川区戸越1-1-1", phone_number:"0000000000", email: "b@b.b", password:"123456")
 Shipping.create(customer_id:1, postcode:"123-4567", address:"東京都品川区戸越1-1-1",address_name:"山田太郎")
