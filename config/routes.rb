@@ -11,11 +11,12 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :new, :create]
   resources :shippings, except: [:show]
 
-namespace :admin do
+
+  namespace :admin do
   devise_for :admins, controllers: {
-    sessions:      'admins/sessions',
-    passwords:     'admins/passwords',
-   registrations: 'admins/registrations'
+    sessions:      'devise/admin/sessions',
+    passwords:     'devise/admin/passwords',
+   registrations: 'devise/admin/registrations'
   }
   root 'home#top'
   resources :items, except: [:destroy]
