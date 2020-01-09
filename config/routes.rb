@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'customers/index'
+  get 'customers/show'
+  get 'customers/edit'
+  get 'customers/update'
   root 'home#top'
   get "/home/about", to:'home#about'
   devise_for :customers
