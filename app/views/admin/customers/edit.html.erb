@@ -1,0 +1,52 @@
+<div class ="customer-edit">
+<h1>会員編集画面</h1>
+
+
+<% if @customer.errors.any? %>
+                        <h2><%= @customer.errors.count %> errors prohibited this obj from being saved:</h2>
+                            <ul>
+                                <% @customer.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                <% end %>
+                            </ul>
+                    <% end %>
+
+
+			<%= form_for(@customer,url: {controler: "customers", action: "update" }) do |f| %>
+					<table id = customers-data-edit>
+
+			<tr>
+				<th>顧客ID</th>			<td><%= @customer.id %></td>
+			</tr>
+			<tr>
+				<th>氏名</th>	<td><%=f.text_field :last_name %></td> <td><%=f.text_field :first_name %></td>
+			</tr>
+			<tr>
+				<th>フリガナ</th>			<td><%=f.text_field :last_name_kana %></td> <td><%=f.text_field :first_name_kana %></td>
+			</tr>
+			<tr>
+				<th>郵便番号</th>			<td><%=f.text_field :postcode %></td>
+			</tr>
+			<tr>
+				<th>住所</th>			<td><%=f.text_field :address %></td>
+			</tr>
+			<tr>
+				<th>電話番号</th>			<td><%=f.text_field :phone_number %></td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>	<td><%=f.email_field :email %></td>
+			</tr>
+			<tr>
+				<th>会員ステータス</th>	<td><%= f.radio_button :is_deleted, :true %>有効<%= f.radio_button :is_deleted, :false %>退会済み</td>
+			</tr>
+
+
+		</table>
+
+			<%= f.submit "更新" %>
+
+			<% end %>
+
+
+
+</div>
