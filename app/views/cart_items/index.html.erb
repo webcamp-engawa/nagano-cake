@@ -1,1 +1,21 @@
 <h1>cart_items#index</h1>
+
+<% @cart_item.each do |cart_item| %>
+<h3>cart_item No(不要なので削除予定)</h3>
+<%= cart_item.id %>
+
+<h3>商品名</h3>
+<%= cart_item.item.name %>
+
+<h3>単価</h3>
+<%= cart_item.item.price %>
+
+<h3>数量</h3>
+<%= cart_item.quantity %>
+
+<h3>小計</h3>
+<%= cart_item.item.price * cart_item.quantity %>
+
+<div>===============</div>
+
+<% end %>
