@@ -1,4 +1,4 @@
-<h2>会員の方はこちらからログイン</h2>
+<h4>会員の方はこちらからログイン</h4>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -15,13 +15,21 @@
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :"パスワードを記憶する" %>
     </div>
-  <% end %>
-  <%= render "devise/customers/shared/links" %>
+
+  <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %>
 
   <div class="actions">
     <%= f.submit "ログイン" %>
   </div>
+
+  <div class="not_register">
+    <h4>登録がお済みでない方</h4>
+      <p><%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください。</p>
+  </div>
+
+  <% end %>
+
 <% end %>
 
