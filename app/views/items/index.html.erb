@@ -7,7 +7,7 @@
     <p>商品の画像</p>
     <%= attachment_image_tag item, :image, :fill, 200, 120, format: "jpg" %>
     <%= item.name %>
-    <%= item.price %>
+    <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>
     <% end %>
   <% end %>
 </div>

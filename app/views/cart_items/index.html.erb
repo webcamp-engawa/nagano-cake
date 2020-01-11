@@ -16,9 +16,10 @@
       <tr>
         <td scope="row"><%= cart_item.id %></td>
         <td scope="row"><%= cart_item.item.name %></td>
-        <td scope="row"><%= cart_item.item.price %></td>
+        <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08")).ceil) %></td>
+
         <td scope="row"><%= cart_item.quantity %></td>
-        <td scope="row"><%= cart_item.item.price * cart_item.quantity %></td>
+        <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08") * cart_item.quantity).ceil) %></td>
       </tr>
     </tbody>
   <% end %>

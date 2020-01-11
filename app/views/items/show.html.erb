@@ -14,7 +14,7 @@
 </div>
 
 <div>
-<%= @item.price %>
+  <%= number_to_currency((BigDecimal(@item.price) * BigDecimal("1.08")).ceil) %>(税込)
 </div>
 
 
