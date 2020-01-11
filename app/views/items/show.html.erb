@@ -1,20 +1,21 @@
-<h1>items#show</h1>
+<%= render 'layouts/genre_serch' %>
 
 <div>
-  <h2>ジャンル検索</h2>
-  <% @genres.each do |genre| %>
-    <div><%= link_to "#{genre.name}", controller: "items", action: "index", genre_id: genre.id %></div>
-  <% end %>
-</div>
-
-
-
-
 <p>商品の画像</p>
 <%= attachment_image_tag @item, :image, :fill, 200, 120, format: "jpg" %>
+</div>
+
+<div>
 <%= @item.name %>
+</div>
+
+<div>
 <%= @item.introduction %>
+</div>
+
+<div>
 <%= @item.price %>
+</div>
 
 
 <%= form_for @cart_item do |f| %>
