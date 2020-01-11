@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
 
-#before_action :authenticate_customer!
+before_action :authenticate_customer!
 
   def show
   	@customer = current_customer
@@ -11,6 +11,13 @@ class CustomersController < ApplicationController
   end
 
   def update
+    @customer = current_customer
+      if @customer.update(customer_params)
+      redirect_to customer_path
+      flash[:notice] = "会員情報が更新されました!"
+    else
+      render 'edit'
+    end
   end
 
   private
