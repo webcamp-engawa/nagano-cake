@@ -16,8 +16,11 @@
 <%= @item.introduction %>
 <%= @item.price %>
 
+
 <%= form_for @cart_item do |f| %>
   <%= render 'layouts/errors_messages', model: f.object %>
+  <%= f.hidden_field :item_id, value: @item.id %>
   <%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
   <%= f.submit "カートに入れる" %>
 <% end %>
+<p><%= flash[:alert] %></p>
