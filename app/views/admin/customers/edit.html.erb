@@ -1,5 +1,7 @@
+<div class = "container">
+
 <div class ="customer-edit">
-<h1>会員編集画面</h1>
+<h1>会員編集</h1>
 
 
 					<% if @customer.errors.any? %>
@@ -16,7 +18,7 @@
 					<table id = customers-data-edit>
 
 			<tr>
-				<th>顧客ID</th>			<td><%= @customer.id %></td>
+				<th style="width:30%">顧客ID</th>			<td><%= @customer.id %></td>
 			</tr>
 			<tr>
 				<th>氏名</th>	<td><%=f.text_field :last_name %></td> <td><%=f.text_field :first_name %></td>
@@ -37,16 +39,19 @@
 				<th>メールアドレス</th>	<td><%=f.email_field :email %></td>
 			</tr>
 			<tr>
-				<th>会員ステータス</th>	<td><%= f.radio_button :is_deleted, :true %>退会済み<%= f.radio_button :is_deleted, :false %>有効</td>
+				<th>会員ステータス</th>	<td><%= f.radio_button :is_deleted, :true %>退会済<%= f.radio_button :is_deleted, :false %>有効</td>
 			</tr>
 
 
 		</table>
 
-			<%= f.submit "更新" %>
+			<%= f.submit "更新" ,class:"btn-info"%>
 
 			<% end %>
 
 
 
+
+
+</div>
 </div>

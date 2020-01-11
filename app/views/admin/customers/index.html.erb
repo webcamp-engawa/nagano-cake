@@ -1,43 +1,39 @@
-<div class = customers-index>
-	<h1>会員一覧画面</h1>
+<div class = "container" >
+	<div class = "col-md-12" >
+	<div class = "customers-index">
+		<h1>会員一覧画面</h1>
 
-		<table class = "table">
-			<thead>
-
-				<tr>
-					<th>会員ID</th>	<th>氏名</th> <th>メールアドレス</th>	<th>ステータス</th>
-				</tr>
-
-			</thead>
-
-			<tbody>
-				<% @customers.each do |customer| %>
+			<table class = "table">
+				<thead class="thead-dark">
 					<tr>
-						<td>
- 							<%= customer.id %>
- 						</td>
- 						<td>
- 						<%= link_to "#{customer.last_name + customer.first_name}", admin_customer_path(customer.id) %>
- 						</td>
- 						<td>
- 						<%= customer.email %>
- 						</td>
- 						<td>
+						<th>会員ID</th>	<th>氏名</th> <th>メールアドレス</th>	<th>ステータス</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @customers.each do |customer| %>
+						<tr>
+							<td>
+ 								<%= customer.id %>
+ 							</td>
+ 							<td>
+ 								<%= link_to "#{customer.last_name + customer.first_name}", admin_customer_path(customer.id) %>
+ 							</td>
+ 							<td>
+ 								<%= customer.email %>
+ 							</td>
+ 							<td>
  							<% if customer.is_deleted? %>
  								<p>退会済み</p>
  							<% else %>
  								<p>有効</p>
  							<% end %>
- 						</td>
- 					</tr>
-				<% end %>
-			</tbody>
-
-
-		</table>
-
-
-
-
-
+ 							</td>
+ 						</tr>
+					<% end %>
+				</tbody>
+			</table>
+	</div>
+	</div>
+<%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %>
 </div>
