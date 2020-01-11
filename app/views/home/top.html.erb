@@ -1,0 +1,20 @@
+<h1>top</h1>
+
+<div>
+  <h2>ジャンル検索</h2>
+  <% @genres.each do |genre| %>
+    <div><%= link_to "#{genre.name}", controller: "items", action: "index", genre_id: genre.id %></div>
+  <% end %>
+</div>
+
+<div>
+  <h1>商品一覧</h1>
+  <% @items.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+    <p>商品の画像</p>
+    <%= attachment_image_tag item, :image, :fill, 200, 120, format: "jpg" %>
+    <%= item.name %>
+    <%= item.price %>
+    <% end %>
+  <% end %>
+</div>
