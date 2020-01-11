@@ -1,0 +1,16 @@
+<div class="col-2">
+  <table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">ジャンル検索</th>
+      </tr>
+    </thead>
+    <% @genres.each do |genre| %>
+      <tbody>
+        <tr>
+          <td scope="row" class="borderless"><%= link_to "#{genre.name}", controller: "items", action: "index", genre_id: genre.id %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
