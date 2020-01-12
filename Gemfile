@@ -71,3 +71,6 @@ gem "refile-mini_magick"
 gem "ransack"
 
 gem "paranoia"
+
+gem 'bootstrap', '~> 4.2.1'
+gem 'jquery-rails'

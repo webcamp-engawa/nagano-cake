@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   root 'home#top'
   get "/home/about", to:'home#about'
-  devise_for :customers
+  devise_for :customers, controllers: {
+    sessions:      'devise/customers/sessions',
+    passwords:     'devise/customers/passwords',
+    registrations: 'devise/customers/registrations'
+  }
   resource :customer, only: [:show, :edit, :update]
   resources :items, only: [:index, :show]
   delete "/cart_items/empty", to:'cart_items#empty_cart'
@@ -12,14 +16,15 @@ Rails.application.routes.draw do
   get "/orders/done", to:"orders#done"
   resources :orders, only: [:index, :show, :new, :create]
   resources :shippings, except: [:show]
-
-
-  namespace :admin do
-  devise_for :admins, controllers: {
+  
+ devise_for :admins, controllers: {
     sessions:      'devise/admin/sessions',
     passwords:     'devise/admin/passwords',
    registrations: 'devise/admin/registrations'
   }
+
+  namespace :admin do
+ 
   root 'home#top'
   resources :items, except: [:destroy]
   resources :customers, only: [:index, :show, :edit, :update]
