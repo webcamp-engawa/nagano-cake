@@ -9,13 +9,15 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.customer_id = current_customer.id
     @shippings = Shipping.where(customer_id: current_customer.id)
-    console
+    @customer = current_customer
   end
 
   def create
   end
 
   def confirm
+    @cart_item = CartItem.where(customer_id: current_customer.id)
+    @order = Order.new
   end
 
   def done
