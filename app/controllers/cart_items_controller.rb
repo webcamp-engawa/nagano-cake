@@ -1,6 +1,13 @@
 class CartItemsController < ApplicationController
   def index
     @cart_item = CartItem.where(customer_id: current_customer.id)
+
+    @sum = 0
+      @cart_item.each do |cart_item|
+        @sum += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+        puts @sum
+      end
+
   end
 
   def create

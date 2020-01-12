@@ -1,1 +1,58 @@
 <h1>orders#new</h1>
+<h1>購入情報入力</h1>
+
+<div class="row">
+  <h1>支払方法</h1>
+</div>
+<div class="row">
+    <%= form_for @order do |f| %>
+      <div class="radio-inline">
+        <%= f.radio_button :payment, :クレジットカード %> <!--, checked: "checked"-->
+        <%= f.label :クレジットカード, class: "payment_label" %>
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :payment, :銀行振込 %>
+        <%= f.label :銀行振込, class: "payment_label" %>
+      </div>
+    <% end %>
+</div>
+
+<div class="row">
+  <h1>お届け先</h1>
+</div>
+
+<div class="row">
+  <%= form_for @order do |f| %>
+      <div class="radio-inline">
+        <%= f.radio_button :payment, :ご自身の住所 %><!--paymentは仮。current_customerの住所や名前を選択できるようにする-->
+        <%= f.label :ご自身の住所 %>
+          <%= f.text_field :postcode, value: @order.customer.postcode %>
+          <%= f.text_field :address, value: @order.customer.address %>
+          <%= f.text_field :address_name, value: @order.customer.last_name %><!--first_nameも繋げたものをaddress_nameにする-->
+          <%= f.text_field :address_name, value: @customer.fullname %>
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :payment, :登録先住所から選択 %><!--paymentは仮。current_customerに紐づいたshippingsをプルダウンで選択後ラジオボタンで選択できるようにする-->
+        <%= f.label :登録先住所から選択 %>
+        <%= @shippings.each do |s| %>
+          <%= text_field :postcode, value: s.postcode %>
+          <%= text_field :address, value: s.address %>
+          <%= text_field :address_name, value: s.address_name %>
+        <% end %>
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :payment, :新しいお届け先 %><!--paymentは仮。current_customerに紐づいたshippingsをプルダウンで選択後ラジオボタンで選択できるようにする-->
+        <%= f.label :新しいお届け先 %>
+          <%= f.text_field :postcode %>
+          <%= f.text_field :address %>
+          <%= f.text_field :address_name %>
+      </div>
+  <% end %>
+
+
+</div>
+<div class="row">
+  <%= link_to "確認画面へ進む", orders_confirm_path, class: "btn btn-primary" %>
+
+  <%= link_to "カートに戻る", cart_items_path, class: "btn btn-secondary"%>
+</div>

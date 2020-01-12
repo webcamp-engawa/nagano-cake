@@ -1,1 +1,66 @@
 <h1>orders#confirm</h1>
+<h1>注文情報確認</h1>
+
+<div class="row">
+  <table class="table table-bordered mx-auto">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">cart_item No(不要なので削除予定)</th>
+        <th scope="col">商品名</th>
+        <th scope="col">単価</th>
+        <th scope="col">数量</th>
+        <th scope="col">小計</th>
+      </tr>
+    </thead>
+    <% @cart_item.each do |cart_item| %>
+      <tbody>
+        <tr>
+          <td scope="row"><%= cart_item.id %></td>
+          <td scope="row"><%= cart_item.item.name %></td>
+          <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08")).ceil) %></td>
+          <td scope="row"><%= cart_item.quantity %></td>
+          <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08") * cart_item.quantity).ceil) %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+
+
+  <table class="table table-bordered col-3">
+    <tr>
+      <td class="table-active">送料</td>
+      <td>100000</td>
+    </tr>
+  </table>
+
+    <table class="table table-bordered col-3">
+    <tr>
+      <td class="table-active">商品合計</td>
+      <td>100000</td>
+    </tr>
+  </table>
+
+    <table class="table table-bordered col-3">
+    <tr>
+      <td class="table-active">請求</td>
+      <td>100000</td>
+    </tr>
+  </table>
+
+</div>
+
+<div class="row">
+  <h4>支払方法</h4>
+  <p>なんたら振込</p>
+</div>
+
+<div class="row">
+  <h4>お届け先</h4>
+  <p>日本</p>
+</div>
+
+<%= form_for @order do |f| %>
+  <%= f.submit "購入を確定する", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "購入情報入力へ戻る", new_order_path, class: "btn btn-secondary"%>
