@@ -34,7 +34,7 @@
   <table class="table table-bordered col-3">
     <tr>
       <td class="table-active">合計金額</td>
-      <td>100000</td>
+      <td><%= number_to_currency(@sum.ceil) %></td>
     </tr>
   </table>
 </div>
