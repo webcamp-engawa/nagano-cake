@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<h1>商品編集画面</h1>
+		<%= form_for(@item, url: {controller: "items", action: "update"}) do |f| %>
+		<div class="image">
+			<%= f.attachment_field :image, placeholder: "画像選択", class: "item-edit-form" %>
+			<div class="item_introduce">
+			<p class="name">
+				商品名
+				<%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"name" %>
+			</p>
+			<p class="introduction">
+				商品説明
+				<%= f.text_area :introduction, autofocus: true, class:"introduction" %>
+			</p>
+			<p class="genre">
+				ジャンル
+				<%= f.select :genre_id, [["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]], autofocus: true, class:"genre" %>
+			</p>
+			<p class="price">
+				税抜き価格
+				<%= f.number_field :price, autofocus: true, class:"price" %> 円
+			</p>
+			<p class ="is_sold">
+				販売ステータス
+				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], autofocus: true, class:"is_sold" %>
+			</p>
+			<%= f.submit "変更を保存" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
