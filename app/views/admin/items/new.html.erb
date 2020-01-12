@@ -1,38 +1,46 @@
-<div class="body">
-	<div class="container">
-		<div class="row">
-			<h1>商品　新規登録画面</h1>
-			<%= form_for(@item, url:'/admin/items/new') do |f| %>
-				<div class="field">
-					<label class="image">
-					<%= f.attachment_field :image %>
-					</label>
-				</div>
-				<div class="field">
-					<label class="name">商品名</label>
-					<%= f.text_field :name %>
-				</div>
-				<div class="field">
-					<label class="introduction">商品説明</label>
-					<%= f.text_area :introduction %>
-				</div>
-				<div class="field">
-					<label class="genre">ジャンル</label>
-					<%= f.select :genre_id, [["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]], :prompt=>"選択してください" %>
-				</div>
-				<div class="field">
-					<label class="price">税抜き価格</label>
-					<%= f.number_field :price %>
-				</div>
-				<div class="field">
-					<label class="is_sold">販売ステータス</label>
-					<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], :prompt=>"選択してください" %>
-				</div>
-				<div class="field">
-					<label class="submit"></label>
-					<%= f.submit "新規登録" %>
-				</div>
-			<% end %>
-		</div>
+<div class="container">
+	<div class="row">
+		<h1>商品　新規登録画面</h1>
+		<% if @item.errors.any? %>
+        	<div id="error_explanation">
+          		<h2><%= pluralize(@item.errors.count, "error") %> prohibited this user from being saved:</h2>
+          		<ul>
+          			<% @item.errors.full_messages.each do |msg| %>
+            		<li><%= msg %></li>
+          			<% end %>
+          		</ul>
+        	</div>
+    	<% end %>
+		<%= form_for(@item, url: {controller: "items", action: "create"}) do |f| %>
+			<div class="field">
+				<label class="image">
+				<%= f.attachment_field :image %>
+				</label>
+			</div>
+			<div class="field">
+				<label class="name">商品名</label>
+				<%= f.text_field :name %>
+			</div>
+			<div class="field">
+				<label class="introduction">商品説明</label>
+				<%= f.text_area :introduction %>
+			</div>
+			<div class="field">
+				<label class="genre">ジャンル</label>
+				<%= f.select :genre_id, [["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]], :prompt=>"選択してください" %>
+			</div>
+			<div class="field">
+				<label class="price">税抜き価格</label>
+				<%= f.number_field :price %>
+			</div>
+			<div class="field">
+				<label class="is_sold">販売ステータス</label>
+				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], :prompt=>"選択してください" %>
+			</div>
+			<div class="field">
+				<label class="submit"></label>
+				<%= f.submit "新規登録" %>
+			</div>
+		<% end %>
 	</div>
 </div>

@@ -1,31 +1,32 @@
-<div class="body">
-	<div class="container">
-		<div class="row">
-			<h1>商品詳細画面</h1>
-			<div class="image">
-			<%= attachment_image_tag @item, :image %>
-			<div class="item_introduce">
-				<p class="name">
-					商品名
-					<%= @item.name %>
-				</p>
-				<p class="introduction">
-					商品説明
-					<%= @item.introduction %>
-				</p>
-				<p class="genre">
-					ジャンル
-					<%= @item.genre_id %>
-				</p>
-				<p class="price">
-					税抜き価格（税込価格)
-					<%= @item.price %> (<%=@item.price*1.08 %>) 円
-				</p>
-				<p class ="is_sold">
-					販売ステータス
-					<%= @item.is_sold %>
-				</p>
-			</div>
+<div class="container">
+	<div class="row">
+		<h1>商品詳細画面</h1>
+		<div class="image">
+		<%= attachment_image_tag @item, :image, :fill, 300,250 %>
+		<div class="item_introduce">
+			<p class="name">
+				商品名
+				<%= @item.name %>
+			</p>
+			<p class="introduction">
+				商品説明
+				<%= @item.introduction %>
+			</p>
+			<p class="genre">
+				ジャンル
+				<%= @item.genre_id %>
+			</p>
+			<p class="price">
+				税抜き価格（税込価格)
+				<%= @item.price %> (<%=@item.price*1.08 %>) 円
+			</p>
+			<p class ="is_sold">
+				販売ステータス
+				<%= @item.is_sold %>
+			</p>
+			<p>
+				<%= link_to '編集する', edit_admin_item_path(@item) %>
+			</p>
 		</div>
 	</div>
 </div>
