@@ -13,9 +13,12 @@
 
 
      <%= form_for(@genre,url: {controler: "genres", action: "update" }) do |f| %>
-     	<%= f.text_field :name %>
-     	<%= f.radio_button :is_active, :true %>有効<%= f.radio_button :is_active, :true %>無効
-        <%= f.submit "変更を保存する", class:"btn-info"%>
+     <div class="row">
+     	<div class="col-3 mb-4 mt-4">
+            <%= f.text_field :name,class:"form-control" %>
+        </div>
+    </div>
+     	<%= f.radio_button :is_active, :true %> 有効 <%= f.radio_button :is_active, :true %> 無効 <%= f.submit "変更を保存する", class:"btn btn-outline-primary"%>
      <% end %>
 </div>
 </div>

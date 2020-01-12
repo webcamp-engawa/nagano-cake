@@ -21,31 +21,31 @@
 				<th style="width:30%">顧客ID</th>			<td><%= @customer.id %></td>
 			</tr>
 			<tr>
-				<th>氏名</th>	<td><%=f.text_field :last_name %></td> <td><%=f.text_field :first_name %></td>
+				<th>氏名</th>	<td><%=f.text_field :last_name,class:"form-control" %></td> <td><%=f.text_field :first_name,class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>フリガナ</th>			<td><%=f.text_field :last_name_kana %></td> <td><%=f.text_field :first_name_kana %></td>
+				<th>フリガナ</th>			<td><%=f.text_field :last_name_kana,class:"form-control" %></td> <td><%=f.text_field :first_name_kana,class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>郵便番号</th>			<td><%=f.text_field :postcode %></td>
+				<th>郵便番号</th>			<td><%=f.text_field :postcode,class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>住所</th>			<td><%=f.text_field :address %></td>
+				<th>住所</th>			<td><%=f.text_field :address,class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>電話番号</th>			<td><%=f.text_field :phone_number %></td>
+				<th>電話番号</th>			<td><%=f.text_field :phone_number,class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>メールアドレス</th>	<td><%=f.email_field :email %></td>
+				<th>メールアドレス</th>	<td><%=f.email_field :email,class:"form-control" %></td>
 			</tr>
 			<tr>
-				<th>会員ステータス</th>	<td><%= f.radio_button :is_deleted, :true %>退会済<%= f.radio_button :is_deleted, :false %>有効</td>
+				<th>会員ステータス</th>	<td><%= f.radio_button :is_deleted, :false %> 有効  <%= f.radio_button :is_deleted, :true %> 退会済 </td>
 			</tr>
 
 
 		</table>
 
-			<%= f.submit "更新" ,class:"btn-info"%>
+			<%= f.submit "更新" ,class:"btn btn-outline-primary"%>
 
 			<% end %>
 
