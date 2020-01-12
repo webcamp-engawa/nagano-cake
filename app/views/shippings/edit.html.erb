@@ -1,0 +1,16 @@
+<%= form_for(@shipping) do |f|%>
+
+<h3>配送先編集</h3>
+
+<table class="edit-shippings">
+	<tr>
+		<th>郵便番号</th> <td><%=f.text_field :postcode %></td>
+	</tr>
+	<tr>
+		<th>住所</th> <td><%= f.text_field :address %></td>
+	</tr>
+	<tr>
+		<th>宛名</th> <td><%= f.text_field :address_name %> <%= f.submit "編集する" %></td>
+	</tr>
+</table>
+<% end %>
