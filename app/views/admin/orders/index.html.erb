@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<h1>注文一覧画面</h1>
-		<% @orders.each do |item| %>
+		<% @orders.each do |order| %>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -13,12 +13,16 @@
 				<tbody>
 					<tr>
 						<td>
+							<%= order.created_at %>
 						</td>
 						<td>
+							<%= order.customer.last_name %><%= order.customer.first_name %>
 						</td>
 						<td>
+							<%= order.order_items.sum(:quantity) %>
 						</td>
 						<td>
+							<%= order.order_status %>
 						</td>
 					</tr>
 				</tbody>
