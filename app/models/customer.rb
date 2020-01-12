@@ -19,4 +19,23 @@ class Customer < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: 'は「○@○.○」という形式で入力して下さい。'  }
 
+  composed_of :fullname,
+    :class_name => "FullName",
+    :mapping => [
+      [:last_name, :last_name],
+      [:first_name, :first_name]
+    ]
+end
+
+class FullName
+  attr_reader :last_name, :first_name
+
+  def initialize(last_name, first_name)
+    @last_name = last_name
+    @first_name = first_name
+  end
+
+  def to_s
+    [@last_name, @first_name].compact.join("")
+  end
 end
