@@ -2,13 +2,21 @@
   <%= render 'layouts/genre_serch' %>
 
   <div class="col-10">
-    <h1>商品一覧</h1>
-    <% @items.each do |item| %>
-      <%= link_to item_path(item.id) do %>
-      <%= attachment_image_tag item, :image, :size=>"300x250"  %>
-      <%= item.name %>
-      <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>
+    <div class="text-center">
+      <h1>商品一覧</h1>
+    </div>
+
+      <% @items.each do |item| %>
+        <div>
+          <div class="col-4">
+            <%= link_to item_path(item.id) do %>
+              <%= attachment_image_tag item, :image, :size=>"300x250"  %>
+            <% end %>
+            <%= item.name %>
+            <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>
+          </div>
+        </div>
       <% end %>
-    <% end %>
+
   </div>
 </div>
