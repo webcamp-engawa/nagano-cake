@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   validates :genre_id, presence: true, numericality: :only_integer
   validates :name, presence: true
   validates :introduction, presence: true
-  validates :image, presence: true
+  # validates :image, presence: true
   validates :price, presence: true, numericality: {only_integer: true}
   validates :is_sold, inclusion: { in: [true, false] }
   attachment :image
