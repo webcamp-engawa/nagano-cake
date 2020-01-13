@@ -20,7 +20,7 @@
               <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
               <li class ="list-inline-item"><%= link_to "カート", cart_items_path %></li>
               <li class ="list-inline-item"><%= link_to "Log out", destroy_customer_session_path, method: :delete %></li>
-              <li class ="list-inline-item"><%= link_to "マイページ", '#' %></li>
+              <li class ="list-inline-item"><%= link_to "マイページ", customer_path %></li>
               <% elsif admin_signed_in? %>
               <li class ="list-inline-item"><%= link_to "商品一覧",admin_items_path %></li>
               <li class ="list-inline-item"><%= link_to "会員一覧",admin_customers_path %></li>
