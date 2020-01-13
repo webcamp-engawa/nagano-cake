@@ -12,7 +12,7 @@ before_action :authenticate_admin!
 		@genre = Genre.new(genre_params)
 		if @genre.save
 		redirect_to admin_genres_path
-		flash[:notice] = "ジャンルを追加しました！"
+		flash[:notice_genre] = "ジャンルを追加しました！"
 		else
 		@genres = Genre.all
 		render 'index'
