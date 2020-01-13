@@ -14,24 +14,24 @@
       <div class="container">
         <%= link_to "ながのCAKE", root_path, id: "logo" %>
         <nav>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="list-inline-item">
             <% if customer_signed_in? %>
-              <li><%= link_to "Top", root_path %></li>
-              <li><%= link_to "About", home_about_path %></li>
-              <li><%= link_to "カート", cart_items_path %></li>
-              <li><%= link_to "Log out", destroy_customer_session_path, method: :delete %></li>
-              <li><%= link_to "マイページ", '#' %></li>
+              <li class ="list-inline-item"><%= link_to "Top", root_path %></li>
+              <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
+              <li class ="list-inline-item"><%= link_to "カート", cart_items_path %></li>
+              <li class ="list-inline-item"><%= link_to "Log out", destroy_customer_session_path, method: :delete %></li>
+              <li class ="list-inline-item"><%= link_to "マイページ", '#' %></li>
               <% elsif admin_signed_in? %>
-              <li><%= link_to "商品一覧",admin_items_path %></li>
-              <li><%= link_to "会員一覧",admin_customers_path %></li>
-              <li><%= link_to "注文履歴一覧",admin_orders_path %></li>
-              <li><%= link_to "ジャンル管理",admin_genres_path %></li>
-              <li><%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %></li>
+              <li class ="list-inline-item"><%= link_to "商品一覧",admin_items_path %></li>
+              <li class ="list-inline-item"><%= link_to "会員一覧",admin_customers_path %></li>
+              <li class ="list-inline-item"><%= link_to "注文履歴一覧",admin_orders_path %></li>
+              <li class ="list-inline-item"><%= link_to "ジャンル管理",admin_genres_path %></li>
+              <li class ="list-inline-item"><%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %></li>
             <% else %>
-              <li><%= link_to "Top", root_path %></li>
-              <li><%= link_to "About", home_about_path %></li>
-              <li><%= link_to "Log in", new_customer_session_path %></li>
-              <li><%= link_to "Admin Log in" ,new_admin_session_path %></li>
+              <li class ="list-inline-item"><%= link_to "Top", root_path %></li>
+              <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
+              <li class ="list-inline-item"><%= link_to "Log in", new_customer_session_path %></li>
+              <li class ="list-inline-item"><%= link_to "管理者はこちら" ,new_admin_session_path %></li>
             <% end %>
           </ul>
         </nav>

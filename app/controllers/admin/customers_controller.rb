@@ -20,7 +20,7 @@ before_action :authenticate_admin!
 		@customer = Customer.find(params[:id])
 			if @customer.update(customer_params)
 			redirect_to admin_customer_path(@customer.id)
-			flash[:notice] = "会員情報が更新されました!"
+			flash[:notice_edit] = "会員情報が更新されました!"
 		else
 			render 'edit'
 		end
