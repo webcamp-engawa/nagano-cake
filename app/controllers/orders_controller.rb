@@ -23,6 +23,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     if @order.save
+      @cart_items = CartItem.where(customer_id: current_customer.id)
+      @cart_items.destroy_all
       redirect_to orders_done_path
     elsif @order.errors.any?
       @cart_item = CartItem.where(customer_id: current_customer.id)
