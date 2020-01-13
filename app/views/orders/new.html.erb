@@ -29,4 +29,17 @@
   <% end %>
 </div>
 
+<!--ご自身の住所-->
+<%= form_for @order do |f| %>
+  <%= current_customer.postcode %>
+  <%= current_customer.address %>
+  <%= current_customer.fullname.to_s %>
+  <%= f.hidden_field :postcode, value: current_customer.postcode %>
+  <%= f.hidden_field :address, value: current_customer.address %>
+  <%= f.hidden_field :address_name, value: current_customer.fullname.to_s %>
+<% end %>
+
+<!--登録済住所から選択-->
+
+<%= console %>
 
