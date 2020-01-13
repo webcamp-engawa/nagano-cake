@@ -2,8 +2,7 @@
   <%= render 'layouts/genre_serch' %>
 
   <div>
-  <p>商品の画像</p>
-  <%= attachment_image_tag @item, :image, :fill, 200, 120, format: "jpg" %>
+  <%= attachment_image_tag @item, :image, :size=>"300x200" %>
   </div>
 
   <div>
