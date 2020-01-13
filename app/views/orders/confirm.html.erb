@@ -1,11 +1,9 @@
-<h1>orders#confirm</h1>
 <h1>注文情報確認</h1>
 
 <div class="row">
   <table class="table table-bordered mx-auto">
     <thead class="thead-light">
       <tr>
-        <th scope="col">cart_item No(不要なので削除予定)</th>
         <th scope="col">商品名</th>
         <th scope="col">単価</th>
         <th scope="col">数量</th>
@@ -15,8 +13,10 @@
     <% @cart_item.each do |cart_item| %>
       <tbody>
         <tr>
-          <td scope="row"><%= cart_item.id %></td>
-          <td scope="row"><%= cart_item.item.name %></td>
+          <td scope="row">
+            <%= attachment_image_tag cart_item.item, :image, :size=>"90x60" %>
+            <%= cart_item.item.name %>
+          </td>
           <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08")).ceil) %></td>
           <td scope="row"><%= cart_item.quantity %></td>
           <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08") * cart_item.quantity).ceil) %></td>
@@ -77,4 +77,3 @@
   <% end %>
 </div>
 
-<%= console %>
