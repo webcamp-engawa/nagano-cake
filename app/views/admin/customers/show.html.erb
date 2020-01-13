@@ -6,7 +6,7 @@
 			<tr>
 				<th style="width:20%">顧客ID</th>
 				<td><%= @customer.id %>
-					<% if @customer.deleted_at? %>
+					<% if @customer.is_deleted? %>
 					退会済
 					<% else %>
 					有効会員
