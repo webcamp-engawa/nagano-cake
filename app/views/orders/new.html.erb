@@ -1,43 +1,32 @@
-<h1>orders#new</h1>
 <h1>購入情報入力</h1>
 
-<div class="row">
-  <h1>支払方法</h1>
-</div>
-<%= form_for @order do |f| %>
-<%= render 'layouts/errors_messages', model: f.object %>
-<div class="row">
-
-      <div class="radio-inline">
-        <%= f.radio_button :payment, :クレジットカード%> <!--, checked: "checked"-->
-        <%= f.label :クレジットカード, class: "payment_label" %>
-      </div>
-      <div class="radio-inline">
-        <%= f.radio_button :payment, :銀行振込 %>
-        <%= f.label :銀行振込, class: "payment_label" %>
-      </div>
-</div>
 
 <div class="row">
-  <h1>お届け先</h1>
-</div>
+  <%= form_for @order do |f| %>
+    <div class="row">
+      <h3>支払方法</h3>
+    </div>
+    <div class="radio-inline">
+      <%= f.radio_button :payment, :クレジットカード%>
+      <%= f.label :クレジットカード, class: "payment_label" %>
+    </div>
+    <div class="radio-inline">
+      <%= f.radio_button :payment, :銀行振込 %>
+      <%= f.label :銀行振込, class: "payment_label" %>
+    </div>
 
-<div class="row">
-
-          <%= f.text_field :postcode %>
-          <%= f.text_field :address %>
-          <%= f.text_field :address_name %>
-          <%= f.hidden_field :postage, value: 800 %>
-          <%= f.hidden_field :total_price, value: @total %>
-          <%= f.hidden_field :order_status, value: 1 %>
-          <%= f.hidden_field :confirming %>
-          <%= f.submit '確認画面へ進む' %>
-
-
-
-</div>
-
+    <h3>お届け先</h3>
+    <p>郵便番号<%= f.text_field :postcode %></p>
+    <p>住所<%= f.text_field :address %></p>
+    <p>宛名<%= f.text_field :address_name %></p>
+    <%= f.hidden_field :postage, value: 800 %>
+    <%= f.hidden_field :total_price, value: @total %>
+    <%= f.hidden_field :order_status, value: 1 %>
+    <%= f.hidden_field :confirming %>
+    <%= render 'layouts/errors_messages', model: f.object %>
+    <%= f.submit '確認画面へ進む', class: "btn btn-primary"%>
+    <%= link_to "カートに戻る", cart_items_path, class: "btn btn-secondary"%>
   <% end %>
-<div class="row">
-   <%= link_to "カートに戻る", cart_items_path, class: "btn btn-secondary"%>
 </div>
+
+
