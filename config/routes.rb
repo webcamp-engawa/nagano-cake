@@ -3,12 +3,13 @@ Rails.application.routes.draw do
 
   root 'home#top'
   get "/home/about", to:'home#about'
+  get "/customer/leave", to:'customers#leave'
   devise_for :customers, controllers: {
     sessions:      'devise/customers/sessions',
     passwords:     'devise/customers/passwords',
     registrations: 'devise/customers/registrations'
   }
-  resource :customer, only: [:show, :edit, :update]
+  resource :customer, only: [:show, :edit, :update, :destroy]
   resources :items, only: [:index, :show]
   delete "/cart_items/empty", to:'cart_items#empty_cart'
   resources :cart_items, only: [:index, :create, :update, :destroy]

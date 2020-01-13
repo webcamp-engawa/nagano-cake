@@ -2,6 +2,9 @@ class CustomersController < ApplicationController
 
 before_action :authenticate_customer!
 
+  def leave
+  end
+
   def show
   	@customer = current_customer
   end
@@ -15,10 +18,16 @@ before_action :authenticate_customer!
       if @customer.update(customer_params)
       redirect_to customer_path
       flash[:notice] = "会員情報が更新されました!"
-    else
+      else
       render 'edit'
     end
   end
+
+  def destroy
+    current_customer.destroy
+    redirect_to root_path
+  end
+
 
   private
 	def customer_params
