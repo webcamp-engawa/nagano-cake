@@ -4,10 +4,13 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
+ def active_for_authentication?
+    super && self.is_deleted == false
+  end
   has_many :shippings
   has_many :orders
   has_many :cart_items
+
 
   validates :last_name, presence: true
   validates :first_name, presence: true
@@ -38,4 +41,6 @@ class FullName
   def to_s
     [@last_name, @first_name].compact.join("")
   end
+
+ 
 end
