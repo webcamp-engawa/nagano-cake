@@ -1,6 +1,10 @@
-<div class="body">
-	<div class="container">
-		<h1>管理画面</h1>
-		<p>本日の注文件数 <%= @order.count %>件</p>
+<div class="container">
+	<h1>管理画面</h1>
+	<div class="col-lg-8 pt-5">
+		<h2>本日の注文件数
+			<%= link_to admin_orders_path do %>
+				<%= @order.count %>
+			<% end %>件
+		</h2>
 	</div>
 </div>
