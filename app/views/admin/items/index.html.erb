@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<h1>商品一覧画面</h1>
+		<h1>商品一覧画面</h1> <%= link_to "商品登録", new_admin_item_path %>
 			<table class="table">
 				<thead>
 					<tr>
@@ -39,5 +39,8 @@
 				</tbody>
 			</thead>
 		</table>
+
+			<%= paginate @items, class: "paginate" %>
+
 	</div>
 </div>
