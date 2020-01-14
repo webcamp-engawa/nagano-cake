@@ -1,0 +1,25 @@
+
+<% if cutomer_signed_in? %>
+
+<!-- 顧客がログインしているときのヘッダー -->
+
+<% else %>
+
+<!-- 顧客が未ログインのヘッダーー -->
+
+<% end %>
+
+<% if admin_signed_in? %>
+
+<!-- 管理者がログインしているときのヘッダー -->
+
+<%= link_to "商品一覧",admin_items_path %>
+<%= link_to "会員一覧",admin_customers_path %>
+<%= link_to "注文履歴一覧",admin_orders_path %>
+<%= link_to "ジャンル管理",admin_genres_path %>
+
+<% else %>
+
+<!-- 管理者が未ログインのヘッダー -->
+
+<% end %>
