@@ -22,7 +22,7 @@
 						</td>
 					<% end %>
 						<td>
-							<%= item.price %>
+							<%= number_to_currency((BigDecimal(item.price)).ceil) %>
 						</td>
 						<td>
 							<%= item.genre.name %>
