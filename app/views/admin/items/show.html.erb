@@ -14,15 +14,19 @@
 			</p>
 			<p class="genre">
 				ジャンル
-				<%= @item.genre_id %>
+				<%= @item.genre.name %>
 			</p>
 			<p class="price">
 				税抜き価格（税込価格)
-				<%= @item.price %> (<%=@item.price*1.08 %>) 円
+				<%= number_to_currency((BigDecimal(@item.price)).ceil)%> (<%=number_to_currency((BigDecimal(@item.price)*BigDecimal("1.08")).ceil)%>)
 			</p>
 			<p class ="is_sold">
 				販売ステータス
-				<%= @item.is_sold %>
+				<% if @item.is_sold %>
+				<p>売り切れ</p>
+				<% else %>
+				<p>販売中</p>
+				<% end %>
 			</p>
 			<p>
 				<%= link_to '編集する', edit_admin_item_path(@item) %>

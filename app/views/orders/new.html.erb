@@ -3,9 +3,7 @@
 
 <div class="row">
   <%= form_for @order do |f| %>
-    <div class="row">
-      <h3>支払方法</h3>
-    </div>
+    <div class="row"><h3>支払方法</h3></div>
     <div class="radio-inline">
       <%= f.radio_button :payment, :クレジットカード%>
       <%= f.label :クレジットカード, class: "payment_label" %>
@@ -15,18 +13,53 @@
       <%= f.label :銀行振込, class: "payment_label" %>
     </div>
 
-    <h3>お届け先</h3>
-    <p>郵便番号<%= f.text_field :postcode %></p>
-    <p>住所<%= f.text_field :address %></p>
-    <p>宛名<%= f.text_field :address_name %></p>
-    <%= f.hidden_field :postage, value: 800 %>
-    <%= f.hidden_field :total_price, value: @total %>
-    <%= f.hidden_field :order_status, value: :入金待ち %>
-    <%= f.hidden_field :confirming %>
-    <%= render 'layouts/errors_messages', model: f.object %>
+  <% end %>
+</div>
+
+<div class="row">
+  <%= form_for @order do |f| %>
+    <div class="row"><h3>お届け先</h3></div>
+
+    <div class="radio-inline">
+      <%= radio_button_tag(:selected_btn, "self_address") %>
+      <%= label_tag(:registered_address, "ご自身の住所") %>
+      <div>
+        <p>
+          <%= current_customer.postcode %>
+          <%= current_customer.address %>
+          <%= current_customer.fullname.to_s %>
+          <%= f.hidden_field :postcode, value: current_customer.postcode %>
+          <%= f.hidden_field :address, value: current_customer.address %>
+          <%= f.hidden_field :address_name, value: current_customer.fullname.to_s %>
+        </p>
+      </div>
+    </div>
+
+    <div class="radio-inline">
+      <%= radio_button_tag(:selected_btn, "registered_address") %>
+      <%= label_tag(:registered_address, "登録済住所から選択") %>
+      <p>
+
+        <%= collection_select :shipping, :shipping_id, @shippings, :id, :fulladdress,{} %>
+
+      </p>
+    </div>
+
+    <div class="radio-inline">
+      <%= radio_button_tag(:selected_btn, "new_address") %>
+      <%= label_tag(:registered_address, "新しいお届け先") %>
+      <div>
+        <p>郵便番号<%= f.text_field :postcode %></p>
+        <p>住所<%= f.text_field :address %></p>
+        <p>宛名<%= f.text_field :address_name %></p>
+        <%= f.hidden_field :postage, value: 800 %>
+        <%= f.hidden_field :total_price, value: @total %>
+        <%= f.hidden_field :order_status, value: 1 %>
+        <%= f.hidden_field :confirming %>
+        <%= render 'layouts/errors_messages', model: f.object %>
+      </div>
+    </div>
     <%= f.submit '確認画面へ進む', class: "btn btn-primary"%>
     <%= link_to "カートに戻る", cart_items_path, class: "btn btn-secondary"%>
   <% end %>
 </div>
-
-

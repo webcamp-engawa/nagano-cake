@@ -1,28 +1,28 @@
 <div class="row">
   <%= render 'layouts/genre_serch' %>
 
-  <div>
-  <%= attachment_image_tag @item, :image, :size=>"300x200" %>
+
+  <div class="col-4 text-right">
+    <%= attachment_image_tag @item, :image, :size=>"300x200" %>
   </div>
 
-  <div>
-  <%= @item.name %>
+  <div class="col-6 text-left">
+    <div>
+      <h2><%= @item.name %></h2>
+      <div><%= @item.introduction %></div>
+      <h4>
+        <%= number_to_currency((BigDecimal(@item.price) * BigDecimal("1.08")).ceil) %>(税込)
+      </h4>
+    </div>
+
+    <div>
+      <%= form_for @cart_item do |f| %>
+        <%= render 'layouts/errors_messages', model: f.object %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
+        <%= f.submit "カートに入れる" %>
+      <% end %>
+      <p><%= flash[:alert] %></p>
+    </div>
   </div>
-
-  <div>
-  <%= @item.introduction %>
-  </div>
-
-  <div>
-    <%= number_to_currency((BigDecimal(@item.price) * BigDecimal("1.08")).ceil) %>(税込)
-  </div>
-
-
-  <%= form_for @cart_item do |f| %>
-    <%= render 'layouts/errors_messages', model: f.object %>
-    <%= f.hidden_field :item_id, value: @item.id %>
-    <%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
-  <p><%= flash[:alert] %></p>
 </div>

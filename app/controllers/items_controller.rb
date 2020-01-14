@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
     if params[:genre_id]
       @items = Item.where(genre_id: params[:genre_id])
       @genres = Genre.all
+      @genre = Genre.find(params[:genre_id])
     else
       @genres = Genre.all
       @items = Item.all
