@@ -19,44 +19,135 @@ class OrdersController < ApplicationController
     @cart_item.each do |cart_item|
       @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
     end
-    @total = @subtotal + 800
+    @total = @subtotal + @order.postage
 
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    if @order.save
-      @cart_items = CartItem.where(customer_id: current_customer.id)
-      @cart_items.destroy_all
-      redirect_to orders_done_path
-    elsif @order.errors.any?
-      @cart_item = CartItem.where(customer_id: current_customer.id)
-      @subtotal = 0
-      @cart_item.each do |cart_item|
-        @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
-      end
-      @total = @subtotal + 800
-      render :new
-      @order = Order.new
-      @order.customer_id = current_customer.id
-      @shippings = Shipping.where(customer_id: current_customer.id)
-      @customer = current_customer
+    case params[:selected_btn]
+      when  'self_address'
+        @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+        @order.postcode = current_customer.postcode
+        @order.address = current_customer.address
+        @order.address_name = current_customer.fullname.to_s
+        if @order.save
+          @cart_items = CartItem.where(customer_id: current_customer.id)
+          @cart_items.destroy_all
+          redirect_to orders_done_path
+        elsif @order.errors.any?
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @shippings = Shipping.where(customer_id: current_customer.id)
+          render :new
 
-    else
-      @cart_item = CartItem.where(customer_id: current_customer.id)
-      @subtotal = 0
-      @cart_item.each do |cart_item|
-        @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+        else
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @order.customer_id = current_customer.id
+          render :confirm
+        end
+
+      when  "registered_address"
+        @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+        @order.postcode = Shipping.find(params[:shipping][:id]).postcode
+        @order.address = Shipping.find(params[:shipping][:id]).address
+        @order.address_name = Shipping.find(params[:shipping][:id]).address_name
+        if @order.save
+          @cart_items = CartItem.where(customer_id: current_customer.id)
+          @cart_items.destroy_all
+          redirect_to orders_done_path
+        elsif @order.errors.any?
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @shippings = Shipping.where(customer_id: current_customer.id)
+          @order.postcode = ""
+          @order.address = ""
+          @order.address_name = ""
+          render :new
+
+        else
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @order.customer_id = current_customer.id
+          render :confirm
+        end
+
+      when  "new_address"
+        @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+        if @order.save
+          @cart_items = CartItem.where(customer_id: current_customer.id)
+          @cart_items.destroy_all
+          redirect_to orders_done_path
+        elsif @order.errors.any?
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @shippings = Shipping.where(customer_id: current_customer.id)
+          render :new
+
+        else
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @order.customer_id = current_customer.id
+          render :confirm
+        end
+      else
+        @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+        if @order.save
+          @cart_items = CartItem.where(customer_id: current_customer.id)
+          @cart_items.destroy_all
+          redirect_to orders_done_path
+        elsif @order.errors.any?
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @shippings = Shipping.where(customer_id: current_customer.id)
+          render :new
+
+        else
+          @cart_item = CartItem.where(customer_id: current_customer.id)
+          @subtotal = 0
+          @cart_item.each do |cart_item|
+            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+          end
+          @total = @subtotal + @order.postage
+          @order.customer_id = current_customer.id
+          render :confirm
+        end
       end
-      @total = @subtotal + 800
-      @order.customer_id = current_customer.id
-      render :confirm
-    end
   end
 
   def confirm
-
   end
 
   def done
