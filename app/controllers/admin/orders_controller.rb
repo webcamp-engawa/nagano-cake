@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
 	def index
 		@orders = Order.all
+		@sum = OrderItem.all.sum(:quantity)
 	end
 
 	def show

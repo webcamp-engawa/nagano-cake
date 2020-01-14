@@ -13,13 +13,15 @@
 				<tbody>
 					<tr>
 						<td>
-							<%= order.created_at %>
+							<%= link_to admin_order_path(order.id) do %>
+								<%= l order.created_at %>
+							<% end %>
 						</td>
 						<td>
 							<%= order.customer.last_name %><%= order.customer.first_name %>
 						</td>
 						<td>
-							
+							<%= @sum %>
 						</td>
 						<td>
 							<%= order.order_status %>
