@@ -1,6 +1,6 @@
 <div class="container">
+	<h1>商品 新規登録画面</h1>
 	<div class="row">
-		<h1>商品　新規登録画面</h1>
 		<% if @item.errors.any? %>
         	<div id="error_explanation">
           		<h2><%= pluralize(@item.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,6 +11,7 @@
           		</ul>
         	</div>
     	<% end %>
+    	<div class="col-lg-8 pt-5">
 		<%= form_for(@item, url: {controller: "items", action: "create"}) do |f| %>
 			<div class="field">
 				<label class="image">
@@ -35,12 +36,12 @@
 			</div>
 			<div class="field">
 				<label class="is_sold">販売ステータス</label>
-				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], :prompt=>"選択してください" %>
+				<%= f.select :is_sold, [["売り切れ","true"],["販売中","false"]], :prompt=>"選択してください" %>
 			</div>
-			<div class="field">
-				<label class="submit"></label>
+			<div class="submit">
 				<%= f.submit "新規登録" %>
 			</div>
 		<% end %>
+		</div>
 	</div>
 </div>
