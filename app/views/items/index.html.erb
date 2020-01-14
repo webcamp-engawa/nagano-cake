@@ -1,15 +1,19 @@
-<div class="row">
+<div class ="container">
+    <div class="row">
   <%= render 'layouts/genre_serch' %>
 
   <div class="col-10">
     <h1><%= @genre.name %></h1>
     <h3><%= "全#{@items.count}件" %></h3>
     <% @items.each do |item| %>
+    <div class ="item-image">
       <%= link_to item_path(item.id) do %>
-      <%= attachment_image_tag item, :image, :size=>"300x200"  %>
+      <%= attachment_image_tag item, :image, :size=>"300x200" %>
+    </div>
+      <% end %>
       <%= item.name %>
       <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>
-      <% end %>
     <% end %>
   </div>
+</div>
 </div>
