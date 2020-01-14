@@ -23,7 +23,7 @@
             <%= current_customer.postcode %>
             <%= current_customer.address %>
             <%= current_customer.fullname.to_s %>
-            <%= f.hidden_field :postage, value: 800 %>
+            <%= f.hidden_field :postage %>
             <%= f.hidden_field :total_price, value: @total %>
             <%= f.hidden_field :order_status, value: :入金待ち %>
             <%= f.hidden_field :confirming %>
@@ -36,7 +36,7 @@
         <%= label_tag(:registered_address, "登録済住所から選択") %>
         <p>
           <%= collection_select :shipping, :id, @shippings, :id, :fulladdress,{} %>
-          <%= f.hidden_field :postage, value: 800 %>
+          <%= f.hidden_field :postage %>
           <%= f.hidden_field :total_price, value: @total %>
           <%= f.hidden_field :order_status, value: :入金待ち %>
           <%= f.hidden_field :confirming %>
@@ -50,7 +50,7 @@
           <p>郵便番号<%= f.text_field :postcode %></p>
           <p>住所<%= f.text_field :address %></p>
           <p>宛名<%= f.text_field :address_name %></p>
-          <%= f.hidden_field :postage, value: 800 %>
+          <%= f.hidden_field :postage %>
           <%= f.hidden_field :total_price, value: @total %>
           <%= f.hidden_field :order_status, value: :入金待ち %>
           <%= f.hidden_field :confirming %>

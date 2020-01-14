@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @cart_item.each do |cart_item|
       @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
     end
-    @total = @subtotal + 800
+    @total = @subtotal + Order.postage
 
   end
 
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @shippings = Shipping.where(customer_id: current_customer.id)
           render :new
 
@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @order.customer_id = current_customer.id
           render :confirm
         end
@@ -72,7 +72,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @shippings = Shipping.where(customer_id: current_customer.id)
           @order.postcode = ""
           @order.address = ""
@@ -85,7 +85,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @order.customer_id = current_customer.id
           render :confirm
         end
@@ -103,7 +103,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @shippings = Shipping.where(customer_id: current_customer.id)
           render :new
 
@@ -113,7 +113,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @order.customer_id = current_customer.id
           render :confirm
         end
@@ -130,7 +130,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @shippings = Shipping.where(customer_id: current_customer.id)
           render :new
 
@@ -140,7 +140,7 @@ class OrdersController < ApplicationController
           @cart_item.each do |cart_item|
             @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
           end
-          @total = @subtotal + 800
+          @total = @subtotal + Order.postage
           @order.customer_id = current_customer.id
           render :confirm
         end
