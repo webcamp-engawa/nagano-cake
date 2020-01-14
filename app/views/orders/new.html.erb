@@ -21,7 +21,7 @@
     <p>宛名<%= f.text_field :address_name %></p>
     <%= f.hidden_field :postage, value: 800 %>
     <%= f.hidden_field :total_price, value: @total %>
-    <%= f.hidden_field :order_status, value: 1 %>
+    <%= f.hidden_field :order_status, value: :入金待ち %>
     <%= f.hidden_field :confirming %>
     <%= render 'layouts/errors_messages', model: f.object %>
     <%= f.submit '確認画面へ進む', class: "btn btn-primary"%>

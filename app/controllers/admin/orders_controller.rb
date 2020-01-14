@@ -7,17 +7,16 @@ class Admin::OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 		@orders = Order.all
 		@order_items = OrderItem.all
-		@customer = Customer.find(params[:id])
 
-		@price = 0
-			@order_items.each do |order_item|
-				@price += (BigDecimal(order_item.order_price) * BigDecimal("1.08")).ceil
-			end
+		#@price = 0
+			#@order_items.each do |order_item|
+				#@price += (BigDecimal(order_item.order_price) * BigDecimal("1.08")).ceil
+			#end
 
-		@subtotal = 0
-			@order_items.each do |order_item|
-				@subtotal += (BigDecimal(order_item.order_price) * order_item.quantity * BigDecimal("1.08")).ceil
-			end
+		#@subtotal = 0
+			#@order_items.each do |order_item|
+				#@subtotal += (BigDecimal(order_item.order_price) * order_item.quantity * BigDecimal("1.08")).ceil
+			#end
 
 		@sum = (OrderItem.all.sum(:order_price)).ceil
 

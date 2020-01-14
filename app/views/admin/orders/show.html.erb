@@ -2,7 +2,6 @@
 	<div class="row">
 		<h1>注文詳細画面</h1>
 		<%= form_for(@order, url: {controller: "orders", action: "update"}) do |f| %>
-		<% @orders.each do |order| %>
 		<table class="table">
 			<thead>
 				<tr>
@@ -14,7 +13,7 @@
 				<tr>
 					<td>購入者</td>
 					<td>
-						<%= link_to admin_customer_path(@customer) do %>
+						<%= link_to admin_customer_path(@order.customer) do %>
 							<%= @order.customer.last_name %><%= @order.customer.first_name %>
 						<% end %>
 					</td>
@@ -30,14 +29,13 @@
 				<tr>
 					<td>注文ステータス</td>
 					<td>
-						<%= f.select :order_status, [["入金待ち","1"],["入金確認","2"],["制作中","3"],["発送準備中","4"],["発送済み","5"]] %>
+						<%= f.select :order_status, [["入金待ち",1],["入金確認",2],["制作中",3],["発送準備中",4],["発送済み",5]] %>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<% end %>
 		<div class="item_info">
-		<% @order_items.each do |order_item| %>
+		<% @order.order_items.each do |order_item| %>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -53,16 +51,17 @@
 							<%= order_item.item.name %>
 						</td>
 						<td>
-							<%= @price %>
+							<%= order_item.order_price %>
 						</td>
 						<td>
 							<%= order_item.quantity %>
 						</td>
 						<td>
-							<%= @subtotal %>
+							<%= order_item.order_price * order_item.quantity %>
 						</td>
-						<td><%= f.fields_for :order_items do |f| %>
-								<%= f.select :cooking_status, [["着手不可","1"],["製作待ち","2"],["制作中","3"],["製作完了","4"]] %>
+						<td>
+							<%= f.fields_for :order_items do |f| %>
+								<%= f.select :cooking_status, [["着手不可",1],["製作待ち",2],["制作中",3],["製作完了",4]], value: :着手不可 %>
 							<% end %>
 						</td>
 					</tr>
@@ -71,7 +70,6 @@
 		</table>
 		<% end %>
 		</div>
-		<% @orders.each do |order| %>
 		<table class="table">
 			<thead>
 				<tr>
@@ -89,18 +87,17 @@
 				<tr>
 					<td>送料</td>
 					<td>
-						<%= order.postage %>　円
+						<%= @order.postage %>　円
 					</td>
 				</tr>
 				<tr>
 					<td>請求金額合計</td>
 					<td>
-						<%= order.total_price %>  円
+						<%= @order.total_price %>  円
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<% end %>
 			<%= f.submit "まとめて更新" %>
 		<% end %>
 	</div>
