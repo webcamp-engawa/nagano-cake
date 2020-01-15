@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
+
 	def after_sign_in_path_for(resource)
 		case resource
 			when Admin
@@ -19,6 +20,14 @@ def after_sign_out_path_for(resource_or_scope)
       root_path
     end
   end
+
+
+  	before_action :set_seach
+
+  	def set_seach
+  		@search = Item.ransack(params[:q])
+  		@search_items = @search.result.page(params[:page])
+  	end
 
 
 
