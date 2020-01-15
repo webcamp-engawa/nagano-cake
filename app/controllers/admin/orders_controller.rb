@@ -7,7 +7,7 @@ class Admin::OrdersController < ApplicationController
 	def show
 		@order = Order.find(params[:id])
 		@orders = Order.all
-		@order_items = OrderItem.all
+		#@order_items = OrderItem.all
 
 		#@price = 0
 			#@order_items.each do |order_item|
@@ -19,7 +19,7 @@ class Admin::OrdersController < ApplicationController
 				#@subtotal += (BigDecimal(order_item.order_price) * order_item.quantity * BigDecimal("1.08")).ceil
 			#end
 
-		@sum = (OrderItem.all.sum(:order_price)).ceil
+		@sum = (OrderItem.sum(:order_price)).ceil
 
 	end
 
@@ -33,7 +33,7 @@ class Admin::OrdersController < ApplicationController
 
 	private
     def order_params
-      params.require(:order).permit(:customer_id, :postcode, :address, :address_name, :postage, :total_price, :payment, :order_status, order_items: [:cooking_status])
+      params.require(:order).permit(:customer_id, :postcode, :address, :address_name, :postage, :total_price, :payment, :order_status, order_items_attributes: [:id, :cooking_status])
     end
 
 end
