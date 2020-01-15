@@ -1,12 +1,14 @@
+<%= form_for @shipping do |f| %>
+
 <div class ="container">
 	<div class = row>
 		<div class ="col-md-6 ">
 
 			<h3 class = "mb-3 mt-5">配送先登録/一覧</h3>
 
- 			<%= flash[:notice] %>
-
-			<%= form_for @shipping do |f| %>
+ 			<%= flash[:notice_create] %>
+ 			<%= flash[:notice_fix] %>
+ 			<%= flash[:notice_destroy] %>
 
 			<table class="shipping-create">
 
@@ -44,7 +46,7 @@
 		<td><%= shipping.postcode %></td>
 		<td><%= shipping.address %></td>
 		<td><%= shipping.address_name %></td>
-		<td><%= link_to "編集する", edit_shipping_path(shipping.id) %> <%= link_to "削除する", shipping_path(shipping.id), method: :delete %></td>
+		<td><%= link_to "編集する", edit_shipping_path(shipping.id), class:"btn btn-outline-primary mb-4" %> <%= link_to "削除する", shipping_path(shipping.id), method: :delete, class:"btn btn-outline-danger mb-4" %></td>
 	</tr>
 <% end %>
 </table>
