@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     else
       @genres = Genre.page(params[:page]).reverse_order
       @items = Item.page(params[:page]).reverse_order
+      @items = @items.where(is_sold: true)
     end
   end
 
