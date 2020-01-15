@@ -28,7 +28,7 @@
 			</div>
 			<div class="field">
 				<label class="genre">ジャンル</label>
-				<%= f.select :genre_id, [["ケーキ","1"],["焼き菓子","2"],["キャンディ","3"],["プリン","4"]], :prompt=>"選択してください" %>
+				<%= f.collection_select :genre_id, @genres, :id, :name,{} %>
 			</div>
 			<div class="field">
 				<label class="price">税抜き価格</label>
