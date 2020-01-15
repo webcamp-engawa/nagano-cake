@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   def index
     if params[:genre_id]
       @items = Item.where(genre_id: params[:genre_id])
-      @genres = Genre.all
+      @genres = Genre.page(params[:page]).reverse_order
       @genre = Genre.find(params[:genre_id])
     else
       @genres = Genre.all
