@@ -64,6 +64,8 @@
 
 <div class="row">
   <%= form_for @order do |f| %>
+    <%= f.hidden_field :shipping %>
+    <%= hidden_field_tag :selected_btn, @btn %>
     <%= f.hidden_field :payment %>
     <%= f.hidden_field :postcode %>
     <%= f.hidden_field :address %>
@@ -76,4 +78,4 @@
     <%= link_to "購入情報入力へ戻る", new_order_path, class: "btn btn-secondary"%>
   <% end %>
 </div>
-
+<%= console %>

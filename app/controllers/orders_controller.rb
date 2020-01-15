@@ -59,9 +59,9 @@ class OrdersController < ApplicationController
       when  "registered_address"
         @order = Order.new(order_params)
         @order.customer_id = current_customer.id
-        @order.postcode = Shipping.find(params[:shipping][:id]).postcode
-        @order.address = Shipping.find(params[:shipping][:id]).address
-        @order.address_name = Shipping.find(params[:shipping][:id]).address_name
+        @order.postcode = Shipping.find(params[:order][:shipping]).postcode
+        @order.address = Shipping.find(params[:order][:shipping]).address
+        @order.address_name = Shipping.find(params[:order][:shipping]).address_name
         if @order.save
           @cart_items = CartItem.where(customer_id: current_customer.id)
           @cart_items.destroy_all
@@ -87,6 +87,7 @@ class OrdersController < ApplicationController
           end
           @total = @subtotal + @order.postage
           @order.customer_id = current_customer.id
+          @btn = params[:selected_btn]
           render :confirm
         end
 
@@ -115,6 +116,7 @@ class OrdersController < ApplicationController
           end
           @total = @subtotal + @order.postage
           @order.customer_id = current_customer.id
+          @btn = params[:selected_btn]
           render :confirm
         end
       else
@@ -142,6 +144,7 @@ class OrdersController < ApplicationController
           end
           @total = @subtotal + @order.postage
           @order.customer_id = current_customer.id
+          @btn = params[:selected_btn]
           render :confirm
         end
       end
@@ -156,6 +159,6 @@ class OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:customer_id, :postcode, :address, :address_name,
-                           :postage, :total_price, :payment, :order_status, :confirming)
+                           :postage, :total_price, :payment, :order_status, :confirming, :shipping)
   end
 end
