@@ -1,18 +1,21 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = current_customer.order
   end
 
   def new
     @order = Order.new
-    @order.customer_id = current_customer.id
+
+     @order.customer_id = current_customer.id
     @shippings = Shipping.where(customer_id: current_customer.id)
     @shippings_name= Array.new(@shippings.length)
-    # for num in 1..@shippings.length do
-    #   @shippings_name[num] = @shippings.find(num).fulladdress.to_s
-    # end
+
     @customer = current_customer
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @subtotal = 0
@@ -20,9 +23,7 @@ class OrdersController < ApplicationController
       @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
     end
     @total = @subtotal + @order.postage
-
   end
-
   def create
     case params[:selected_btn]
       when  'self_address'
@@ -44,7 +45,6 @@ class OrdersController < ApplicationController
           @total = @subtotal + @order.postage
           @shippings = Shipping.where(customer_id: current_customer.id)
           render :new
-
         else
           @cart_item = CartItem.where(customer_id: current_customer.id)
           @subtotal = 0
@@ -55,7 +55,6 @@ class OrdersController < ApplicationController
           @order.customer_id = current_customer.id
           render :confirm
         end
-
       when  "registered_address"
         @order = Order.new(order_params)
         @order.customer_id = current_customer.id
@@ -92,7 +91,6 @@ class OrdersController < ApplicationController
           @order.address = ""
           @order.address_name = ""
           render :new
-
         else
           @cart_item = CartItem.where(customer_id: current_customer.id)
           @subtotal = 0
@@ -135,7 +133,6 @@ class OrdersController < ApplicationController
           @total = @subtotal + @order.postage
           @shippings = Shipping.where(customer_id: current_customer.id)
           render :new
-
         else
           @cart_item = CartItem.where(customer_id: current_customer.id)
           @subtotal = 0
@@ -174,7 +171,6 @@ class OrdersController < ApplicationController
           @total = @subtotal + @order.postage
           @shippings = Shipping.where(customer_id: current_customer.id)
           render :new
-
         else
           @cart_item = CartItem.where(customer_id: current_customer.id)
           @subtotal = 0
@@ -188,13 +184,10 @@ class OrdersController < ApplicationController
         end
       end
   end
-
   def confirm
   end
-
   def done
   end
-
   private
   def order_params
     params.require(:order).permit(:customer_id, :postcode, :address, :address_name,

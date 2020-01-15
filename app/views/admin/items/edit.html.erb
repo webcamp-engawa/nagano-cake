@@ -17,7 +17,7 @@
 				<%= f.text_field :price, autofocus: true %>円
 			</label><br>
 			<label class ="is_sold">販売ステータス</label>
-				<%= f.select :is_sold, [["売り切れ","true"],["販売中","false"]], autofocus: true %><br>
+				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], autofocus: true %><br>
 			<%= f.submit "変更を保存" %>
 		</div>
 			<% end %>
