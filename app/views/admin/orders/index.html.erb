@@ -21,6 +21,8 @@
 							<%= order.customer.last_name %><%= order.customer.first_name %>
 						</td>
 						<td>
+							<% @sum = 0 %>
+							<% order.order_items.each { |order| @sum += order.quantity} %>
 							<%= @sum %>
 						</td>
 						<td>

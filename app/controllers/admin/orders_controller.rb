@@ -1,7 +1,9 @@
 class Admin::OrdersController < ApplicationController
+
+before_action :authenticate_admin!
+
 	def index
 		@orders = Order.all
-		@sum = OrderItem.all.sum(:quantity)
 	end
 
 	def show
@@ -19,7 +21,7 @@ class Admin::OrdersController < ApplicationController
 				#@subtotal += (BigDecimal(order_item.order_price) * order_item.quantity * BigDecimal("1.08")).ceil
 			#end
 
-		@sum = (OrderItem.sum(:order_price)).ceil
+		#@sum = (OrderItem.sum(:order_price)).ceil
 
 	end
 
