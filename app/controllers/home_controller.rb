@@ -4,8 +4,8 @@ class HomeController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @items = @genre.items.all
     else
-      @genres = Genre.all
-      @items = Item.all
+      @genres = Genre.page(params[:page]).reverse_order
+      @items = Item.page(params[:page]).reverse_order
     end
   end
 

@@ -18,6 +18,7 @@
       <%= item.name %>
       <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>
     <% end %>
+    <%= paginate @genres, class: "paginate" %>
   </div>
 </div>
 </div>
