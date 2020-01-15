@@ -36,7 +36,7 @@
 			</div>
 			<div class="field">
 				<label class="is_sold">販売ステータス</label>
-				<%= f.select :is_sold, [["売り切れ","true"],["販売中","false"]], :prompt=>"選択してください" %>
+				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], :prompt=>"選択してください" %>
 			</div>
 			<div class="submit">
 				<%= f.submit "新規登録" %>
