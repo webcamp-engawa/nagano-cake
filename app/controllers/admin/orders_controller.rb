@@ -1,7 +1,14 @@
 class Admin::OrdersController < ApplicationController
 	def index
+		if params[:customer_id]
+		@customer = Customer.where(customer_id: params[:customer_id])
+		@orders = @customer.orders
+		@sum = OrderItem.all.sum(:quantity)
+		# @customer = Customer.find(params[:customer_id])
+		else
 		@orders = Order.all
 		@sum = OrderItem.all.sum(:quantity)
+		end
 	end
 
 	def show
