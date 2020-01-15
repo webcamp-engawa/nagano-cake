@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
           end
           @total = @subtotal + @order.postage
           @order.customer_id = current_customer.id
+          @btn = params[:selected_btn]
           render :confirm
         end
 
@@ -124,45 +125,6 @@ class OrdersController < ApplicationController
 
 
 
-          @cart_items.destroy_all
-          redirect_to orders_done_path
-        elsif @order.errors.any?
-          @cart_item = CartItem.where(customer_id: current_customer.id)
-          @subtotal = 0
-          @cart_item.each do |cart_item|
-            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
-          end
-          @total = @subtotal + @order.postage
-          @shippings = Shipping.where(customer_id: current_customer.id)
-          render :new
-
-        else
-          @cart_item = CartItem.where(customer_id: current_customer.id)
-          @subtotal = 0
-          @cart_item.each do |cart_item|
-            @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
-          end
-          @total = @subtotal + @order.postage
-          @order.customer_id = current_customer.id
-          @btn = params[:selected_btn]
-          render :confirm
-        end
-
-      else
-        @order = Order.new(order_params)
-        @order.customer_id = current_customer.id
-        if @order.save
-        @cart_items = CartItem.where(customer_id: current_customer.id)
-        @cart_items.each do |cart_item|
-        @order_item = OrderItem.new
-        @order_item.order_id = @order.id
-        @order_item.item_id = cart_item.item_id
-        @order_item.quantity = cart_item.quantity
-        @order_item.order_price = cart_item.item.price
-        @order_item.cooking_status = 1
-        @order_item.save
-        end
-          @cart_items = CartItem.where(customer_id: current_customer.id)
           @cart_items.destroy_all
           redirect_to orders_done_path
         elsif @order.errors.any?
