@@ -61,14 +61,14 @@
 						</td>
 						<td>
 							<%= f.fields_for :order_items do |f| %>
-								<%= f.select :cooking_status, [["着手不可","着手不可"],["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]], value: :着手不可 %>
+								<%= f.select :cooking_status, [["着手不可","着手不可"],["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]] %>
 							<% end %>
 						</td>
 					</tr>
 				</tbody>
 			</thead>
 		</table>
-		<% end %>
+
 		</div>
 		<table class="table">
 			<thead>
@@ -81,7 +81,7 @@
 				<tr>
 					<td>商品合計</td>
 					<td>
-						<%= @sum %>  円
+						<%= order_item.order_price * order_item.quantity %>  円
 					</td>
 				</tr>
 				<tr>
@@ -93,12 +93,13 @@
 				<tr>
 					<td>請求金額合計</td>
 					<td>
-						<%= @order.total_price %>  円
+						<%= order_item.order_price * order_item.quantity + @order.postage %>  円
 					</td>
 				</tr>
 			</tbody>
 		</table>
 			<%= f.submit "まとめて更新" %>
+		<% end %>
 		<% end %>
 	</div>
 </div>
