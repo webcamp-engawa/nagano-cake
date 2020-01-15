@@ -10,9 +10,9 @@ class OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @shippings = Shipping.where(customer_id: current_customer.id)
     @shippings_name= Array.new(@shippings.length)
-    for num in 1..@shippings.length do
-      @shippings_name[num] = @shippings.find(num).fulladdress.to_s
-    end
+    # for num in 1..@shippings.length do
+    #   @shippings_name[num] = @shippings.find(num).fulladdress.to_s
+    # end
     @customer = current_customer
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @subtotal = 0
@@ -63,6 +63,20 @@ class OrdersController < ApplicationController
         @order.address = Shipping.find(params[:order][:shipping]).address
         @order.address_name = Shipping.find(params[:order][:shipping]).address_name
         if @order.save
+
+        @cart_items = CartItem.where(customer_id: current_customer.id)
+        @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
+        @order_item.item_id = cart_item.item_id
+        @order_item.quantity = cart_item.quantity
+        @order_item.order_price = cart_item.item.price
+        @order_item.cooking_status = 1
+        @order_item.save
+        end
+
+
+
           @cart_items = CartItem.where(customer_id: current_customer.id)
           @cart_items.destroy_all
           redirect_to orders_done_path
@@ -92,10 +106,24 @@ class OrdersController < ApplicationController
         end
 
       when  "new_address"
+
         @order = Order.new(order_params)
         @order.customer_id = current_customer.id
         if @order.save
           @cart_items = CartItem.where(customer_id: current_customer.id)
+
+        @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
+        @order_item.item_id = cart_item.item_id
+        @order_item.quantity = cart_item.quantity
+        @order_item.order_price = cart_item.item.price
+        @order_item.cooking_status = 1
+        @order_item.save
+        end
+
+
+
           @cart_items.destroy_all
           redirect_to orders_done_path
         elsif @order.errors.any?
@@ -119,10 +147,21 @@ class OrdersController < ApplicationController
           @btn = params[:selected_btn]
           render :confirm
         end
+
       else
         @order = Order.new(order_params)
         @order.customer_id = current_customer.id
         if @order.save
+        @cart_items = CartItem.where(customer_id: current_customer.id)
+        @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
+        @order_item.item_id = cart_item.item_id
+        @order_item.quantity = cart_item.quantity
+        @order_item.order_price = cart_item.item.price
+        @order_item.cooking_status = 1
+        @order_item.save
+        end
           @cart_items = CartItem.where(customer_id: current_customer.id)
           @cart_items.destroy_all
           redirect_to orders_done_path
@@ -161,4 +200,6 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:customer_id, :postcode, :address, :address_name,
                            :postage, :total_price, :payment, :order_status, :confirming, :shipping)
   end
+
+
 end
