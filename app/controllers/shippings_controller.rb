@@ -16,7 +16,7 @@ class ShippingsController < ApplicationController
 		@shipping.customer_id = current_customer.id
 
 		if @shipping.save
-			flash[:notice] = "新規配送先を登録しました！"
+			flash[:notice_create] = "新規配送先を登録しました！"
 			redirect_to shippings_path
 		else
 			@shippings = Shipping.all
@@ -32,7 +32,7 @@ class ShippingsController < ApplicationController
 		@shipping = Shipping.find(params[:id])
 
 		if @shipping.update(shipping_params)
-			flash[:notice] = "配送先を修正しました"
+			flash[:notice_fix] = "配送先情報を修正しました"
 			redirect_to shippings_path
 		else
 		end
@@ -42,7 +42,7 @@ class ShippingsController < ApplicationController
 		@shipping = Shipping.find(params[:id])
 
 		if @shipping.destroy
-			flash[:notice] = "配送先を削除しました"
+			flash[:notice_destroy] = "配送先を削除しました"
 			redirect_to shippings_path
 		else
 		end

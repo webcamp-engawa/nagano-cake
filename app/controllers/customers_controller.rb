@@ -17,11 +17,11 @@ before_action :authenticate_customer!
     @customer = current_customer
     if params[:unko] == "1"
       current_customer.update(is_deleted: true)
-      redirect_to root_path
+      redirect_to new_customer_session_path,notice_leave:"退会処理が完了しました"
     else
       if @customer.update(customer_params)
         redirect_to customer_path
-        flash[:notice] = "会員情報が更新されました!"
+        flash[:notice_update] = "会員情報が更新されました!"
       else
         render 'edit'
       end
