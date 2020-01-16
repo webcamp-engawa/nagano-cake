@@ -3,7 +3,7 @@ class ShippingsController < ApplicationController
 	before_action :authenticate_customer!
 
 	def index
-		@shippings = Shipping.all
+		@shippings = current_customer.shippings.all
 		@shipping = Shipping.new
 	end
 
