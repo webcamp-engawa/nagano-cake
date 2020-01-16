@@ -45,13 +45,13 @@
 							<%= it.object.item.name %>
 						</td>
 						<td>
-							<%= @unit_price %>
+							<%= (BigDecimal(it.object.order_price) * BigDecimal("1.08")).ceil %>
 						</td>
 						<td>
 							<%= it.object.quantity %>
 						</td>
 						<td>
-							<%= (it.object.quantity * @unit_price).ceil %>
+							<%= (it.object.quantity * BigDecimal(it.object.order_price) * BigDecimal("1.08") ).ceil %>
 						</td>
 						<td>
 							<%= it.hidden_field :id %>

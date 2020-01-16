@@ -23,10 +23,6 @@ before_action :authenticate_admin!
 	def show
 		@order = Order.find(params[:id])
 		@orders = Order.all
-		@order_item = OrderItem.find(params[:id])
-		@unit_price = (BigDecimal(@order_item.order_price) * BigDecimal("1.08")).ceil
-
-		
 
 	end
 
