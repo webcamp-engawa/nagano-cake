@@ -2,11 +2,13 @@ class ItemsController < ApplicationController
   def index
     if params[:genre_id]
       @items = Item.where(genre_id: params[:genre_id])
-      @genres = Genre.page(params[:page]).reverse_order
+      @items = @items.where(is_sold: true)
+      @search_items = @items.where(is_sold: true)
+      @genres = Genre.page(params[:page])
       @genre = Genre.find(params[:genre_id])
     else
-      @genres = Genre.all
-      @items = Item.all
+      @genres = Genre.page(params[:pate])
+      @items = Item.where(is_sold: true)
     end
   end
 

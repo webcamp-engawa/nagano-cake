@@ -54,9 +54,9 @@
       <tbody>
         <tr>
           <td scope="row"><%= o.item.name %></td>
-          <td scope="row"><%= number_to_currency(o.order_price.ceil) %></td>
+          <td scope="row"><%= number_to_currency((BigDecimal(o.order_price) * BigDecimal("1.08")).ceil) %></td>
           <td scope="row"><%= o.quantity %></td>
-          <td scope="row"><%= number_to_currency((o.order_price * o.quantity).ceil) %></td>
+          <td scope="row"><%= number_to_currency((BigDecimal(o.order_price) * BigDecimal("1.08") * o.quantity).ceil) %></td>
         </tr>
       </tbody>
       <% end %>

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
+	before_action :set_seach
 
 
 	def after_sign_in_path_for(resource)
@@ -21,15 +22,10 @@ def after_sign_out_path_for(resource_or_scope)
     end
   end
 
-
-  	before_action :set_seach
-
   	def set_seach
-  		@search = Item.ransack(params[:q])
-  		@search_items = @search.result.page(params[:page])
+			@search = Item.ransack(params[:q])
+  		@search_items = @search.result(is_sold: false).page(params[:page])
   	end
-
-
 
 	protected
 		def configure_permitted_parameters
