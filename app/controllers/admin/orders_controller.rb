@@ -4,20 +4,15 @@ before_action :authenticate_admin!
 
 	def index
 		if params[:customer_id]
+
 		# @customer = Customer.find(params[:id])
-		@orders = Order.where(customer_id: params[:customer_id])
+		@orders = Order.where(customer_id: params[:customer_id]).page(params[:page]).reverse_order
 		@sum = OrderItem.all.sum(:quantity)
 		# @customer = Customer.find(params[:customer_id])
-		# elsif params[:created_at]
-		# # @time = Time.zone.now.beginning_of_day
-		# @orders = Order.where(created_at: params[:created_at])
-		# # @orders = Order.all
-		# @sum = OrderItem.all.sum(:quantity)
-	else
-		@orders = Order.all
-		end
-
+		else
 		@orders = Order.page(params[:page]).reverse_order
+		@sum = OrderItem.all.sum(:quantity)
+		end
 	end
 
 	def show
