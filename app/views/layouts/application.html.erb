@@ -28,7 +28,8 @@
                 <% end %>
               </dl>
               <!--ここまで -->
-              <li class ="list-inline-item"><%= link_to "マイページ", customer_path %></li>
+              <li class ="list-inline-item">ようこそ<%= link_to current_customer.fullname.to_s, customer_path %>さん</li>"
+              "
               <% elsif admin_signed_in? %>
               <li class ="list-inline-item"><%= link_to "商品一覧",admin_items_path %></li>
               <li class ="list-inline-item"><%= link_to "会員一覧",admin_customers_path %></li>
