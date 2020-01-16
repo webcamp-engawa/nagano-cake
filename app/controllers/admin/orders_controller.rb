@@ -16,20 +16,27 @@ before_action :authenticate_admin!
 	else
 		@orders = Order.all
 		end
+
+		@orders = Order.page(params[:page]).reverse_order
 	end
 
 	def show
 		@order = Order.find(params[:id])
 		@orders = Order.all
+		@order_item = OrderItem.find(params[:id])
+		@unit_price = (BigDecimal(@order_item.order_price) * BigDecimal("1.08")).ceil
+
+		
 
 	end
 
 	def update
 		@order = Order.find(params[:id])
 		@orders = Order.all
-		@order_items = OrderItem.all
 		@order.update(order_params)
 		redirect_to admin_orders_path
+
+		#@orders = Order.where('order_status = ?', 2).update.OrderItem.where(:cooking_status => 2)
 	end
 
 	private
