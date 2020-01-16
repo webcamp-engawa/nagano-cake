@@ -10,5 +10,9 @@ class Item < ApplicationRecord
   validates :is_sold, inclusion: { in: [true, false] }
   attachment :image
 
+  def self.active_all
+    genre_ids = Genre.where(is_active: true).pluck(:id)
+    Item.where(genre_id: genre_ids, is_sold: true)
+  end
   #attr_accessor :genre
 end
