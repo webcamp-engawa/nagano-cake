@@ -11,6 +11,9 @@ class OrdersController < ApplicationController
   end
 
   def new
+    if @cart_item == nil
+      redirect_to root_path
+    end
     @order = Order.new
 
      @order.customer_id = current_customer.id
@@ -121,7 +124,12 @@ class OrdersController < ApplicationController
         @order_item.save
         end
 
-
+        @shipping = Shipping.new
+        @shipping.customer_id = current_customer.id
+        @shipping.postcode = @order.postcode
+        @shipping.address = @order.address
+        @shipping.address_name = @order.address_name
+        @shipping.save
 
           @cart_items.destroy_all
           redirect_to orders_done_path
@@ -194,6 +202,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:customer_id, :postcode, :address, :address_name,
                            :postage, :total_price, :payment, :order_status, :confirming, :shipping)
   end
+
 
 
 end
