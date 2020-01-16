@@ -19,6 +19,14 @@ class Order < ApplicationRecord
     self.confirming = errors.empty? ? '1' : ''
   end
 
+  def order_sum
+    total =  0
+    order_items.each do |it|
+      total += it.order_price * it.quantity
+    end
+    total
+  end
+
   composed_of :fulladdress,
     :class_name => "FullAddress",
     :mapping => [
