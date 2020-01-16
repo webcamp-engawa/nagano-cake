@@ -4,8 +4,8 @@ before_action :authenticate_admin!
 
 	def index
 		if params[:customer_id]
-		@customer = Customer.where(customer_id: params[:customer_id])
-		@orders = @customer.orders
+		# @customer = Customer.find(params[:id])
+		@orders = Order.where(customer_id: params[:customer_id])
 		@sum = OrderItem.all.sum(:quantity)
 		# @customer = Customer.find(params[:customer_id])
 		else
