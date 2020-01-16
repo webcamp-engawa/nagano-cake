@@ -15,8 +15,62 @@
  */
 
 //変数の定義
-// $link-color:#f08080;
-// $green:#00ced1;
+
+$gothic:'Century Gothic';
 @import "bootstrap";
+
 //レイアウト調整
+
+// Admin ジャンル一覧画面
+.admin-genre-index{
+	font-family:$gothic;
+
+	.flash{
+		text-align: center;
+		color:#2e8b57;
+	}
+
+	.add{
+		text-align: center;
+		margin:0 auto;
+
+		.genre-radio{
+			margin-top: 10px;
+		}
+	}
+
+	h1{
+		margin:0 auto;
+		margin-bottom: 20px;
+	}
+
+	.row{
+		margin:0 auto;
+	}
+
+
+	.table{
+		text-align: center;
+		tr{
+			padding-top: 5px;
+			td{
+			padding-bottom: 0px;
+			}
+		}
+	}
+
+	.errors{
+		text-align: center;
+		color:#b22222;
+		ul{
+		list-style: none;
+
+		}
+
+	}
+
+}
+
+
+
 
