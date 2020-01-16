@@ -3,9 +3,14 @@
   <%= render 'layouts/genre_serch' %>
 
   <div class="col-10">
-    <h1><%= @genre.name %></h1>
-    <h3><%= "全#{@items.count}件" %></h3>
-    <% @items.each do |item| %>
+      <% if @genre.present? %>
+        <h1><%= @genre.name %></h1>
+        <h3><%= "全#{@items.count}件" %></h3>
+      <% else %>
+        <h1>検索結果</h1>
+        <h3><%= "全#{@search_items.count}件" %></h3>
+      <% end %>
+    <% @search_items.each do |item| %>
     <div class ="item-image">
       <%= link_to item_path(item.id) do %>
       <% if item.image_id.present? %>
