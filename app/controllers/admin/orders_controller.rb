@@ -8,9 +8,13 @@ before_action :authenticate_admin!
 		@orders = Order.where(customer_id: params[:customer_id])
 		@sum = OrderItem.all.sum(:quantity)
 		# @customer = Customer.find(params[:customer_id])
-		else
+		# elsif params[:created_at]
+		# # @time = Time.zone.now.beginning_of_day
+		# @orders = Order.where(created_at: params[:created_at])
+		# # @orders = Order.all
+		# @sum = OrderItem.all.sum(:quantity)
+	else
 		@orders = Order.all
-		@sum = OrderItem.all.sum(:quantity)
 		end
 	end
 
