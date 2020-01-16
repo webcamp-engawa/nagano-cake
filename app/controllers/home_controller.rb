@@ -4,11 +4,14 @@ class HomeController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @genre = @genre.where(is_active: true)
       @items = @genre.items.all
+    elsif params[:q]
+      @genre = Genre.where(is_active: true)
+      @items = @genre.item.where(is_sold: true)
+
     else
-      @genres = Genre.page(params[:page])
-      @genre = @genres.where(is_active: true)
-      @items = Item.page(params[:page]).reverse_order
-      @items = @items.where(is_sold: true)
+      @genre = Genre.page(params[:page])
+      @genres = @genre.where(is_active: true)
+      @items = Item.active_all.page(params[:page]).reverse_order
     end
   end
 
