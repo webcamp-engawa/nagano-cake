@@ -21,6 +21,35 @@ $blue:#3D687C;
 $gothic:'arial narrow';
 $cake:'sans-serif';
 @import "bootstrap";
+
+.searchbox{
+	margin:0 0 0 auto;
+}
+
+.jumbotron{
+	height: 400px;
+	background-image: url(1.jpeg);
+	background-position: bottom;
+	background-size: cover;
+	width: 100%;
+	border-radius: 10px;
+	font-family: $cake;
+	// margin: 0 auto;
+
+	a{
+		text-decoration: none;
+	}
+
+	.title-cover{
+		margin: 0 auto;
+		background: rgba(255,255,255, 0.6);
+		text-align: center;
+	}
+}
+
+
+
+
 // Admin ジャンル一覧画面
 .admin-genre-index{
 	font-family:$gothic;
