@@ -15,12 +15,12 @@
  */
 
 //変数の定義
-
+$gray:#595757;
+$skyblue:#9BB5C9;
+$blue:#3D687C;
 $gothic:'arial narrow';
+$cake:'sans-serif';
 @import "bootstrap";
-
-//レイアウト調整
-
 // Admin ジャンル一覧画面
 .admin-genre-index{
 	font-family:$gothic;
@@ -72,7 +72,7 @@ $gothic:'arial narrow';
 }
 
 .customers-show{
-	font-family:$gothic;
+	font-family:"sans-serif";
 	.customer-status{
 		margin-left: 10px;
 		display: inline-block;
@@ -81,6 +81,111 @@ $gothic:'arial narrow';
 
 }
 
+// 商品一覧画面
 
+.item-index{
+	font-family:$cake;
+// 見出し(商品一覧、カテゴリ名)
+	h1{
+		padding-bottom: 10px;
+		border-bottom: double ;
+		margin-bottom: 20px;
+		 color:$gray;
+	}
+// サイドバー(ジャンル検索)
+	.col-2{
+		padding-top: 12px;
+		.table-borderless{
+			text-align: center;
+			padding: 10px;
+
+
+				th{
+					color:$gray;
+					font-size: 25px;
+					padding: 5px;
+					border-bottom:double;
+					margin-bottom: 20px;
+				}
+				td{
+					font-size: 20px;
+					height: 50px;
+				}
+// ジャンル　ホバーアクション
+				a {
+					font-size: 20px;
+				  position: relative;
+				  display: inline-block;
+				  text-decoration: none;
+				  color:$gray;
+				}
+				a::after {
+				  position: absolute;
+				  bottom: -4px;
+				  left: 0;
+				  content: '';
+				  width: 100%;
+				  height: 2px;
+				  background: #e9967a;
+				  transform: scale(0, 1);
+				  transform-origin: right top;
+				  transition: transform .3s;
+				}
+				a:hover::after {
+				  transform-origin: left top;
+				  transform: scale(1, 1);
+				}
+
+		}
+	}
+
+// 商品一覧画像
+	.col-xs-3{
+		padding: 8px;
+// 商品名
+		.item-name{
+			h2{
+				font-size: 20px;
+			}
+// 値段
+		.item-price{
+			font-size: 20px;
+			padding: 10px 0;
+			border-top: dotted 0.5px;
+			border-bottom: dotted 0.5px;
+		}
+}
+// 商品画像
+		.item-image{
+			margin-bottom: 10px;
+			transition:.4s;
+// 商品画像　ホバー
+			&:hover{
+				transition:.4s;
+				opacity: 0.7;
+			}
+		}
+	}
+
+}
+
+// ページネーション
+.paginate{
+	// font-family: 'Georgia';
+	color: $gray;
+	font-family:Gungsuh;
+	font-size: 20px;
+	// letter-spacing:5px;
+	padding-left:430px;
+	text-align: center;
+	margin: 0 auto;
+	a{
+		color:$skyblue;
+		text-decoration: none;
+		&:hover{
+			color:$blue;
+		}
+	}
+}
 
 

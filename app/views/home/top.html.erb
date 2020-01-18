@@ -1,27 +1,38 @@
-<div class="row">
-  <%= render 'layouts/genre_serch' %>
+<div class ="container item-index">
+    <div class="row">
+        <%= render 'layouts/genre_serch' %>
+            <div class="col-10">
+                <div class="text-center">
+                  <h1>商品一覧</h1>
+                </div>
 
-  <div class="col-10">
-    <div class="text-center">
-      <h1>商品一覧</h1>
+                  <div class="row">
+                      <% @items.each do |item| %>
+                          <div class="col-xs-3">
+                              <div class ="item-image">
+                                  <%= link_to item_path(item.id) do %>
+                                      <% if item.image_id.present? %>
+                                          <%= attachment_image_tag item, :image, :fill, 300, 250 %>
+                                      <% else %>
+                                          <%= image_tag 'no_image.jpg', :size=>"300x250" %>
+                                      <% end %>
+                                  <% end %>
+                              </div>
+
+                                <div class ="item-name">
+                                    <h2><%= item.name %></h2>
+                                    <div class="item-price">
+                                        <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>（税込価格）
+                                    </div>
+                                </div>
+                          </div>
+                       <% end %>
+                  </div>
+
+                <div class ="paginate">
+                  <%= paginate @items  %>
+                </div>
+
+            </div>
     </div>
-
-      <% @items.each do |item| %>
-        <div>
-          <div class="col-4">
-
-            <%= link_to item_path(item.id) do %>
-              <% if item.image_id.present? %>
-              <%= attachment_image_tag item, :image, :size=>"300x250"  %>
-              <% else %>
-              <%= image_tag 'no_image.jpg', :size=>"300x250"  %>
-              <% end %>
-            <% end %>
-            <%= item.name %>
-            <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>
-          </div>
-        </div>
-      <% end %>
-<%= paginate @items, class: "paginate" %>
-  </div>
 </div>

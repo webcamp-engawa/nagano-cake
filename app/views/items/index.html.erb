@@ -1,29 +1,42 @@
-<div class ="container">
+<div class ="container item-index">
     <div class="row">
   <%= render 'layouts/genre_serch' %>
 
   <div class="col-10">
       <% if @genre.present? %>
-        <h1><%= @genre.name %></h1>
+        <h1 class="text-center"><%= @genre.name %></h1>
         <h3><%= "全#{@items.count}件" %></h3>
       <% else %>
         <h1>検索結果</h1>
         <h3><%= "全#{@search_items.count}件" %></h3>
       <% end %>
+<div class="row">
     <% @search_items.each do |item| %>
-    <div class ="item-image">
-      <%= link_to item_path(item.id) do %>
+
+            <div class="col-xs-3">
+            <div class ="item-image">
+    <%= link_to item_path(item.id) do %>
       <% if item.image_id.present? %>
-      <%= attachment_image_tag item, :image, :size=>"300x200" %>
+      <%= attachment_image_tag item, :image, :fill, 300, 250 %>
       <% else %>
           <%= image_tag 'no_image.jpg', :size=>"300x250"  %>
       <% end %>
-    </div>
+
       <% end %>
-      <%= item.name %>
-      <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>
+            </div>
+
+      <div class ="item-name">
+        <h2><%= item.name %></h2>
+        <div class="item-price">
+          <%= number_to_currency((BigDecimal(item.price) * BigDecimal("1.08")).ceil) %>（税込価格）
+        </div>
+      </div>
+    </div>
     <% end %>
-    <%= paginate @genres, class: "paginate" %>
+</div>
+   <!--  <%= paginate @genres %> -->
+    <%= paginate @items  %>
+
   </div>
 </div>
 </div>
