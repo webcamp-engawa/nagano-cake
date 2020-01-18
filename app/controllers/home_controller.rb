@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     else
       @genre = Genre.page(params[:page])
       @genres = @genre.where(is_active: true)
-      @items = Item.active_all.page(params[:page]).reverse_order
+      @items = Item.active_all.page(params[:page]).reverse_order.per(9)
     end
   end
 
