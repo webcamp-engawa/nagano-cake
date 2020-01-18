@@ -17,7 +17,7 @@ before_action :authenticate_customer!
     @customer = current_customer
     if params[:unko] == "1"
       current_customer.update(is_deleted: true)
-      redirect_to new_customer_session_path,notice_leave:"退会処理が完了しました"
+      redirect_to root_path,notice_leave:"退会処理が完了しました"
     else
       if @customer.update(customer_params)
         redirect_to customer_path
