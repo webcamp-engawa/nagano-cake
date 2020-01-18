@@ -16,7 +16,7 @@
 
 //変数の定義
 
-$gothic:'Century Gothic';
+$gothic:'arial narrow';
 @import "bootstrap";
 
 //レイアウト調整
@@ -68,6 +68,16 @@ $gothic:'Century Gothic';
 		}
 
 	}
+
+}
+
+.customers-show{
+	font-family:$gothic;
+	.customer-status{
+		margin-left: 10px;
+		display: inline-block;
+	}
+
 
 }
 
