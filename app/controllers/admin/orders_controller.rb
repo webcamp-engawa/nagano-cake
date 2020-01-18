@@ -4,13 +4,13 @@ before_action :authenticate_admin!
 
 	def index
 		if params[:customer_id]
-
-		# @customer = Customer.find(params[:id])
 		@orders = Order.where(customer_id: params[:customer_id]).page(params[:page]).reverse_order
 		@sum = OrderItem.all.sum(:quantity)
-		# @customer = Customer.find(params[:customer_id])
-		else
+		elsif params[:button].to_i == 1
 		@orders = Order.page(params[:page]).reverse_order
+		@sum = OrderItem.all.sum(:quantity)
+		else
+		@orders = Order.where("created_at >= ?", Time.zone.now.beginning_of_day).page(params[:page]).reverse_order
 		@sum = OrderItem.all.sum(:quantity)
 		end
 	end
