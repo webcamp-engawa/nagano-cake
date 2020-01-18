@@ -1,43 +1,50 @@
-<div class = "container">
-<div class = customers-show>
-	<h1>会員詳細画面</h1>
-	<%= flash[:notice_edit] %>
-		<table class = "table table-borderless">
-			<tr>
-				<th style="width:20%">顧客ID</th>
-				<td><%= @customer.id %>
-					<% if @customer.is_deleted? %>
-					退会済
-					<% else %>
-					有効会員
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<th>氏名</th><td><%= @customer.last_name %> <%= @customer.first_name %></td>
-			</tr>
-			<tr>
-				<th>フリガナ</th>	<td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
-			</tr>
-			<tr>
-				<th>郵便番号</th>	<td><%= @customer.postcode %></td>
-			</tr>
-			<tr>
-				<th>住所</th><td><%= @customer.address %></td>
-			</tr>
-			<tr>
-				<th>電話番号</th>	<td><%= @customer.phone_number %></td>
-			</tr>
-			<tr>
-				<th>メールアドレス</th><td><%= @customer.email %></td>
-			</tr>
-		</table>
+<div class = "container customers-show">
+	<div class ="row">
+		<div class = "col-md-8 mx-auto">
+				<h1>会員詳細画面</h1>
+				<%= flash[:notice_edit] %>
+					<table class = "table table-borderless">
+						<tr>
+							<th style="width:20%">顧客ID</th>
+							<td><%= @customer.id %>
+								<div class = "customer-status text-white">
+										<% if @customer.is_deleted? %>
+										<span class="bg-danger p-2 rounded">
+										退会済
+										</span>
+										<% else %>
+										<span class="bg-primary p-2 rounded">
+										有効会員
+										</span>
+										<% end %>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>氏名</th><td><%= @customer.last_name %> <%= @customer.first_name %></td>
+						</tr>
+						<tr>
+							<th>フリガナ</th>	<td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+						</tr>
+						<tr>
+							<th>郵便番号</th>	<td><%= @customer.postcode %></td>
+						</tr>
+						<tr>
+							<th>住所</th><td><%= @customer.address %></td>
+						</tr>
+						<tr>
+							<th>電話番号</th>	<td><%= @customer.phone_number %></td>
+						</tr>
+						<tr>
+							<th>メールアドレス</th><td><%= @customer.email %></td>
+						</tr>
+					</table>
 
-<%= link_to "編集する" , edit_admin_customer_path(@customer.id),class: "btn btn-outline-primary" %>
+			<%= link_to "編集する" , edit_admin_customer_path(@customer.id),class: "btn btn-outline-primary" %>
 
-<div class=  "btn btn-outline-primary">
-<%= link_to "注文履歴一覧" ,controller: "orders", action: "index", customer_id: @customer.id %>
-</div>
-
-</div>
+			<div class=  "btn btn-outline-primary">
+				<%= link_to "注文履歴一覧" ,controller: "orders", action: "index", customer_id: @customer.id %>
+			</div>
+		</div>
+	</div>
 </div>
