@@ -13,7 +13,7 @@
 <div class="row">
     <% @search_items.each do |item| %>
 
-            <div class="col-3">
+            <div class="col-4">
             <div class ="item-image">
     <%= link_to item_path(item.id) do %>
       <% if item.image_id.present? %>
