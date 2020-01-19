@@ -52,7 +52,7 @@
                         <dl class ="searchbox">
                               <%= search_form_for @search, url: items_path do |f| %>
                               <div class ="searching">
-                                <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索" %><%= f.submit ("search") , class: 'search-btn' %></dt>
+                                <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索", id: :item_name %><%= f.submit ("search") , class: 'search-btn' %></dt>
                               </div>
                               <% end %>
                         </dl>
@@ -63,7 +63,7 @@
                         <dl class ="searchbox">
                             <%= search_form_for @search, url: items_path do |f| %>
                             <div class ="searching">
-                              <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索" %><%= f.submit ("search") , class: 'search-btn' %></dt>
+                              <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索", id: :item_name %><%= f.submit ("search") , class: 'search-btn' %></dt>
                             </div>
                             <% end %>
                         </dl>
@@ -75,6 +75,32 @@
 
 
         <%= yield %>
+        <script>
+          $(function() {
+            const dataList = function(request, response) {
+              $.ajax({
+                url: '/items/autocomplete_name/' + request.term,
+                dataType: 'json',
+                type: 'GET',
+                cache: true,
+                success: function(data) {
+                  response(data);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                  response(['']);
+                }
+              });
+            }
+
+            // #item_nameの部分は必要に応じてidなり指定してください
+            $('#item_name').autocomplete({
+              source: dataList,
+              autoFocus: true, // 自動的に先頭の項目にフォーカスするか
+              delay: 100, // 入力してからサジェストが動くまでの時間(ms)
+              minLength: 1 // 1文字入力しないとサジェストが動かない
+            })
+          });
+        </script>
 
   </body>
 </html>
