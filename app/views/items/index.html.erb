@@ -1,10 +1,10 @@
 <div class ="container item-index">
+   <% if @genre.present? %>
+        <h1 class="text-center"><%= @genre.name %></h1>
     <div class="row">
   <%= render 'layouts/genre_serch' %>
 
   <div class="col-10">
-      <% if @genre.present? %>
-        <h1 class="text-center"><%= @genre.name %></h1>
         <h3><%= "全#{@items.count}件" %></h3>
       <% else %>
         <h1>検索結果</h1>
@@ -36,6 +36,7 @@
 </div>
 
     <%= paginate @search_items %>
+
 
   </div>
 </div>

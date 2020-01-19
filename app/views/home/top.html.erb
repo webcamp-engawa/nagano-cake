@@ -1,14 +1,11 @@
  <div class ="container item-index">
+  <div class="text-center">
+                  <h1>LINE UP</h1>
+                </div>
     <div class="row">
       <%= flash[:notice_leave] %>
         <%= render 'layouts/genre_serch' %>
             <div class="col-10">
-                <div class="text-center">
-                  <h1>商品一覧</h1>
-                </div>
-
-
- 
 
                   <div class="row">
                       <% @items.each do |item| %>
@@ -34,7 +31,7 @@
                   </div>
 
                 <div class ="paginate">
-                  <%= paginate @items  %>
+                  <%= paginate @items %>
                 </div>
 
             </div>

@@ -19,6 +19,10 @@ $gray:#595757;
 $skyblue:#9BB5C9;
 $blue:#3D687C;
 $brown:#5A3E38;
+$opera:#9e7360;
+$beige:#c3b39c;
+$urban:#856e75;
+$gray:#7f6c68;
 $gothic:'arial narrow';
 $cake:'sans-serif';
 @import 'font-awesome-sprockets';
@@ -28,10 +32,34 @@ $cake:'sans-serif';
 // ヘッダー
 
 header{
-	.nav{
-		text-align: center;
-		margin: 0 auto;
-	}
+
+
+		ul{
+			margin: 0;
+			padding:0;
+			.list-inline-item{
+				margin: 0 25px;
+				a{
+					color:$beige;
+					text-decoration: none;
+					transition:.4s;
+
+					&:hover{
+						color:$gray;
+						transition:.4s;
+					}
+				}
+			}
+
+			.welcome{
+				margin-bottom: 50px;
+				margin-bottom: 10px;
+				a{
+				color: $brown;
+				}
+			}
+		}
+
 }
 
 // 検索ボックス
@@ -40,13 +68,17 @@ header{
 	.searching{
 		text-align: center;
 		margin: 0 auto;
+		padding-right: 60px;
+
 		button{
 			height: 100px;
 		}
 	}
 
 	input{
-		margin-right: 10px;
+		border:1px solid;
+		border-color: #856e75;
+		margin-right: 5px;
 		border-radius: 6px;
 		background: rgba(255,255,255, 0.6);
 		// background: rgba(155,181,201, 0.6);
@@ -54,18 +86,24 @@ header{
 	}
 
 	.search-btn{
+		border:1px solid;
+		border-color: #856e75;
 		background-color: white;
 		background: rgba(255,255,255, 0.6);
-		border:none;
 		position:absolute;
-		// padding-right: 20px;
+		color: $gray;
+		&:hover{
+			background-color:$urban;
+			color: white;
+			border-color:white;
+		}
 	}
 
 }
 
 .jumbotron{
 	height: 300px;
-	background-image: url(6.jpeg);
+	background-image: url(4.jpeg);
 	background-position:center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -80,12 +118,14 @@ header{
 	}
 
 	.title-cover{
-		width: 400px;
+		width:700px;
+		height: 200px;
 		padding: 30px;
 		border-radius: 10px;
 		margin: 0 auto;
-		// background: rgba(255,255,255, 0.6);
+		background: rgba(255,255,255, 0.6);
 		text-align: center;
+
 	}
 }
 
@@ -175,7 +215,7 @@ header{
 					color:$gray;
 					font-size: 25px;
 					padding: 5px;
-					border-bottom:double;
+					// border-bottom:double;
 					margin-bottom: 20px;
 				}
 				td{
