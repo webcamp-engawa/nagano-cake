@@ -15,4 +15,7 @@ class Item < ApplicationRecord
     Item.where(genre_id: genre_ids, is_sold: true)
   end
   #attr_accessor :genre
+  scope :by_name_like, lambda { |name|
+    where('name LIKE :value', { value: "#{sanitize_sql_like(name)}%"})
+  }
 end
