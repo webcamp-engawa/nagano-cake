@@ -23,7 +23,7 @@ def after_sign_out_path_for(resource_or_scope)
   end
 
   	def set_seach
-			@search = Item.active_all.ransack(params[:q])
+		@search = Item.active_all.ransack(params[:q])
   		@search_items = @search.result(is_sold: false).page(params[:page])
   	end
 

@@ -18,9 +18,68 @@
 $gray:#595757;
 $skyblue:#9BB5C9;
 $blue:#3D687C;
+$brown:#5A3E38;
 $gothic:'arial narrow';
 $cake:'sans-serif';
 @import "bootstrap";
+
+.searchbox{
+
+	.searching{
+		text-align: center;
+		margin: 0 auto;
+		button{
+			height: 100px;
+		}
+	}
+
+	input{
+		margin-right: 10px;
+		border-radius: 6px;
+		background: rgba(255,255,255, 0.6);
+		// background: rgba(155,181,201, 0.6);
+		position:relative;
+	}
+
+	.search-btn{
+		background-color: white;
+		background: rgba(255,255,255, 0.6);
+		border:none;
+		position:absolute;
+		// padding-right: 20px;
+	}
+
+}
+
+.jumbotron{
+	height: 300px;
+	background-image: url(6.jpeg);
+	background-position:center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	border-radius: 5px;
+	font-family: $cake;
+	// margin: 0 auto;
+
+	a{
+		text-decoration: none;
+		color:white;
+	}
+
+	.title-cover{
+		width: 400px;
+		padding: 30px;
+		border-radius: 10px;
+		margin: 0 auto;
+		// background: rgba(255,255,255, 0.6);
+		text-align: center;
+	}
+}
+
+
+
+
 // Admin ジャンル一覧画面
 .admin-genre-index{
 	font-family:$gothic;

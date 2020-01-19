@@ -1,13 +1,14 @@
  <div class ="container item-index">
     <div class="row">
+      <%= flash[:notice_leave] %>
         <%= render 'layouts/genre_serch' %>
             <div class="col-10">
                 <div class="text-center">
                   <h1>商品一覧</h1>
                 </div>
-  <div class="row">
-<%= flash[:notice_leave] %>
-  <%= render 'layouts/genre_serch' %>
+
+
+ 
 
                   <div class="row">
                       <% @items.each do |item| %>
