@@ -76,3 +76,5 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'jquery-rails'
 gem 'pry-rails'
 
+gem 'font-awesome-sass', '~> 5.4.1'
+
