@@ -27,7 +27,7 @@ Genre.create([
   {name:"キャンディ", is_active:true}
   ])
 Item.create([
-    {genre_id:2, name:"シュークリーム", introduction:"甘さ控えめのシュークリームです。", image_id: "033179931df84b865ca01494abcdf564adc09f0ffb1c5ecf0b6769d44168", price:400, is_sold: true, boolean: false},
+    {genre_id:3, name:"シュークリーム", introduction:"甘さ控えめのシュークリームです。", image_id: "033179931df84b865ca01494abcdf564adc09f0ffb1c5ecf0b6769d44168", price:400, is_sold: true, boolean: false},
     {genre_id:1, name:"ガトーショコラ", introduction:"甘さ控えめのガトーショコラです。", image_id: "27ad72b698b8908522e50c1c42761b229c4e2e34b359d8e4a88cae29c1ad", price:800, is_sold: true, boolean: false},
     {genre_id:1, name:"抹茶ケーキ", introduction:"甘さ控えめの抹茶ケーキです。", image_id: "a3ff3f6556aed005cda28637de10608735b9596fda8e34de43db0aa44eff", price:700, is_sold: true, boolean: false},
     {genre_id:3, name:"シナモンロール", introduction:"甘さ控えめのシナモンロールです。", image_id: "7328fd7c5a6dd252a2f08cfeb0d9fbb2fa4b1b765ee77dfa716db701c4ca", price:500, is_sold: true, boolean: false},
@@ -35,7 +35,7 @@ Item.create([
     {genre_id:3, name:"シナモンラズベリーロール", introduction:"甘さ控えめのシナモンラズベリーロールです。", image_id: "11883c7c2020e1fb6cfb150d30c2fa3b385b50618455f659371345448e63", price:500, is_sold: true, boolean: false},
     {genre_id:3, name:"ジンジャークッキー", introduction:"甘さ控えめのジンジャークッキーです。", image_id: "79e9a1b9b8c91a0fe731a58d1301ffae0645869e0fa4a0e37bda4d19ccda", price:300, is_sold: true, boolean: false},
     {genre_id:1, name:"ショコラミルフィーユ", introduction:"甘さ控えめのショコラミルフィーユです。", image_id: "10a653315f9cfb770160b40c95725dec286212fa5a3af4cb63531da8be59", price:900, is_sold: true, boolean: false},
-    {genre_id:1, name:"チョコクリームケーキ", introduction:"甘さ控えめのチョコクリームケーキです。", image_id: "ef2a06efbe475cbfc61f5d91e4e0bd8c3d2e70bcb0", price:2500, is_sold: true, boolean: false},
+    {genre_id:1, name:"チョコクリームケーキ", introduction:"甘さ控えめのチョコクリームケーキです。", image_id: "3802a2e905d3153e70aa31d56ce197c29e0ab5cff18a6e5484f8414c571e", price:2500, is_sold: true, boolean: false},
     {genre_id:1, name:"ミルフィーユタルト", introduction:"甘さ控えめのミルフィーユタルトです。", image_id: "e0f0e760c5802ca6b34b5092cd658f67a27895bcdf69810985c97f551e99", price:1800, is_sold: true, boolean: false},
     {genre_id:3, name:"チョコチップクッキー", introduction:"甘さ控えめのチョコチップクッキーです。", image_id: "a9f9caa382524974d96c9920ca93cfba59f8674d067243ca094ebfa246b7", price:300, is_sold: true, boolean: false},
     {genre_id:3, name:"シンプルなドーナツ", introduction:"甘さ控えめのシンプルなドーナツです。", image_id: "56f28aece92391da698c6c806f5fe9ce50b2d46fb335a0d9d01d2bc20421", price:400, is_sold: true, boolean: false},
