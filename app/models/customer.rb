@@ -28,6 +28,16 @@ class Customer < ApplicationRecord
       [:last_name, :last_name],
       [:first_name, :first_name]
     ]
+
+# フルネーム検索用
+ransacker :full_name do |parent|
+  Arel::Nodes::InfixOperation.new('||',
+    parent.table[:last_name], parent.table[:first_name])
+end
+
+
+
+
 end
 
 class FullName
@@ -42,5 +52,14 @@ class FullName
     [@last_name, @first_name].compact.join("")
   end
 
- 
+
+
+
+
 end
+
+
+
+
+
+

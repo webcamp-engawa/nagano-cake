@@ -21,8 +21,20 @@ $blue:#3D687C;
 $brown:#5A3E38;
 $gothic:'arial narrow';
 $cake:'sans-serif';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import "bootstrap";
 
+// ヘッダー
+
+header{
+	.nav{
+		text-align: center;
+		margin: 0 auto;
+	}
+}
+
+// 検索ボックス
 .searchbox{
 
 	.searching{
