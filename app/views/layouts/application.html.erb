@@ -21,40 +21,25 @@
                           <li class ="list-inline-item"><%= link_to "Log out", destroy_customer_session_path, method: :delete %></li>
                           <!-- 検索ボックス -->
 
-                      <!--     <dl class ="searchbox">
-                            <%= search_form_for @search, url: items_path do |f| %>
-                              <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索" %></dt>
-                              <dd><%= f.submit ("探すよ〜") , class: 'search-btn' %></dd>
-                            <% end %>
-                          </dl> -->
-
                           <!--ここまで -->
-                          <li class ="list-inline-item">ようこそ<%= link_to current_customer.fullname.to_s, customer_path %>さん</li>"
-                          "
+                          <li class ="list-inline-item">ようこそ<%= link_to current_customer.fullname.to_s, customer_path %>さん</li>
                           <% elsif admin_signed_in? %>
                           <li class ="list-inline-item"><%= link_to "商品一覧",admin_items_path %></li>
                           <li class ="list-inline-item"><%= link_to "会員一覧",admin_customers_path %></li>
                           <li class ="list-inline-item"><%= link_to "注文履歴一覧",admin_orders_path(button:1) %></li>
                           <li class ="list-inline-item"><%= link_to "ジャンル管理",admin_genres_path %></li>
                           <li class ="list-inline-item"><%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %></li>
+
                         <% else %>
                           <li class ="list-inline-item"><%= link_to "Top", root_path %></li>
                           <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
                           <li class ="list-inline-item"><%= link_to "Log in", new_customer_session_path %></li>
                           <li class ="list-inline-item"><%= link_to "管理者はこちら" ,new_admin_session_path %></li>
-                          <!-- 検索ボックス -->
-                          <dl class ="searchbox">
-                            <%= search_form_for @search, url: items_path do |f| %>
-                              <dt><%= f.search_field :name_cont ,placeholder: "名前検索" %></dt>
-                              <dd><%= f.submit ("探すよ〜") , class: 'search-btn' %></dd>
-                            <% end %>
-                          </dl>
-                          <!--ここまで -->
-                          <!-- <li class ="list-inline-item"><%= link_to "管理者はこちら" ,new_admin_session_path %></li> -->
+
                         <% end %>
                       </ul>
                     </nav>
-                  <!-- </div> -->
+
               </div>
           <div class ="jumbotron jumbotron-fluid">
             <div class="title-cover">
@@ -62,8 +47,9 @@
                   <h2><%= link_to "ながのCAKE", root_path, id: "logo" %></h2>
                       <dl class ="searchbox">
                             <%= search_form_for @search, url: items_path do |f| %>
-                              <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索" %></dt>
-                              <dd><%= f.submit ("探すよ〜") , class: 'search-btn' %></dd>
+                            <div class ="searching">
+                              <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索" %><%= f.submit ("search") , class: 'search-btn' %></dt>
+                            </div>
                             <% end %>
                       </dl>
                   <% elsif admin_signed_in? %>
