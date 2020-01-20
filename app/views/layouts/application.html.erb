@@ -12,61 +12,24 @@
 
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
-              <!-- <div class="container"> -->
-                <!-- <div class ="nav">
-                    <nav>
-                      <ul class="list-inline-item">
-                        <% if customer_signed_in? %>
-                          <li class ="list-inline-item">
-                            <%= link_to root_path do %>
-                              <i class="fas fa-home fa-3x"></i>
-                              <p>Top</p>
-                            <% end %>
-                            </li>
-                          <li class ="list-inline-item">
-                            <%= link_to home_about_path do %>
-                            <i class="fas fa-store fa-3x"></i>
-                            <p>About</p>
-                            <% end %>
-                          </li>
-                          <li class ="list-inline-item">
-                            <%= link_to cart_items_path do %>
-                              <i class="fas fa-shopping-cart fa-3x"></i>
-                              <p>Cart</p>
-                            <% end %>
-                          </li>
-                          <li class ="list-inline-item">
-                            <%= link_to destroy_customer_session_path, method: :delete do %>
-                              <i class="fas fa-door-open fa-3x"></i>
-                              <p>Logout</p>
-                              <% end %>
-                            </li>
-                            <div class="welcome">
-                          <li class ="list-inline-item">ようこそ<%= link_to current_customer.fullname.to_s, customer_path %>さん</li>
-                            </div>
-                          <% elsif admin_signed_in? %>
-                          <li class ="list-inline-item"><%= link_to "商品一覧",admin_items_path %></li>
-                          <li class ="list-inline-item"><%= link_to "会員一覧",admin_customers_path %></li>
-                          <li class ="list-inline-item"><%= link_to "注文履歴一覧",admin_orders_path(button:1) %></li>
-                          <li class ="list-inline-item"><%= link_to "ジャンル管理",admin_genres_path %></li>
-                          <li class ="list-inline-item"><%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %></li>
-
-                        <% else %>
-                          <li class ="list-inline-item"><%= link_to "Top", root_path %></li>
-                          <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
-                          <li class ="list-inline-item"><%= link_to "Log in", new_customer_session_path %></li>
-                          <li class ="list-inline-item"><%= link_to "管理者はこちら" ,new_admin_session_path %></li>
-
+      <!-- ロゴ修正中 -->
+<!--                     <div class ="logo">
+                      <% if admin_signed_in? %>
+                          <%= link_to admin_root_path, id: "logo" do%>
+                          <%= image_tag 'logo.png', :size=>"230x180"  %>
+                          <% end %>
+                      <% else %>
+                        <%= link_to root_path, id: "logo" do%>
+                          <%= image_tag 'logo.png', :size=>"230x180"  %>
                         <% end %>
-                      </ul>
-                    </nav>
-                </div> -->
+                      <% end %>
+                    </div> -->
+      <!-- ロゴ修正中 -->
 
-            <!--   </div> -->
 
           <div class ="jumbotron jumbotron-fluid">
-            <div class="title-cover">
 
+            <div class="title-cover">
                       <ul class="list-inline-item">
                         <% if customer_signed_in? %>
                           <li class ="list-inline-item">
@@ -121,7 +84,7 @@
                               </div>
                               <% end %>
                         </dl>
-                        <h2><%= link_to "ながのCAKE", root_path, id: "logo" %></h2>
+
                   <% elsif admin_signed_in? %>
                     <h2><%= link_to "ながのCAKE", admin_root_path, id: "logo" %></h2>
                   <% else %>
@@ -134,6 +97,7 @@
                         </dl>
                         <h2><%= link_to "ながのCAKE", root_path, id: "logo" %></h2>
                   <% end %>
+            <!-- </div> -->
             </div>
           </div>
     </header>

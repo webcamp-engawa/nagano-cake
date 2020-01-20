@@ -9,7 +9,7 @@
 
                   <div class="row">
                       <% @items.each do |item| %>
-                          <div class="col-xs-3">
+                          <div class="col-4">
                               <div class ="item-image">
                                   <%= link_to item_path(item.id) do %>
                                       <% if item.image_id.present? %>
