@@ -1,7 +1,7 @@
 <div class ="container">
-  <div class="mx-auto" style="width: 500px;">
+  <div class="mx-auto" style="width: 300px;">
 
-<h2>新規登録</h2>
+<h2 class="text-center">新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -61,7 +61,7 @@
   </div>
 <br>
   <div class="actions">
-    <%= f.submit "会員登録する",class:"btn btn-outline-primary" %>
+    <%= f.submit "会員登録する",class:"btn btn-outline-primary w-100 mt-2" %>
   </div>
 <% end %>
   </div>
