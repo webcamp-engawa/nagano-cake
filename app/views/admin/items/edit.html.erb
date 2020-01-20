@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container admin-item-edit">
 	<h1>商品編集</h1>
 	<div class="row">
 		<%= form_for(@item, url: {controller: "items", action: "update"}) do |f| %>
-		<div class="image col-lg-6 pt-5">
+		<div class="image col-5">
 			<%= f.attachment_field :image, placeholder: "画像選択", class: "item-edit-form", id: :item_image %>
 			<% if @item.image.present? %>
-  				<%= attachment_image_tag @item, :image, :fill, 400, 300, id: :img_prev, size: "400x300"%>
+  				<%= attachment_image_tag @item, :image, :fill, 300, 250, id: :img_prev, size: "300x250"%>
 			<% end %>
 		</div>
-		<div class="item_introduce col-lg-6 pt-5">
+		<div class="item_introduce col-7">
 			<label class="name">商品名</label>
 				<%= f.text_field :name, autofocus: true, id:"inputEmail", placeholder:"name" %><br>
 			<label class="introduction">商品説明</label>
@@ -21,7 +21,9 @@
 			</label><br>
 			<label class ="is_sold">販売ステータス</label>
 				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], autofocus: true %><br>
-			<%= f.submit "変更を保存", class:"btn btn-outline-primary" %>
+			<div class="edit-btn">
+				<%= f.submit "変更を保存", class:"btn btn-outline-primary" %>
+			</div>
 		<% end %>
 		</div>
 	</div>

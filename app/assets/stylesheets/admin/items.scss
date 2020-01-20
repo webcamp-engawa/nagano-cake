@@ -1,3 +1,113 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.admin-item-index{
+	h1 {
+		text-align: center;
+	}
+	.btn {
+		font-weight: bolder;
+		zoom: 150%;
+		font-family: tomato;
+	}
+	.row1 {
+		float: right;
+		margin-bottom: 20px;
+	}
+}
+
+.admin-item-show{
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	.row {
+		text-align: center;
+		padding-left: 150px;
+	}
+	.col-5 {
+		text-align: right;
+
+	}
+	.col-7 {
+		padding: 0;
+		text-align: left;
+		float: right;
+		font-size: 20px;
+	}
+	.edit-btn {
+		margin: 0 0 0 auto;
+		zoom: 110%;
+		padding-right: 150px;
+	}
+}
+
+.admin-item-edit {
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	.row {
+		width: 100%;
+		text-align: center;
+	}
+	.edit_item {
+		width: 100%;
+	}
+	.col-5 {
+		text-align: right;
+		float: left;
+		padding-left: 230px;
+	}
+	.col-7 {
+		float: right;
+		padding-left: 100px;
+		padding-top: 10px;
+		text-align: left;
+		font-size: 20px;
+	}
+	.edit-btn{
+		padding-top: 50px;
+		text-align: center;
+		zoom: 110%;
+	}
+}
+
+.admin-item-new {
+
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	.row {
+		width: 100%;
+		text-align: center;
+	}
+	.new_item {
+		width: 100%;
+	}
+	.col-5 {
+		text-align: right;
+		float: left;
+		padding-left: 230px;
+	}
+	.col-7 {
+		float: right;
+		padding-left: 100px;
+		padding-top: 10px;
+		text-align: left;
+		font-size: 20px;
+	}
+	.submit{
+		padding-top: 50px;
+		text-align: center;
+		zoom: 110%;
+	}
+}

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container admin-item-new">
 	<h1>商品 新規登録画面</h1>
 	<div class="row">
 		<% if @item.errors.any? %>
@@ -13,12 +13,12 @@
     	<% end %>
 		<%= form_for(@item, url: {controller: "items", action: "create"}) do |f| %>
 
-		<div class="image col-lg-9 pt-5">
+		<div class="col-5">
 			<%= f.attachment_field :image, onchange: "previewFile()" %><br> <!-- jsのpreviewFile()を呼ぶ -->
 			<img src="" height="250" width="300" alt="Image preview..."> <!-- プレビューの表示枠を用意 -->
 		</div>
 
-		<div class="col-lg-9 pt-5">
+		<div class="col-7">
 			<div class="field">
 				<label class="name">商品名</label>
 				<%= f.text_field :name %>
@@ -39,10 +39,10 @@
 				<label class="is_sold">販売ステータス</label>
 				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], :prompt=>"選択してください" %>
 			</div>
-		</div>
 			<div class="submit">
-				<%= f.submit "新規登録" %>
+				<%= f.submit "新規登録", class:"btn btn-outline-primary"%>
 			</div>
+		</div>
 		<% end %>
 	</div>
 </div>

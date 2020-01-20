@@ -1,11 +1,11 @@
-<div class="container">
-	<h1 style="text-align: center;">商品詳細</h1>
+<div class="container admin-item-show">
+	<h1>商品詳細</h1>
 	<div class="row">
-		<div class="image col-lg-3 pt-5" style="width: 350px; padding-left: 180px;">
-		<%= attachment_image_tag @item, :image, :fill, 350, 250 %>
+		<div class="image col-5 ">
+		<%= attachment_image_tag @item, :image, :fill, 300, 250 %>
 		</div>
-		<div class="item_introduce col-lg-8 pt-5" style="width: 150px; padding-left: 380px;">
-			<p class="name">商品名   <%= @item.name %></p>
+		<div class="item_introduce col-7">
+			<p class="name">商品名:  <%= @item.name %></p>
 
 			<p class="introduction">
 				商品説明:
@@ -19,17 +19,15 @@
 				税抜き価格（税込価格):
 				<%= number_to_currency((BigDecimal(@item.price)).ceil)%> (<%=number_to_currency((BigDecimal(@item.price)*BigDecimal("1.08")).ceil)%>)
 			</p>
-			<p class ="is_sold">
-				販売ステータス:
+			<p class ="is_sold">販売ステータス:</p>
 				<% if @item.is_sold %>
 				<p>販売中</p>
 				<% else %>
 				<p>売り切れ</p>
 				<% end %>
-			</p>
-			<div class="btn">
-				<%= link_to '編集する', edit_admin_item_path(@item), class:"btn btn-outline-primary" %>
-			</div>
+		</div>
+		<div class="edit-btn">
+		<%= link_to '編集する', edit_admin_item_path(@item), class:"btn btn-outline-primary" %>
 		</div>
 	</div>
 </div>

@@ -59,6 +59,7 @@
                           <li class ="list-inline-item">ようこそ <%= link_to current_customer.fullname.to_s, customer_path %> さん</li>
                             </div>
                           <% elsif admin_signed_in? %>
+
                   <div class ="admin-links">
                           <li class ="list-inline-item">
                             <%= link_to admin_items_path do %>

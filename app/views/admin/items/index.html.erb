@@ -1,6 +1,9 @@
-<div class="container">
-	<div class="row">
-		<h1>商品一覧画面</h1> <%= link_to "商品登録", new_admin_item_path %>
+<div class="container admin-item-index">
+	<h1>商品一覧</h1>
+	<div class="row1">
+		<%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-outline-primary"%>
+	</div>
+	<div class="row2 clearfix">
 			<table class="table">
 				<thead>
 					<tr>
