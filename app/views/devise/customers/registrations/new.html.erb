@@ -9,26 +9,26 @@
 <%= f.label :"氏名" %>
   <div class="form-group row">
     <div class="col-sm-6">
-      <%= f.text_field :last_name,class:"form-control" %>
+      <%= f.text_field :last_name,placeholder: "姓",class:"form-control" %>
     </div>
     <div class="col-sm-6">
-      <%= f.text_field :first_name,class:"form-control" %>
+      <%= f.text_field :first_name,placeholder: "名",class:"form-control" %>
     </div>
   </div>
 
 <%= f.label :"フリガナ" %>
   <div class="form-group row">
     <div class="col-sm-6">
-      <%= f.text_field :last_name_kana,class:"form-control" %>
+      <%= f.text_field :last_name_kana,placeholder: "セイ",class:"form-control" %>
     </div>
     <div class="col-sm-6">
-      <%= f.text_field :first_name_kana,class:"form-control" %>
+      <%= f.text_field :first_name_kana,placeholder: "メイ",class:"form-control" %>
     </div>
   </div>
 
   <div class="field">
     <%= f.label :"郵便番号" %>
-    <%= f.text_field :postcode,class:"form-control" %>
+    <%= f.text_field :postcode,placeholder: "000-0000",class:"form-control" %>
   </div>
 
   <div class="field">
@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= f.label :"電話番号" %>
-    <%= f.text_field :phone_number,class:"form-control" %>
+    <%= f.text_field :phone_number,placeholder: "※ハイフンなしで入力してください",class:"form-control" %>
   </div>
 
   <div class="field">
@@ -49,9 +49,8 @@
   <div class="field">
     <%= f.label :"パスワード" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
+    <%= f.password_field :password,placeholder: "※6文字以上で入力してください", autocomplete: "new-password",class:"form-control" %>
   </div>
 
   <div class="field">

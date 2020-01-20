@@ -1,12 +1,19 @@
-<h3>マイページ</h3>
+<div class ="container">
+  <div class="mx-auto" style="width: 500px;">
+<h2>マイページ</h2>
 
 <%= flash[:notice_update] %>
+<br>
 
-<h4>登録情報</h4>
-<%= link_to "編集する", edit_customer_path, class:"btn btn-outline-primary mb-4" %>
-<%= link_to "パスワードを変更する", edit_customer_registration_path, class:"btn btn-outline-primary mb-4" %>
+	<table class="table">
+			<tr>
+				<th><h3>登録情報</h3></th>
+				<td><%= link_to "編集する", edit_customer_path, class:"btn btn-outline-primary mb-2" %></td>
+				<td><%= link_to "パスワードを変更する", edit_customer_registration_path, class:"btn btn-outline-primary mb-2" %></td>
+			</tr>
+	</table>
 
-		<table class="customers-date">
+		<table class="table">
 			<tr>
 				<th>氏名</th><td><%= @customer.last_name %> <%= @customer.first_name %></td>
 			</tr>
@@ -29,6 +36,9 @@
 
 <h3>配送先</h3> <%= link_to "一覧を見る", '/shippings', class:"btn btn-outline-primary mb-4" %>
 <h3>注文履歴</h3> <%= link_to "一覧を見る", orders_path, class:"btn btn-outline-primary mb-4" %>
+
+</div>
+</div>
 
 
 

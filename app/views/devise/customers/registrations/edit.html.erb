@@ -1,3 +1,6 @@
+<div class ="container">
+  <div class="mx-auto" style="width: 500px;">
+
 <h2>パスワード変更</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -13,10 +16,8 @@
 
   <div class="field">
     <%= f.label :"新しいパスワードを入力してください" %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password,placeholder: "6文字以上で入力してください", autocomplete: "new-password",class:"form-control" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> 文字以上で入力してください</em>
     <% end %>
   </div>
 
@@ -26,14 +27,14 @@
     <font color="red">
     <%= f.label :"※もう一度入力してください" %>
     </font><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation,placeholder: "6文字以上で入力してください", autocomplete: "new-password",class:"form-control" %>
   </div>
 
 <br>
 
   <div class="field">
     <%= f.label :"現在のパスワードを入力してください" %><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password,placeholder: "6文字以上で入力してください", autocomplete: "current-password",class:"form-control" %>
   </div>
 
 <br>
@@ -44,3 +45,5 @@
 <% end %>
 
 <%= link_to "登録情報編集に戻る", :back, class:"btn btn-outline-danger mb-4" %>
+</div>
+</div>

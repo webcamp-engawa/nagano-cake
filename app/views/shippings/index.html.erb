@@ -1,6 +1,7 @@
 <%= form_for @shipping do |f| %>
 
 <div class ="container">
+	<div class="mx-auto" style="width: 500px;">
 	<div class = row>
 		<div class ="col-md-6 ">
 
@@ -10,31 +11,27 @@
  			<%= flash[:notice_fix] %>
  			<%= flash[:notice_destroy] %>
 
-			<table class="shipping-create">
+			<div class="shipping-create">
 
 				<tr>
-					<th>郵便番号</th>		<td><%=f.text_field :postcode,class:"form-control mb-2" %></td>
+					<th>郵便番号</th>	<td><%=f.text_field :postcode,class:"form-control mb-2" %></td>
 				</tr>
 				<tr>
-					<th>住所</th>	<td><%=f.text_field :address,class:"form-control mb-2" %></td>
+					<th>住所</th><td><%=f.text_field :address,class:"form-control mb-2" %></td>
 				</tr>
 				<tr>
-					<th>宛名</th>	<td><%=f.text_field :address_name,class:"form-control mb-2" %></td>
+					<th>宛名</th><td><%=f.text_field :address_name,class:"form-control mb-2" %></td>
 				</tr>
 
 			</table>
+			<%= f.submit "登録する",class:"btn btn-outline-primary mb-4" %>
 		</div>
-	</div>
-
-<div class ="col-md-6">
-
-<%= f.submit "登録する",class:"btn btn-outline-primary mb-4" %>
-
-<% end %>
 </div>
 
+<% end %>
 
-<table class="shipping-index">
+
+<table class="table">
 
 	<tr>
 		<th>郵便番号</th>
@@ -46,10 +43,11 @@
 		<td><%= shipping.postcode %></td>
 		<td><%= shipping.address %></td>
 		<td><%= shipping.address_name %></td>
-		<td><%= link_to "編集する", edit_shipping_path(shipping.id), class:"btn btn-outline-primary mb-4" %> <%= link_to "削除する", shipping_path(shipping.id), method: :delete, class:"btn btn-outline-danger mb-4" %></td>
+		<td><%= link_to "編集する", edit_shipping_path(shipping.id), class:"btn btn-outline-primary mb-4" %></td><td><%= link_to "削除する", shipping_path(shipping.id), method: :delete, class:"btn btn-outline-danger mb-4" %></td>
 	</tr>
 <% end %>
 </table>
 
+</div>
 </div>
 

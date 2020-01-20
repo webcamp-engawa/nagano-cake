@@ -12,24 +12,23 @@
 
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
-      <!-- ロゴ修正中 -->
-<!--                     <div class ="logo">
+
+          <div class ="jumbotron jumbotron-fluid">
+<!-- <div class="logo-box"> -->
+            <div class="title-cover">
+
+                    <div class ="logo">
                       <% if admin_signed_in? %>
                           <%= link_to admin_root_path, id: "logo" do%>
-                          <%= image_tag 'logo.png', :size=>"230x180"  %>
+                          <%= image_tag 'logo3.svg', :size=>"230x180"  %>
                           <% end %>
                       <% else %>
                         <%= link_to root_path, id: "logo" do%>
-                          <%= image_tag 'logo.png', :size=>"230x180"  %>
+                          <%= image_tag 'logo3.svg', :size=>"230x180"  %>
                         <% end %>
                       <% end %>
-                    </div> -->
-      <!-- ロゴ修正中 -->
+                    </div>
 
-
-          <div class ="jumbotron jumbotron-fluid">
-
-            <div class="title-cover">
                       <ul class="list-inline-item">
                         <% if customer_signed_in? %>
                           <li class ="list-inline-item">
@@ -57,21 +56,63 @@
                               <% end %>
                             </li>
                             <div class="welcome">
-                          <li class ="list-inline-item">ようこそ<%= link_to current_customer.fullname.to_s, customer_path %>さん</li>
+                          <li class ="list-inline-item">ようこそ <%= link_to current_customer.fullname.to_s, customer_path %> さん</li>
                             </div>
                           <% elsif admin_signed_in? %>
-                          <li class ="list-inline-item"><%= link_to "商品一覧",admin_items_path %></li>
-                          <li class ="list-inline-item"><%= link_to "会員一覧",admin_customers_path %></li>
-                          <li class ="list-inline-item"><%= link_to "注文履歴一覧",admin_orders_path %></li>
-                          <li class ="list-inline-item"><%= link_to "ジャンル管理",admin_genres_path %></li>
-                          <li class ="list-inline-item"><%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %></li>
 
+                  <div class ="admin-links">
+                          <li class ="list-inline-item">
+                            <%= link_to admin_items_path do %>
+                            <i class="fas fa-cookie-bite fa-3x"></i>
+                            <p>商品管理</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_customers_path do %>
+                            <i class="fas fa-users fa-3x"></i>
+                            <p>会員一覧</p>
+                            <% end %>
+                            </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_orders_path do %>
+                            <i class="fas fa-list-ul fa-3x"></i>
+                            <p>注文一覧</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_genres_path do%>
+                            <i class="fas fa-tag fa-3x"></i>
+                            <p>ジャンル管理</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to destroy_admin_session_path, method: :delete do%>
+                            <i class="fas fa-sign-out-alt fa-3x"></i>
+                            <p>ログアウト</p>
+                            <% end %>
+                          </li>
+                  </div>
                         <% else %>
-                          <li class ="list-inline-item"><%= link_to "Top", root_path %></li>
-                          <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
-                          <li class ="list-inline-item"><%= link_to "Log in", new_customer_session_path %></li>
-                          <li class ="list-inline-item"><%= link_to "管理者はこちら" ,new_admin_session_path %></li>
-
+                          <li class ="list-inline-item">
+                            <%= link_to root_path do %>
+                              <i class="fas fa-home fa-3x"></i>
+                              <p>Top</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to home_about_path do %>
+                            <i class="fas fa-store fa-3x"></i>
+                            <p>About</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to new_customer_session_path do %>
+                            <i class="fas fa-sign-in-alt fa-3x"></i>
+                            <p>Login</p>
+                            <% end %>
+                            <div class="owner">
+                            <i class="fas fa-user"></i><%= link_to "管理者はこちら" ,new_admin_session_path %>
+                            </div>
                         <% end %>
                       </ul>
 
@@ -86,7 +127,7 @@
                         </dl>
 
                   <% elsif admin_signed_in? %>
-                    <h2><%= link_to "ながのCAKE", admin_root_path, id: "logo" %></h2>
+
                   <% else %>
                         <dl class ="searchbox">
                             <%= search_form_for @search, url: items_path do |f| %>
@@ -95,10 +136,10 @@
                             </div>
                             <% end %>
                         </dl>
-                        <h2><%= link_to "ながのCAKE", root_path, id: "logo" %></h2>
                   <% end %>
             <!-- </div> -->
             </div>
+<!-- </div> -->
           </div>
     </header>
 
