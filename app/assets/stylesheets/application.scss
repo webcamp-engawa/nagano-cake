@@ -28,6 +28,7 @@ $darkbrown:#261C1B;
 $gothic:'arial narrow';
 $cake:'sans-serif';
 $tomato:Tahoma;
+$yu:YuGothic;
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import "bootstrap";
@@ -458,7 +459,7 @@ header{
 .cart-items{
 	font-family: $cake;
 	.table-bordered{
-		font-family: $tomato;
+		font-family: $yu;
 	}
 
 	h1{
@@ -471,13 +472,13 @@ header{
 
 	.empty{
 		padding-left: 0;
-		font-family: $tomato;
+		font-family: $yu;
 	}
 	// .total{
 	// 	margin-left: 200px;
 	// }
 	.select{
-		font-family: $tomato;
+		font-family: $yu;
 		text-align: center;
 		padding-left: 260px;
 		padding-top:20px;
@@ -491,6 +492,50 @@ header{
 	}
 }
 // カートアイテム終
+
+//購入情報入力画面
+.order-new{
+	font-family:$yu;
+	.table{
+	vertical-align:none;
+		th{
+			vertical-align:middle;
+			text-align: center;
+			background: rgba(89,87,87, 0.6)
+		}
+		td{
+			padding:25px;
+		}
+		label{
+			margin-bottom: 15px 0;
+			margin-right: 10px;
+			font-size: 20px;
+		}
+		.col-5 {
+			padding-left: 0;
+		}
+		.col-10 {
+			padding-left: 0;
+		}
+		.col-6{
+			padding-left: 0;
+		}
+		p{
+			font-size: 18px;
+			margin: 0;
+			padding: 5px 0;
+		}
+	}
+	.select{
+		font-family: $yu;
+		padding-top:10px;
+		margin-bottom: 100px;
+
+		}
+}
+
+//購入情報入力画面終
+
 
 // ページネーション
 .paginate{
