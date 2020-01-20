@@ -25,6 +25,7 @@ $urban:#856e75;
 $gray:#7f6c68;
 $gothic:'arial narrow';
 $cake:'sans-serif';
+$tomato:Tahoma;
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import "bootstrap";
@@ -333,10 +334,10 @@ header{
 	.col-7{
 			// background-color: gray;
 		.item-info{
-			margin-bottom: 20px;
+			margin-bottom: 15px;
 			border-bottom: 1px dotted;
 			border-color:$urban;
-			padding-bottom: 20px;
+			padding-bottom: 10px;
 			// background-color: gray;
 			h2{
 				margin-bottom: 20px;
@@ -344,9 +345,14 @@ header{
 			}
 		}
 		.back-index{
+			font-family:$tomato;
+			padding-top: 15px;
 			a{
-				color: $opera;
+				color:$brown;
 				text-decoration: none;
+				&:hover{
+					color:$opera;
+				}
 			}
 		}
 	}
