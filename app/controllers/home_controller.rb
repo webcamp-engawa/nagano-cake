@@ -12,11 +12,11 @@ class HomeController < ApplicationController
       @genres = Genre.where(is_active: true)
       # @genres = @genre.where(is_active: true)
       @items = Item.active_all.page(params[:page]).reverse_order.per(9)
-      
+
     end
   end
 
   def about
-
+    render :layout => "about"
   end
 end

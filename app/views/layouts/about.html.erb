@@ -1,22 +1,44 @@
-<div id="back">
-<div id="icon"></div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+    <ul id="nav">
+      <li class ="list-inline-item"><%= link_to "Top", root_path %></li>
+      <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
+      <li class ="list-inline-item"><%= link_to "Log in", new_customer_session_path %></li>
+      <li class ="list-inline-item"><%= link_to "管理者はこちら" ,new_admin_session_path %></li>
+    </ul>
 
-<h1 id="title" style="margin_bottom: 50px;">NAGANO<br>CAKE</h1>
-
-<div id="shops">
-  <h3>NAGANO CAKE 本店</h3>
-  <p>〒380-0841　長野市大門町515
-  TEL：026-266-0156 営業時間: 10：00 ～ 19：00</p>
-
-  <h3>NAGANO CAKE 南千歳店</h3>
-  <p>〒380-8543　長野市南千歳1-22-6
-  「MIDORI長野」2階　信州おみやげ参道「ORAHO」
-  TEL：026-219-1648 営業時間: 10：00 ～ 19：00</p>
+    <div id="back">
+<div class="title">NAGANO CAKE</div>
+<div class="message" id="message">
+  Together,<br>we<br>create<br>sweets<br>worth<br>figting for
 </div>
+
+
+</div>
+<div class="map-back">
+<div id="map-title">M A P</div>
+
+<div id="shops" class="row">
+  <div class="col-5">
+    <h3>NAGANO CAKE 本店</h3>
+    <p>〒380-0841　長野市大門町515<br>TEL：026-266-0156　営業時間: 10：00 ～ 19：00</p>
   </div>
-
-<h2 id="map-title">MAP</h2>
-
+  <p id="icon1" class="col-2"></p>
+  <div class="col-5 align-middle">
+    <h3>NAGANO CAKE 南千歳店</h3>
+    <p>〒380-8543　長野市南千歳1-22-6<br>TEL：026-219-1648　営業時間: 10：00 ～ 19：00</p>
+  </div>
+</div>
 <div id="input">
 <!-- 地名入力用のinputを追加 -->
 <%= select_tag 'address', options_for_select([["本店","パティスリー平五郎 本店"], ["南千歳店","平五郎 MIDORI長野店"]]) %>
@@ -26,8 +48,21 @@
 </div>
 
 <div id='map'></div>
-
+</div>
 <script>
+
+  window.onload = function () {
+
+    var animation =lottie.loadAnimation({
+      container: document.getElementById('icon1'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: '/8849-save-amazon-jungle.json',
+    });
+
+  };
+
 
 const data = [
 { name: "ながのCAKE 本店", lat: 36.656792, lng: 138.187234 },
@@ -86,27 +121,10 @@ var geocoder
   }
 
 
-  $(function () {
-
-    var animation =lottie.loadAnimation({
-      container: document.getElementById('icon'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: '/14338-earth-rotation.json',
-    });
-
-    // window.addEventListener('scroll', event => {
-    //   var windowHeight = window.innerHeight;
-    //   var targetTop = document.getElementById('scroll-icon').getBoundingClientRect().top;
-    //   if(0 < targetTop && targetTop <= windowHeight - 200) {
-    //     animation.play();
-    //     window.removeEventListener('scroll');
-    //   }
-    // });
-  });
-
 
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ8t1dkVrouFMkp0ETy1e82JYr9s_GW14&callback=initMap" async defer></script>
+
+
+  </body>
