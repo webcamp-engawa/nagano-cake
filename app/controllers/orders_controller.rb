@@ -11,12 +11,13 @@ class OrdersController < ApplicationController
   end
 
   def new
-    if @cart_item == nil
+    @cart_item = CartItem.where(customer_id: current_customer.id)
+    if @cart_item.count == 0
       redirect_to root_path
     end
     @order = Order.new
 
-     @order.customer_id = current_customer.id
+    @order.customer_id = current_customer.id
     @shippings = Shipping.where(customer_id: current_customer.id)
     @shippings_name= Array.new(@shippings.length)
 
