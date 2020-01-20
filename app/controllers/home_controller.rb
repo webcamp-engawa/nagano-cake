@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def top
     if params[:genre_id]
-      # @genre = Genre.find(params[:genre_id])
+      @genre = Genre.find(params[:genre_id])
       @genres = @genre.where(is_active: true)
       @items = @genres.items.all
     elsif params[:q]

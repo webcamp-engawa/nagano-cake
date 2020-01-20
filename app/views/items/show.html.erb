@@ -1,10 +1,10 @@
 <div class ="container item-show">
-    <h1 class="text-center">Item Detail</h1>
+    <h1 class="text-center float-none">Item Detail</h1>
     <div class="row">
           <%= render 'layouts/genre_serch' %>
 
-
-          <div class="col-4">
+<div class="col-10">
+          <div class="col-5 float-left ">
                   <% if @item.image_id.present? %>
                     <%= attachment_image_tag @item, :image, :fill, 300, 250  %>
                   <% else %>
@@ -13,24 +13,33 @@
           </div>
 
 
-          <div class="col-6">
-                <div>
+          <div class="col-7 float-right">
+                <div class="item-info">
                   <h2><%= @item.name %></h2>
-                  <div><%= @item.introduction %></div>
+                  <p><%= @item.introduction %></p>
                   <h4>
                     <%= number_to_currency((BigDecimal(@item.price) * BigDecimal("1.08")).ceil) %>(税込)
                   </h4>
                 </div>
 
-                <div>
+
                   <%= form_for @cart_item do |f| %>
                     <%= render 'layouts/errors_messages', model: f.object %>
                     <%= f.hidden_field :item_id, value: @item.id %>
+
+                <div class ="select-item">
+                  <div class="select-q">
                     <%= f.select :quantity, options_for_select((1..20).to_a), include_blank: "個数選択" %>
-                    <%= f.submit "カートに入れる" %>
+                  </div>
+                  <div class="cart-in">
+                    <%= f.submit "カートに入れる",class:"btn btn-outline-success btn-sm" %>
+                  </div>
+                </div>
+
                   <% end %>
                   <p><%= flash[:alert] %></p>
-                </div>
+
           </div>
+</div>
     </div>
 </div>
