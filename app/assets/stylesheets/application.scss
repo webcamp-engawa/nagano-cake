@@ -154,7 +154,7 @@ header{
 }
 
 .jumbotron{
-	height: 300px;
+	height: 350px;
 	background-image: url(4.jpeg);
 	background-position:center;
 	background-repeat: no-repeat;
@@ -162,6 +162,7 @@ header{
 	width: 100%;
 	border-radius: 5px;
 	font-family: $cake;
+	padding-top: 90px;
 	// margin: 0 auto;
 
 	a{
@@ -262,6 +263,8 @@ header{
 // サイドバー(ジャンル検索)
 	.col-2{
 		@include genre-bar;
+		padding-top: 0;
+		padding-left: 40px;
 	}
 
 // 商品一覧画像
@@ -314,6 +317,8 @@ header{
 	}
 	.col-2{
 		@include genre-bar;
+		padding-top: 0;
+		padding-left: 40px;
 	}
 
 	.col-5{
@@ -337,7 +342,12 @@ header{
 				margin-bottom: 20px;
 				display: inline-block;
 			}
-
+		}
+		.back-index{
+			a{
+				color: $opera;
+				text-decoration: none;
+			}
 		}
 	}
 }
