@@ -47,6 +47,67 @@
 		zoom: 110%;
 		padding-right: 150px;
 	}
+}
 
+.admin-item-edit {
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	.row {
+		width: 100%;
+		text-align: center;
+	}
+	.edit_item {
+		width: 100%;
+	}
+	.col-5 {
+		text-align: right;
+		float: left;
+		padding-left: 230px;
+	}
+	.col-7 {
+		float: right;
+		padding-left: 100px;
+		padding-top: 10px;
+		text-align: left;
+		font-size: 20px;
+	}
+	.edit-btn{
+		padding-top: 50px;
+		text-align: center;
+		zoom: 110%;
+	}
+}
 
+.admin-item-new {
+
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	.row {
+		width: 100%;
+		text-align: center;
+	}
+	.new_item {
+		width: 100%;
+	}
+	.col-5 {
+		text-align: right;
+		float: left;
+		padding-left: 230px;
+	}
+	.col-7 {
+		float: right;
+		padding-left: 100px;
+		padding-top: 10px;
+		text-align: left;
+		font-size: 20px;
+	}
+	.submit{
+		padding-top: 50px;
+		text-align: center;
+		zoom: 110%;
+	}
 }
