@@ -1,3 +1,38 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.alert-container {
+  text-align: center;
+  background-image: url(/1580618.jpg);
+  background-size: cover;
+}
+
+.fa-exclamation-triangle {
+  margin-bottom: 20px;
+  margin-top: 90px;
+}
+
+.alert {
+  color: red;
+  font-family: sans-serif;
+}
+
+.alert-m {
+  line-height: 200%;
+  font-size: large;
+  font-family: serif;
+}
+
+#red {
+  color: red;
+}
+
+.faa-horizontal {
+  width: 33%;
+  margin-bottom: 20px;
+}
+
+#btn2 {
+  margin-bottom: 100px;
+}

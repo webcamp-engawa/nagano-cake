@@ -3,6 +3,7 @@ class CustomersController < ApplicationController
 before_action :authenticate_customer!
 
   def leave
+    render :layout => "leave"
   end
 
   def show
