@@ -3,7 +3,12 @@ class Admin::ItemsController < ApplicationController
 before_action :authenticate_admin!
 
   def index
+    @q = Item.ransack(params[:q])
     @items = Item.page(params[:page]).per(9)
+    if params[:q]
+      @q = Item.ransack(params[:q])
+      @items = @q.result(distinct:true).page(params[:page]).per(9)
+    end
   end
 
   def show
