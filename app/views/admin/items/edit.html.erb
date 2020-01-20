@@ -1,5 +1,5 @@
 <div class="container">
-	<h1>商品編集画面</h1>
+	<h1>商品編集</h1>
 	<div class="row">
 		<%= form_for(@item, url: {controller: "items", action: "update"}) do |f| %>
 		<div class="image col-lg-6 pt-5">
@@ -21,7 +21,7 @@
 			</label><br>
 			<label class ="is_sold">販売ステータス</label>
 				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], autofocus: true %><br>
-			<%= f.submit "変更を保存" %>
+			<%= f.submit "変更を保存", class:"btn btn-outline-primary" %>
 		<% end %>
 		</div>
 	</div>
