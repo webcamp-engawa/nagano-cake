@@ -1,8 +1,7 @@
 <div class="container">
 	<h1>注文詳細</h1>
-	<div class="row">
-    <div class="customer_info col-lg-10 pt-5">
-		<%= form_for(@order, url: {controller: "orders", action: "update"}, html:{name:"order_edit"}) do |f| %>
+	<%= form_for(@order, url: {controller: "orders", action: "update"}, html:{name:"order_edit"}) do |f| %>
+	<div class="row customer_info pt-5">
 		<table style="border:none" width="100%">
 			<tbody>
 				<tr>
@@ -29,8 +28,9 @@
 				</tr>
 			</tbody>
 		</table>
-		</div>
-		<div class="item_info col-lg-7 pt-5">
+	</div>
+	<div class="row">
+		<div class="item_info col-8 pt-5">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -65,7 +65,7 @@
 			</thead>
 		</table>
 		</div>
-		<div class="sum col-lg-5 pt-5 ml-10">
+		<div class="sum col-4 pt-5 ml-10">
 		<table style="border: none;" width="80%">
 			<tbody>
 				<tr>
@@ -91,9 +91,9 @@
 			<div class="pt-5" align="center">
 			<%= f.submit "まとめて更新", class:"btn btn-outline-primary" %>
 			</div>
-		<% end %>
 		</div>
 	</div>
+	<% end %>
 </div>
 
 <script>

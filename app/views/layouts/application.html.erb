@@ -62,7 +62,7 @@
                           <% elsif admin_signed_in? %>
                           <li class ="list-inline-item"><%= link_to "商品一覧",admin_items_path %></li>
                           <li class ="list-inline-item"><%= link_to "会員一覧",admin_customers_path %></li>
-                          <li class ="list-inline-item"><%= link_to "注文履歴一覧",admin_orders_path(button:1) %></li>
+                          <li class ="list-inline-item"><%= link_to "注文履歴一覧",admin_orders_path %></li>
                           <li class ="list-inline-item"><%= link_to "ジャンル管理",admin_genres_path %></li>
                           <li class ="list-inline-item"><%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %></li>
 

@@ -2,7 +2,7 @@
 	<h1>管理画面</h1>
 	<div class="col-lg-8 pt-5">
 		<h2>本日の注文件数
-			<%= link_to admin_orders_path do %>
+			<%= link_to admin_orders_path(:limit=>"today") do %>
 				<%= @order.count %>
 			<% end %>件
 		</h2>
