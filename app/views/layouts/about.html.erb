@@ -18,7 +18,7 @@
     </ul>
 
     <div id="back">
-<div class="title">NAGANO CAKE</div>
+<div class="title"><span class="title1">NAGANO</span> <span class=title2>CAKE</span></div>
 <div class="message" id="message">
   Together,<br>we<br>create<br>sweets<br>worth<br>figting for
 </div>
@@ -50,6 +50,15 @@
 <div id='map'></div>
 </div>
 <script>
+$(function () {
+  $('.title1').slideDown(1200);
+});
+$(function () {
+  $('.title2').slideDown(1200);
+});
+$(function () {
+  $('.message').fadeIn(6000);
+});
 
   window.onload = function () {
 
