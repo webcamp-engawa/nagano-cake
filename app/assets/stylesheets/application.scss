@@ -23,6 +23,8 @@ $opera:#9e7360;
 $beige:#c3b39c;
 $urban:#856e75;
 $gray:#7f6c68;
+$pink:#F9685D;
+$darkbrown:#261C1B;
 $gothic:'arial narrow';
 $cake:'sans-serif';
 $tomato:Tahoma;
@@ -93,12 +95,12 @@ header{
 			.list-inline-item{
 				margin: 0 25px;
 				a{
-					color:$beige;
+					color:$gray;
 					text-decoration: none;
 					transition:.4s;
 
 					&:hover{
-						color:$gray;
+						color:$beige;
 						transition:.4s;
 					}
 				}
@@ -107,8 +109,13 @@ header{
 			.welcome{
 				margin-bottom: 50px;
 				margin-bottom: 10px;
+				font-family:fantasy;
+				color:#544946;
 				a{
-				color: $brown;
+				color: $pink;
+				&:hover{
+					color: #B2362D;
+				}
 				}
 			}
 		}
@@ -164,7 +171,59 @@ header{
 	border-radius: 5px;
 	font-family: $cake;
 	padding-top: 90px;
+	position:relative;
 	// margin: 0 auto;
+	.logo{
+		position: fixed;
+		position:relative;
+		img{
+			position:absolute;
+			top:-100px;
+			left:205px;
+		}
+	}
+.owner{
+	position:absolute;
+	color: white;
+	top:0px;
+	right: 10px;
+	font-size:25px;
+	background: rgba(86,110,92, 0.5);
+	margin-top: 5px;
+	border-radius: 3px;
+	padding: 5px;
+	transition:.4s;
+	&:hover{
+		width: 220px;
+		background: rgba(86,110,92, 0.8);
+		transition:.4s;
+	}
+	a{
+		color: white;
+		margin-left: 5px;
+		&:hover{
+			// color:#CA574C;
+			color: white;
+			border-color: #CA574C;
+			transition:.4s;
+		}
+	}
+}
+
+.logo-box{
+	// position:relative;
+	// width: 700;
+	height: 300px;
+}
+
+	img{
+		position:fixed;
+		top:0px;
+		left:580px;
+		height: 100px;
+
+
+	}
 
 	a{
 		text-decoration: none;
@@ -179,6 +238,17 @@ header{
 		margin: 0 auto;
 		background: rgba(255,255,255, 0.6);
 		text-align: center;
+
+		.admin-links{
+			font-family: $tomato;
+			padding-top: 30px;
+			a{
+			color:#785046;
+				&:hover{
+					color:#F9685D;
+				}
+			}
+		}
 
 	}
 }
