@@ -1,5 +1,5 @@
 <div class="container">
-	<h1>注文詳細画面</h1>
+	<h1>注文詳細</h1>
 	<div class="row">
     <div class="customer_info col-lg-10 pt-5">
 		<%= form_for(@order, url: {controller: "orders", action: "update"}, html:{name:"order_edit"}) do |f| %>
@@ -89,7 +89,7 @@
 			</tbody>
 		</table>
 			<div class="pt-5" align="center">
-			<%= f.submit "まとめて更新" %>
+			<%= f.submit "まとめて更新", class:"btn btn-outline-primary" %>
 			</div>
 		<% end %>
 		</div>
@@ -118,11 +118,21 @@ function onChangeCookingStatus(elm){
 		console.log(stsOrder.value);
 		stsOrder.value ='製作中';
 	}
+
+
 	if ( elm.value == "製作完了"){
+		var stsElem = document.getElementsByClassName('cooking_status');
+		for (var i = 0; i< stsElem.length; i++ ){
+			if (stsElem[i].value != "製作完了")
+				return;
+		}
+
 		var stsOrder = document.getElementById('order_status');
 		console.log(stsOrder.value);
 		stsOrder.value ='発送準備中';
 	}
 
 }
+
+
 </script>
