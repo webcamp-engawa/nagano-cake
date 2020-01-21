@@ -1,7 +1,7 @@
 <div class="container admin-item-new">
 	<h1>商品 新規登録画面</h1>
-	<div class="row">
-		<% if @item.errors.any? %>
+	<div class="row1">
+	<% if @item.errors.any? %>
         	<div id="error_explanation">
           		<h2><%= pluralize(@item.errors.count, "error") %> prohibited this user from being saved:</h2>
           		<ul>
@@ -11,6 +11,8 @@
           		</ul>
         	</div>
     	<% end %>
+    </div>
+	<div class="row2">
 		<%= form_for(@item, url: {controller: "items", action: "create"}) do |f| %>
 
 		<div class="col-5">

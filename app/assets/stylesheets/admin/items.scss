@@ -9,6 +9,7 @@
 }
 
 .admin-item-index{
+	font-family: YuGothic;
 	h1 {
 		text-align: center;
 	}
@@ -27,6 +28,7 @@
 }
 
 .admin-item-show{
+	font-family: YuGothic;
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;
@@ -53,6 +55,7 @@
 }
 
 .admin-item-edit {
+	font-family: YuGothic;
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;
@@ -84,12 +87,21 @@
 }
 
 .admin-item-new {
+	font-family: YuGothic;
+	.row1{
+		text-align: center;
+		li{
+			list-style: none;
+			padding-left: 200px;
+			text-align: left;
+		}
+	}
 
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;
 	}
-	.row {
+	.row2 {
 		width: 100%;
 		text-align: center;
 	}
