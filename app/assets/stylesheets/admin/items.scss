@@ -9,21 +9,36 @@
 }
 
 .admin-item-index{
+	font-family: YuGothic;
+	.flush {
+		color: #436676;
+		font-size: 20px;
+	}
 	h1 {
 		text-align: center;
-	}
-	.btn {
-		font-weight: bolder;
-		zoom: 150%;
-		font-family: tomato;
 	}
 	.row1 {
 		float: right;
 		margin-bottom: 20px;
+		.btn {
+		font-weight: bolder;
+		zoom: 150%;
+		font-family: tomato;
+		}
+	}
+	.row2 {
+		margin-top: 50px;
 	}
 }
 
 .admin-item-show{
+	font-family: YuGothic;
+	.flash {
+		padding-left: 250px;
+		margin-bottom: 20px;
+		color: #436676;
+		font-size: 20px;
+	}
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;
@@ -50,6 +65,10 @@
 }
 
 .admin-item-edit {
+	font-family: YuGothic;
+	.error-box{
+		padding-left: 300px;
+	}
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;
@@ -81,12 +100,21 @@
 }
 
 .admin-item-new {
+	font-family: YuGothic;
+	.row1{
+		text-align: center;
+		li{
+			list-style: none;
+			padding-left: 200px;
+			text-align: left;
+		}
+	}
 
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;
 	}
-	.row {
+	.row2 {
 		width: 100%;
 		text-align: center;
 	}

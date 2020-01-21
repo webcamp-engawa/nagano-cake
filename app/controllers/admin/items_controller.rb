@@ -21,8 +21,12 @@ before_action :authenticate_admin!
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update(item_params)
     redirect_to admin_item_path(@item)
+    flash[:notice_update] = "商品が更新されました!"
+    else
+      render :edit
+    end
   end
 
   def new
@@ -35,6 +39,7 @@ before_action :authenticate_admin!
     @genres = Genre.all
     if @item.save
       redirect_to admin_items_path
+      flash[:notice_new] = "商品が登録されました!"
     else
       render :new
     end

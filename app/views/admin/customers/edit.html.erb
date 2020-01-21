@@ -1,18 +1,18 @@
-<div class = "container">
+<div class = "container admin-customer-edit">
+	<h1>会員編集</h1>
+
+<div class="error-box">
+	<% if @customer.errors.any? %>
+         <h2><%= @customer.errors.count %>件のエラーがあります</h2>
+            <ul>
+               <% @customer.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+            </ul>
+    <% end %>
+</div>
 
 <div class ="customer-edit">
-<h1>会員編集</h1>
-
-
-					<% if @customer.errors.any? %>
-                        <h2><%= @customer.errors.count %>件のエラーがあります</h2>
-                            <ul>
-                                <% @customer.errors.full_messages.each do |message| %>
-                                    <li><%= message %></li>
-                                <% end %>
-                            </ul>
-                    <% end %>
-
 
 			<%= form_for(@customer,url: {controler: "customers", action: "update" }) do |f| %>
 					<table id = customers-data-edit>

@@ -1,7 +1,7 @@
 <div class="container admin-item-new">
 	<h1>商品 新規登録画面</h1>
-	<div class="row">
-		<% if @item.errors.any? %>
+	<div class="row1">
+	<% if @item.errors.any? %>
         	<div id="error_explanation">
           		<h2><%= pluralize(@item.errors.count, "error") %> prohibited this user from being saved:</h2>
           		<ul>
@@ -11,11 +11,15 @@
           		</ul>
         	</div>
     	<% end %>
+    </div>
+	<div class="row2">
 		<%= form_for(@item, url: {controller: "items", action: "create"}) do |f| %>
 
 		<div class="col-5">
-			<%= f.attachment_field :image, onchange: "previewFile()" %><br> <!-- jsのpreviewFile()を呼ぶ -->
-			<img src="" height="250" width="300" alt="Image preview..."> <!-- プレビューの表示枠を用意 -->
+			<%= f.attachment_field :image, onchange: "previewFile()" %><br> 
+			<!-- jsのpreviewFile()を呼ぶ -->
+			<%= attachment_image_tag @item, :image, src: "", size: "300x250", alt:"Image preview...", id: "img_prev", fallback: "no_image.jpg" %>
+			<!-- プレビューの表示枠を用意 -->
 		</div>
 
 		<div class="col-7">
@@ -49,16 +53,20 @@
 
 <script>
 	function previewFile() {
-  var preview = document.querySelector('img');//どこでプレビューするか指定。'img[name="preview"]'などにすればimg複数あっても指定できます。
-  var file    = document.querySelector('input[type=file]').files[0];//'input[type=file]'で投稿されたファイル要素の0番目を参照します。input[type=file]にmutipleがなくてもこのコードになります。
+  var preview = document.querySelector('#img_prev');
+  //どこでプレビューするか指定。'img[name="preview"]'などにすればimg複数あっても指定できます。
+  var file    = document.querySelector('input[type=file]').files[0];
+  //'input[type=file]'で投稿されたファイル要素の0番目を参照します。input[type=file]にmutipleがなくてもこのコードになります。
   var reader  = new FileReader();
 
   reader.addEventListener("load", function () {
-    preview.src = reader.result;//めちゃめちゃ長い文字列が引き渡されます。ユーザーのファイルパスに紐付かない画像情報だと思います。
+    preview.src = reader.result;
+    //めちゃめちゃ長い文字列が引き渡されます。ユーザーのファイルパスに紐付かない画像情報だと思います。
   }, false);
 
   if (file) {
-    reader.readAsDataURL(file);//ここでreaderのメソッドに引数としてfileを入れます。ここで、readerのaddEventListenerが発火します。
+    reader.readAsDataURL(file);
+    //ここでreaderのメソッドに引数としてfileを入れます。ここで、readerのaddEventListenerが発火します。
   }
 }
 </script>
