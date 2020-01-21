@@ -10,6 +10,10 @@
 
 .admin-item-index{
 	font-family: YuGothic;
+	.flush {
+		color: #436676;
+		font-size: 20px;
+	}
 	h1 {
 		text-align: center;
 	}
@@ -29,6 +33,12 @@
 
 .admin-item-show{
 	font-family: YuGothic;
+	.flash {
+		padding-left: 250px;
+		margin-bottom: 20px;
+		color: #436676;
+		font-size: 20px;
+	}
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;
@@ -56,6 +66,9 @@
 
 .admin-item-edit {
 	font-family: YuGothic;
+	.error-box{
+		padding-left: 300px;
+	}
 	h1 {
 		text-align: center;
 		margin-bottom: 30px;

@@ -1,5 +1,8 @@
 <div class="container admin-item-index">
 	<h1>商品一覧</h1>
+	<div class="flush">
+		<%= flash[:notice_new] %>
+	</div>
 	<div class="row1">
 		<%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-outline-primary"%>
 	</div>

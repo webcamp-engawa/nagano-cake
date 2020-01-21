@@ -1,5 +1,15 @@
 <div class="container admin-item-edit">
 	<h1>商品編集</h1>
+<div class="error-box">
+	<% if @item.errors.any? %>
+         <h2><%= @item.errors.count %>件のエラーがあります</h2>
+            <ul>
+               <% @item.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+            </ul>
+    <% end %>
+</div>
 	<div class="row">
 		<%= form_for(@item, url: {controller: "items", action: "update"}) do |f| %>
 		<div class="image col-5">

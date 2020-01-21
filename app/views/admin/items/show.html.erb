@@ -1,5 +1,8 @@
 <div class="container admin-item-show">
 	<h1>商品詳細</h1>
+	<div class="flash">
+		<%= flash[:notice_update] %>
+	</div>
 	<div class="row">
 		<div class="image col-5 ">
 		<%= attachment_image_tag @item, :image, :fill, 300, 250 %>
