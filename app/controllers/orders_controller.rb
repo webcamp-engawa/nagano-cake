@@ -40,6 +40,8 @@ class OrdersController < ApplicationController
         if @order.save
           @cart_items = CartItem.where(customer_id: current_customer.id)
           @cart_items.destroy_all
+          @customer = current_customer
+          OrderMailer.creation_email(@order, @customer).deliver_now
           redirect_to orders_done_path
         elsif @order.errors.any?
           @cart_item = CartItem.where(customer_id: current_customer.id)
@@ -68,21 +70,23 @@ class OrdersController < ApplicationController
         @order.address_name = Shipping.find(params[:order][:shipping]).address_name
         if @order.save
 
-        @cart_items = CartItem.where(customer_id: current_customer.id)
-        @cart_items.each do |cart_item|
-        @order_item = OrderItem.new
-        @order_item.order_id = @order.id
-        @order_item.item_id = cart_item.item_id
-        @order_item.quantity = cart_item.quantity
-        @order_item.order_price = cart_item.item.price
-        @order_item.cooking_status = 1
-        @order_item.save
-        end
+          @cart_items = CartItem.where(customer_id: current_customer.id)
+          @cart_items.each do |cart_item|
+          @order_item = OrderItem.new
+          @order_item.order_id = @order.id
+          @order_item.item_id = cart_item.item_id
+          @order_item.quantity = cart_item.quantity
+          @order_item.order_price = cart_item.item.price
+          @order_item.cooking_status = 1
+          @order_item.save
+          end
 
 
 
           @cart_items = CartItem.where(customer_id: current_customer.id)
           @cart_items.destroy_all
+          @customer = current_customer
+          OrderMailer.creation_email(@order, @customer).deliver_now
           redirect_to orders_done_path
         elsif @order.errors.any?
           @cart_item = CartItem.where(customer_id: current_customer.id)
@@ -123,7 +127,7 @@ class OrdersController < ApplicationController
         @order_item.order_price = cart_item.item.price
         @order_item.cooking_status = 1
         @order_item.save
-        end
+         end
 
         @shipping = Shipping.new
         @shipping.customer_id = current_customer.id
@@ -133,6 +137,8 @@ class OrdersController < ApplicationController
         @shipping.save
 
           @cart_items.destroy_all
+          @customer = current_customer
+          OrderMailer.creation_email(@order, @customer).deliver_now
           redirect_to orders_done_path
         elsif @order.errors.any?
           @cart_item = CartItem.where(customer_id: current_customer.id)
@@ -171,6 +177,8 @@ class OrdersController < ApplicationController
         end
           @cart_items = CartItem.where(customer_id: current_customer.id)
           @cart_items.destroy_all
+          @customer = current_customer
+          OrderMailer.creation_email(@order, @customer).deliver_now
           redirect_to orders_done_path
         elsif @order.errors.any?
           @cart_item = CartItem.where(customer_id: current_customer.id)

@@ -1,0 +1,45 @@
+<h2><%= @customer.fullname %> 様</h2>
+<p>この度は、ご注文ありがとうございました。</p>
+<br>
+<h4>購入詳細</h4>
+<table class="table table-bordered mx-auto">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">商品</th>
+        <th scope="col">単価</th>
+        <th scope="col">個数</th>
+        <th scope="col">小計</th>
+      </tr>
+    </thead>
+      <% @order_items.each do |o| %>
+      <tbody>
+        <tr>
+          <td scope="row"><%= o.item.name %></td>
+          <td scope="row"><%= number_to_currency((BigDecimal(o.order_price) * BigDecimal("1.08")).ceil) %></td>
+          <td scope="row"><%= o.quantity %></td>
+          <td scope="row"><%= number_to_currency((BigDecimal(o.order_price) * BigDecimal("1.08") * o.quantity).ceil) %></td>
+        </tr>
+      </tbody>
+      <% end %>
+  </table>
+
+<h4>請求情報</h4>
+
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th>商品合計</th>
+      <td><%= number_to_currency((@order.total_price - @order.postage).ceil) %></td>
+    </tr>
+    <tr>
+      <th>配送料</th>
+        <td><%= number_to_currency(@order.postage.ceil) %></td>
+    </tr>
+    <tr>
+      <th>ご請求額</th>
+      <td><%= number_to_currency(@order.total_price.ceil) %></td>
+    </tr>
+  </thead>
+</table>
+
+<p>今後とも"ながのCAKE"をよろしくお願いいたします。</p>

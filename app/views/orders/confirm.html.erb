@@ -1,80 +1,81 @@
-<h1>注文情報確認</h1>
+<div class="container confirm">
+    <h1>注文情報確認</h1>
+      <div class="row">
+            <table class="table table-bordered mx-auto">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">商品名</th>
+                  <th scope="col">単価</th>
+                  <th scope="col">数量</th>
+                  <th scope="col">小計</th>
+                </tr>
+              </thead>
+              <% @cart_item.each do |cart_item| %>
+                <tbody>
+                  <tr>
+                    <td scope="row">
+                      <%= attachment_image_tag cart_item.item, :image, :size=>"90x60" %>
+                      <%= cart_item.item.name %>
+                    </td>
+                    <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08")).ceil) %></td>
+                    <td scope="row"><%= cart_item.quantity %></td>
+                    <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08") * cart_item.quantity).ceil) %></td>
+                  </tr>
+                </tbody>
+              <% end %>
+            </table>
 
-<div class="row">
-  <table class="table table-bordered mx-auto">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">商品名</th>
-        <th scope="col">単価</th>
-        <th scope="col">数量</th>
-        <th scope="col">小計</th>
-      </tr>
-    </thead>
-    <% @cart_item.each do |cart_item| %>
-      <tbody>
-        <tr>
-          <td scope="row">
-            <%= attachment_image_tag cart_item.item, :image, :size=>"90x60" %>
-            <%= cart_item.item.name %>
-          </td>
-          <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08")).ceil) %></td>
-          <td scope="row"><%= cart_item.quantity %></td>
-          <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08") * cart_item.quantity).ceil) %></td>
-        </tr>
-      </tbody>
-    <% end %>
-  </table>
 
+            <table class="table table-bordered col-3">
+              <tr>
+                <td class="table-active">送料</td>
+                <td><%= number_to_currency((@order.postage).ceil) %></td>
+              </tr>
+            </table>
 
-  <table class="table table-bordered col-3">
-    <tr>
-      <td class="table-active">送料</td>
-      <td><%= number_to_currency((@order.postage).ceil) %></td>
-    </tr>
-  </table>
+              <table class="table table-bordered col-3">
+              <tr>
+                <td class="table-active">商品合計</td>
 
-    <table class="table table-bordered col-3">
-    <tr>
-      <td class="table-active">商品合計</td>
+                <td><%= number_to_currency(@subtotal.ceil) %></td>
+              </tr>
+            </table>
 
-      <td><%= number_to_currency(@subtotal.ceil) %></td>
-    </tr>
-  </table>
+              <table class="table table-bordered col-3">
+              <tr>
+                <td class="table-active">請求</td>
+                <td><%= number_to_currency(@total.ceil) %></td>
+              </tr>
+            </table>
 
-    <table class="table table-bordered col-3">
-    <tr>
-      <td class="table-active">請求</td>
-      <td><%= number_to_currency(@total.ceil) %></td>
-    </tr>
-  </table>
+          </div>
 
-</div>
+          <div class="row">
+            支払方法
+            <%= @order.payment %>
+          </div>
 
-<div class="row">
-  支払方法
-  <%= @order.payment %>
-</div>
+          <div class="row">
+            <div>お届け先</div>
+            <%= @order.postcode %><!--以下3つ繋げて文字列で表示。文字列を表示させ、この3つはhiddenで隠す-->
+            <%= @order.address %>
+            <%= @order.address_name %>
+          </div>
 
-<div class="row">
-  <div>お届け先</div>
-  <%= @order.postcode %><!--以下3つ繋げて文字列で表示。文字列を表示させ、この3つはhiddenで隠す-->
-  <%= @order.address %>
-  <%= @order.address_name %>
-</div>
-
-<div class="row">
-  <%= form_for @order do |f| %>
-    <%= f.hidden_field :shipping %>
-    <%= hidden_field_tag :selected_btn, @btn %>
-    <%= f.hidden_field :payment %>
-    <%= f.hidden_field :postcode %>
-    <%= f.hidden_field :address %>
-    <%= f.hidden_field :address_name %>
-    <%= f.hidden_field :postage %>
-    <%= f.hidden_field :total_price, value: @order.total_price %>
-    <%= f.hidden_field :order_status, value: :入金待ち %>
-    <%= f.hidden_field :confirming %>
-    <%= f.submit "購入を確定する", class: "btn btn-primary" %>
-    <%= link_to "購入情報入力へ戻る", new_order_path, class: "btn btn-secondary"%>
-  <% end %>
+          <div class="row">
+            <%= form_for @order do |f| %>
+              <%= f.hidden_field :shipping %>
+              <%= hidden_field_tag :selected_btn, @btn %>
+              <%= f.hidden_field :payment %>
+              <%= f.hidden_field :postcode %>
+              <%= f.hidden_field :address %>
+              <%= f.hidden_field :address_name %>
+              <%= f.hidden_field :postage %>
+              <%= f.hidden_field :total_price, value: @order.total_price %>
+              <%= f.hidden_field :order_status, value: :入金待ち %>
+              <%= f.hidden_field :confirming %>
+              <%= f.submit "購入を確定する", class: "btn btn-primary" %>
+              <%= link_to "購入情報入力へ戻る", new_order_path, class: "btn btn-secondary"%>
+            <% end %>
+      </div>
 </div>
