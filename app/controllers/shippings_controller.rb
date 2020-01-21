@@ -35,6 +35,7 @@ class ShippingsController < ApplicationController
 			flash[:notice_fix] = "配送先情報を修正しました"
 			redirect_to shippings_path
 		else
+			render :edit
 		end
 	end
 
