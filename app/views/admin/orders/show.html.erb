@@ -1,7 +1,7 @@
 <div class="container admin-order-show">
 	<h1>注文詳細</h1>
 	<%= form_for(@order, url: {controller: "orders", action: "update"}, html:{name:"order_edit"}) do |f| %>
-	<div class="row1 customer_info">
+	<div class="row customer_info">
 		<table>
 			<tbody>
 				<tr>
@@ -29,7 +29,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="row2">
+	<div class="row admin-order-table">
 		<div class="col-8">
 		<table class="table table-striped">
 			<thead>
