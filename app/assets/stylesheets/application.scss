@@ -15,7 +15,7 @@
  */
 
 //変数の定義
-$gray:#595757;
+// $gray:#595757;
 $skyblue:#9BB5C9;
 $blue:#3D687C;
 $brown:#5A3E38;
@@ -24,6 +24,7 @@ $beige:#c3b39c;
 $urban:#856e75;
 $gray:#7f6c68;
 $pink:#F9685D;
+$primary:#456576;
 $darkbrown:#261C1B;
 $gothic:'arial narrow';
 $cake:'sans-serif';
@@ -39,25 +40,25 @@ $yu:YuGothic;
 // 	width: 1500px;
 // }
 
-$pc: 1024px; // PC
-$tab: 680px; // タブレット
-$sp: 480px;
+// $pc: 1024px; // PC
+// $tab: 680px; // タブレット
+// $sp: 480px;
 
-@mixin pc {
-  @media (max-width: ($pc)) {
-    @content;
-  }
-}
-@mixin tab {
-  @media (max-width: ($tab)) {
-    @content;
-  }
-}
-@mixin sp {
-  @media (max-width: ($sp)) {
-    @content;
-  }
-}
+// @mixin pc {
+//   @media (max-width: ($pc)) {
+//     @content;
+//   }
+// }
+// @mixin tab {
+//   @media (max-width: ($tab)) {
+//     @content;
+//   }
+// }
+// @mixin sp {
+//   @media (max-width: ($sp)) {
+//     @content;
+//   }
+// }
 
 
 
@@ -137,7 +138,7 @@ header{
 				font-family:fantasy;
 				color:#544946;
 				a{
-				color: $pink;
+				color:$opera;
 				&:hover{
 					color: #B2362D;
 				}
@@ -283,11 +284,11 @@ header{
 
 // Admin ジャンル一覧画面
 .admin-genre-index{
-	font-family:$gothic;
+	font-family:$yu;
 
 	.flash{
 		text-align: center;
-		color:#2e8b57;
+		color:$primary;
 	}
 
 	.add{
@@ -321,7 +322,7 @@ header{
 
 	.errors{
 		text-align: center;
-		color:#b22222;
+		// color:#b22222;
 		ul{
 		list-style: none;
 
@@ -329,10 +330,15 @@ header{
 
 	}
 
-}
+	.paginate{
+		text-align: center;
+		padding-left: 500px;
+	}
 
+}
+// 会員詳細
 .customers-show{
-	font-family:"sans-serif";
+	font-family:$yu;
 	.customer-status{
 		margin-left: 10px;
 		display: inline-block;
@@ -490,6 +496,27 @@ header{
 			margin-left: 570px;
 		}
 	}
+	.btn-danger{
+		background-color: $pink;
+		border: none;
+		&:hover{
+			background-color: #DB5956;
+		}
+	}
+	.btn-info{
+		background-color: $skyblue;
+		border: none;
+		&:hover{
+			background-color: #8BA1AF;
+		}
+	}
+	.btn-primary{
+		background-color: #178DA0;
+		border: none;
+		&:hover{
+			background-color: #156868;
+		}
+	}
 }
 // カートアイテム終
 
@@ -541,10 +568,10 @@ header{
 .paginate{
 	// font-family: 'Georgia';
 	color: $gray;
-	font-family:Gungsuh;
-	font-size: 20px;
+	font-family:$yu;
+	font-size: 25px;
 	// letter-spacing:5px;
-	padding-left:430px;
+	padding-left:380px;
 	text-align: center;
 	margin: 0 auto;
 	a{
@@ -555,6 +582,56 @@ header{
 		}
 	}
 }
+
+.admin-home{
+	font-family: $yu;
+	height: 400px;
+}
+
+// 顧客側注文一覧
+.customer-order-index{
+	font-family: $yu;
+	.paginate{
+		padding: 0;
+		a{
+			color: $blue;
+			&:hover{
+				// color: $blue;
+			}
+		}
+	}
+}
+
+// フッター
+.footer-border{
+	// margin-top: 200px;
+	border: dotted 1px;
+	margin-top: 100px;
+
+
+
+		.footer{
+			  margin-top: auto;
+			// background-color: $gray;
+			background-image: url(4.jpeg);
+			background-position:bottom;
+			background-repeat: no-repeat;
+			background-size: cover;
+			opacity: 0.9;
+			border-color: $gray;
+			height: 100px;
+
+			h1{
+				line-height: 100px;
+				margin: 0;
+				color:white;
+			}
+
+		}
+
+}
+
+
 
 
 

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page]).reverse_order.per(9)
   end
 
   def show
@@ -205,6 +205,7 @@ class OrdersController < ApplicationController
   def confirm
   end
   def done
+    @customer = current_customer
   end
   private
   def order_params
