@@ -4,74 +4,73 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Limelight|Noto+Serif+JP&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
+  <div class="about-container">
     <ul id="nav">
-      <li class ="list-inline-item"><%= link_to "Top", root_path %></li>
-      <li class ="list-inline-item"><%= link_to "About", home_about_path %></li>
-      <li class ="list-inline-item"><%= link_to "Log in", new_customer_session_path %></li>
-      <li class ="list-inline-item"><%= link_to "管理者はこちら" ,new_admin_session_path %></li>
+      <li class ="list-inline-item" style="width: 20%;"><%= link_to "Top", root_path %></li>
+      <li class ="list-inline-item" style="width: 20%;"><%= link_to "About", home_about_path %></li>
+      <li class ="list-inline-item" style="width: 20%;"><%= link_to "Log in", new_customer_session_path %></li>
+      <li class ="list-inline-item" style="width: 20%;"><%= link_to "Admin" ,new_admin_session_path %></li>
     </ul>
 
-    <div id="back">
-<div class="title"><span class="title1">NAGANO</span> <span class=title2>CAKE</span></div>
+    <div id="container">
+      <div id="theTarget">
+        <div class="image1"></div>
+        <div class="image2"></div>
+        <div class="image3"></div>
+        <div class="image4"></div>
+      </div>
+      <div class="title">N A G A N O<br>C A K E</div>
+    </div>
+
 <div class="message" id="message">
   Together,<br>we<br>create<br>sweets<br>worth<br>figting for
 </div>
 
 
 </div>
-<div class="map-back">
-<div id="map-title">M A P</div>
+<div class="map-back2">
+  <div class="map-back">
+    <div id="map-title">- M A P -</div>
 
-<div id="shops" class="row">
-  <div class="col-5">
-    <h3>NAGANO CAKE 本店</h3>
-    <p>〒380-0841　長野市大門町515<br>TEL：026-266-0156　営業時間: 10：00 ～ 19：00</p>
-  </div>
-  <p id="icon1" class="col-2"></p>
-  <div class="col-5 align-middle">
-    <h3>NAGANO CAKE 南千歳店</h3>
-    <p>〒380-8543　長野市南千歳1-22-6<br>TEL：026-219-1648　営業時間: 10：00 ～ 19：00</p>
-  </div>
-</div>
-<div id="input">
-<!-- 地名入力用のinputを追加 -->
-<%= select_tag 'address', options_for_select([["本店","パティスリー平五郎 本店"], ["南千歳店","平五郎 MIDORI長野店"]]) %>
-<!-- buttonをクリックしたらcodeAddressを実行　-->
-<input type="button" value="詳細マップ" onclick="detailMap()">
-<input type="button" value="広域マップ" onclick="initMap()">
-</div>
+    <div id="shops" class="row">
+      <div class="col-6">
+        <h3>NAGANO CAKE 本店</h3>
+        <p>〒380-0841　長野市大門町515<br>TEL：026-266-0156　営業時間: 10：00 ～ 19：00</p>
+      </div>
 
-<div id='map'></div>
+      <div class="col-6 align-middle">
+        <h3>NAGANO CAKE 南千歳店</h3>
+        <p>〒380-8543　長野市南千歳1-22-6<br>TEL：026-219-1648　営業時間: 10：00 ～ 19：00</p>
+      </div>
+    </div>
+    <div id="input">
+      <!-- 地名入力用のinputを追加 -->
+      <%= select_tag 'address', options_for_select([["本店","パティスリー平五郎 本店"], ["南千歳店","平五郎 MIDORI長野店"]]) %>
+      <!-- buttonをクリックしたらcodeAddressを実行　-->
+      <input type="button" value="詳細マップ" onclick="detailMap()">
+      <input type="button" value="広域マップ" onclick="initMap()">
+    </div>
+
+    <div id='map'></div>
+
+  </div>
 </div>
 <script>
+
+
 $(function () {
-  $('.title1').slideDown(1200);
-});
-$(function () {
-  $('.title2').slideDown(1200);
-});
-$(function () {
-  $('.message').fadeIn(6000);
+  $('.message').delay(1500).fadeIn(4000);
 });
 
-  window.onload = function () {
 
-    var animation =lottie.loadAnimation({
-      container: document.getElementById('icon1'),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: '/8849-save-amazon-jungle.json',
-    });
-
-  };
-
+$(function () {
+  $('.title').fadeIn(4000);
+});
 
 const data = [
 { name: "ながのCAKE 本店", lat: 36.656792, lng: 138.187234 },
