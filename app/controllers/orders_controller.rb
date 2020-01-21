@@ -205,7 +205,14 @@ class OrdersController < ApplicationController
   def confirm
   end
   def done
-    @customer = current_customer
+
+    # if request.referer == nil
+    #   redirect_to root_path
+    # end
+    orders = Order.where(customer_id: current_customer.id)
+    @order = orders.last
+    @order_items = OrderItem.where(order_id: @order.id)
+
   end
   private
   def order_params

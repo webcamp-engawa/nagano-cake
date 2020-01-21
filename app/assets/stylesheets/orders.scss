@@ -1,3 +1,55 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.thanks-top {
+  text-align: center;
+}
+
+#thanks {
+  font-family: 'Amatic SC', cursive;
+  font-size: 80px;
+}
+
+#delivery {
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+#thanks-email {
+  font-size: 50px;
+}
+
+.thanks-orders {
+  text-align: center;
+  background-image: url(/frame_00076.jpg);
+  background-size: contain;
+  height: 750px;
+  font-family: 'Amatic SC', cursive;
+
+}
+
+.thanks-orders-sentence {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 100px;
+  font-family: 'M PLUS 1p', sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+#date-body {
+  border-bottom: solid 1px black;
+}
+
+#number {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#number-body {
+  border-bottom: solid 1px black;
+}
+
+#thanks-blank {
+  height: 3rem;
+}
