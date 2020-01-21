@@ -24,6 +24,7 @@ $beige:#c3b39c;
 $urban:#856e75;
 $gray:#7f6c68;
 $pink:#F9685D;
+$primary:#456576;
 $darkbrown:#261C1B;
 $gothic:'arial narrow';
 $cake:'sans-serif';
@@ -287,7 +288,7 @@ header{
 
 	.flash{
 		text-align: center;
-		color:#2e8b57;
+		color:$primary;
 	}
 
 	.add{
@@ -327,6 +328,11 @@ header{
 
 		}
 
+	}
+
+	.paginate{
+		text-align: center;
+		padding-left: 500px;
 	}
 
 }
@@ -493,14 +499,23 @@ header{
 	.btn-danger{
 		background-color: $pink;
 		border: none;
+		&:hover{
+			background-color: #DB5956;
+		}
 	}
 	.btn-info{
 		background-color: $skyblue;
 		border: none;
+		&:hover{
+			background-color: #8BA1AF;
+		}
 	}
 	.btn-primary{
 		background-color: #178DA0;
 		border: none;
+		&:hover{
+			background-color: #156868;
+		}
 	}
 }
 // カートアイテム終
