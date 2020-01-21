@@ -12,14 +12,17 @@
 	h1 {
 		text-align: center;
 	}
-	.btn {
-		font-weight: bolder;
-		zoom: 150%;
-		font-family: tomato;
-	}
 	.row1 {
 		float: right;
 		margin-bottom: 20px;
+		.btn {
+		font-weight: bolder;
+		zoom: 150%;
+		font-family: tomato;
+		}
+	}
+	.row2 {
+		margin-top: 50px;
 	}
 }
 
