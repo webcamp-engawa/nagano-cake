@@ -39,25 +39,25 @@ $yu:YuGothic;
 // 	width: 1500px;
 // }
 
-$pc: 1024px; // PC
-$tab: 680px; // タブレット
-$sp: 480px;
+// $pc: 1024px; // PC
+// $tab: 680px; // タブレット
+// $sp: 480px;
 
-@mixin pc {
-  @media (max-width: ($pc)) {
-    @content;
-  }
-}
-@mixin tab {
-  @media (max-width: ($tab)) {
-    @content;
-  }
-}
-@mixin sp {
-  @media (max-width: ($sp)) {
-    @content;
-  }
-}
+// @mixin pc {
+//   @media (max-width: ($pc)) {
+//     @content;
+//   }
+// }
+// @mixin tab {
+//   @media (max-width: ($tab)) {
+//     @content;
+//   }
+// }
+// @mixin sp {
+//   @media (max-width: ($sp)) {
+//     @content;
+//   }
+// }
 
 
 
@@ -137,7 +137,7 @@ header{
 				font-family:fantasy;
 				color:#544946;
 				a{
-				color: $pink;
+				color:$opera;
 				&:hover{
 					color: #B2362D;
 				}
@@ -283,7 +283,7 @@ header{
 
 // Admin ジャンル一覧画面
 .admin-genre-index{
-	font-family:$gothic;
+	font-family:$yu;
 
 	.flash{
 		text-align: center;
@@ -321,7 +321,7 @@ header{
 
 	.errors{
 		text-align: center;
-		color:#b22222;
+		// color:#b22222;
 		ul{
 		list-style: none;
 
@@ -330,9 +330,9 @@ header{
 	}
 
 }
-
+// 会員詳細
 .customers-show{
-	font-family:"sans-serif";
+	font-family:$yu;
 	.customer-status{
 		margin-left: 10px;
 		display: inline-block;
@@ -492,12 +492,15 @@ header{
 	}
 	.btn-danger{
 		background-color: $pink;
+		border: none;
 	}
 	.btn-info{
 		background-color: $skyblue;
+		border: none;
 	}
 	.btn-primary{
 		background-color: #178DA0;
+		border: none;
 	}
 }
 // カートアイテム終
@@ -550,10 +553,10 @@ header{
 .paginate{
 	// font-family: 'Georgia';
 	color: $gray;
-	font-family:Gungsuh;
+	font-family:$yu;
 	font-size: 25px;
 	// letter-spacing:5px;
-	padding-left:400px;
+	padding-left:380px;
 	text-align: center;
 	margin: 0 auto;
 	a{
@@ -565,15 +568,35 @@ header{
 	}
 }
 
+.admin-home{
+	font-family: $yu;
+	height: 400px;
+}
+
+// 顧客側注文一覧
+.customer-order-index{
+	font-family: $yu;
+	.paginate{
+		padding: 0;
+		a{
+			color: $blue;
+			&:hover{
+				// color: $blue;
+			}
+		}
+	}
+}
+
 // フッター
 .footer-border{
 	// margin-top: 200px;
 	border: dotted 1px;
-	margin-top: 50px;
+	margin-top: 100px;
 
 
 
 		.footer{
+			  margin-top: auto;
 			// background-color: $gray;
 			background-image: url(4.jpeg);
 			background-position:bottom;
