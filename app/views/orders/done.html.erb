@@ -1,3 +1,74 @@
 
 
-<h4>ご購入ありがとうございました！</h4>
+<div class="container">
+
+  <div class="thanks-top">
+    <h4 id="thanks" style="font-family: 'Amatic SC', cursive;">Thanks for your order!!</h4>
+    <div id="delivery"></div>
+    <p><strong><i class="fas fa-envelope"></i> 確認のEメールを送信しました。</strong></p>
+  </div>
+
+  <div class="thanks-orders">
+    <div class="thanks-orders-sentence">
+      <p id="date"><strong><span id="date-body"><%= "お届け予定日: 　#{Date.current.tomorrow.tomorrow}　〜　#{Date.current.tomorrow.tomorrow.tomorrow}" %></span></strong></p>
+      <p id="number"><strong><span id="number-body"><%= "注文番号: 　#{@order.id}" %></span></strong></p>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col" class="s">商品</th>
+            <th scope="col" class="s">単価</th>
+            <th scope="col" class="s">個数</th>
+            <th scope="col" class="s">小計</th>
+          </tr>
+        </thead>
+          <% @order_items.each do |o| %>
+          <tbody>
+            <tr>
+              <td scope="row" class="d" style="width: 25%;"><%= o.item.name %></td>
+              <td scope="row" class="d" style="width: 25%;"><%= number_to_currency((BigDecimal(o.order_price) * BigDecimal("1.08")).ceil) %></td>
+              <td scope="row" class="d" style="width: 25%;"><%= "#{o.quantity}個" %></td>
+              <td scope="row" class="d" style="width: 25%;"><%= number_to_currency((BigDecimal(o.order_price) * BigDecimal("1.08") * o.quantity).ceil) %></td>
+            </tr>
+          </tbody>
+          <% end %>
+      </table>
+
+      <div id="thanks-blank"></div>
+
+      <div class="row">
+        <div class="col-6"></div>
+        <table class="table table-borderless col-6">
+          <thead class="d">
+            <tr>
+              <th>商品合計</th>
+              <td><%= number_to_currency((@order.total_price - @order.postage).ceil) %></td>
+            </tr>
+            <tr>
+              <th>配送料</th>
+                <td><%= number_to_currency(@order.postage.ceil) %></td>
+            </tr>
+            <tr>
+              <th>ご請求額</th>
+              <td><%= number_to_currency(@order.total_price.ceil) %></td>
+            </tr>
+          </thead>
+        </table>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+<script>
+
+$(function () {
+  lottie.loadAnimation({
+    container: document.getElementById('delivery'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: '/29-motorcycle.json',
+  });
+});
+
+</script>
