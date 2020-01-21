@@ -205,6 +205,7 @@ class OrdersController < ApplicationController
   def confirm
   end
   def done
+    @customer = current_customer
   end
   private
   def order_params
