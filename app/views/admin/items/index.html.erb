@@ -4,14 +4,21 @@
 		<%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-outline-primary"%>
 	</div>
 	<div class="row2 clearfix">
+		<%= search_form_for @q, url:"/admin/items" do |f| %>
+			<%= f.search_field :name_cont %>
+			<%= f.submit class: "btn btn-primary" %>
+		<% end %>
+		<%= link_to admin_items_path do %>
+			<div>　全商品を表示　</div>
+		<% end %>
 			<table class="table">
 				<thead>
 					<tr>
-						<th>商品ID</th>
-						<th>商品名</th>
-						<th>税抜価格</th>
-						<th>ジャンル</th>
-						<th>ステータス</th>
+						<%= content_tag :th, sort_link(@q, :id, "商品ID", default_order: :desc) %>
+						<%= content_tag :th, sort_link(@q, :name, "商品名", default_order: :desc) %>
+						<%= content_tag :th, sort_link(@q, :price, "税抜価格", default_order: :desc) %>
+						<%= content_tag :th, sort_link(@q, :genre_name, "ジャンル", default_order: :desc) %>
+						<%= content_tag :th, sort_link(@q, :is_sold, "ステータス", default_order: :desc) %>
 					</tr>
 				<tbody>
 					<% @items.each do |item| %>
