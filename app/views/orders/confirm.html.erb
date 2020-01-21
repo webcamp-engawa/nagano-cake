@@ -74,8 +74,8 @@
               <%= f.hidden_field :total_price, value: @order.total_price %>
               <%= f.hidden_field :order_status, value: :入金待ち %>
               <%= f.hidden_field :confirming %>
-              <%= f.submit "購入を確定する", class: "btn btn-primary" %>
               <%= link_to "購入情報入力へ戻る", new_order_path, class: "btn btn-secondary"%>
+              <%= f.submit "購入を確定する", class: "btn btn-primary" %>
             <% end %>
       </div>
 </div>

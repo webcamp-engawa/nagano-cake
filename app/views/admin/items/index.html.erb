@@ -1,9 +1,12 @@
 <div class="container admin-item-index">
 	<h1>商品一覧</h1>
-	<div class="row1">
+	<div class="flush">
+		<%= flash[:notice_new] %>
+	</div>
+	<div class="row admin-item-new">
 		<%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-outline-primary"%>
 	</div>
-	<div class="row2 clearfix">
+	<div class="row admin-item-search">
 		<%= search_form_for @q, url:"/admin/items" do |f| %>
 			<%= f.search_field :name_cont %>
 			<%= f.submit class: "btn btn-primary" %>
@@ -11,6 +14,8 @@
 		<%= link_to admin_items_path do %>
 			<div>　全商品を表示　</div>
 		<% end %>
+	</div>
+	<div class="row clearfix">
 			<table class="table">
 				<thead>
 					<tr>
