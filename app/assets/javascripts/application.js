@@ -47,9 +47,14 @@ $(document).ready(function () {
 $(function() {
 
   $('.menu-trigger').on('click', function() {
-    $(this).toggleClass('active');
+    $('body').toggleClass('active');
     $('#sp-menu').fadeToggle();
     return false;
+  });
+
+  $('.bg').on('click', function () {
+    $('body').toggleClass('active');
+    $('#sp-menu').fadeToggle();
   });
 
  });
