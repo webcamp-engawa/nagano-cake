@@ -10,12 +10,23 @@
   </head>
   <body>
   <div class="about-container">
-    <ul id="nav" class="">
-      <li class ="list-inline-item" style="width: 20%;"><%= link_to "Top", root_path %></li>
-      <li class ="list-inline-item" style="width: 20%;"><%= link_to "About", home_about_path %></li>
-      <li class ="list-inline-item" style="width: 20%;"><%= link_to "Log in", new_customer_session_path %></li>
-      <li class ="list-inline-item" style="width: 20%;"><%= link_to "Admin" ,new_admin_session_path %></li>
-    </ul>
+
+    <div id="sp-menu">
+      <ul style="list-style: none; padding-inline-start: 0px; margin-top: 3%;">
+        <li><%= link_to "Top", root_path %></li>
+        <li><%= link_to "About", home_about_path %></li>
+        <li><%= link_to "Log in", new_customer_session_path %></li>
+        <li><%= link_to "Admin" ,new_admin_session_path %></li>
+      </ul>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
 
     <div id="container">
       <div id="theTarget">
