@@ -35,13 +35,13 @@
                     <%= f.submit "カートに入れる",class:"btn btn-outline-success btn-sm" %>
                   </div>
                 </div>
-
+                <p><%= flash[:alert] %></p>
                 <div class="back-index">
                   <%=link_to "< 商品一覧に戻る",root_path %>
                 </div>
 
                   <% end %>
-                  <p><%= flash[:alert] %></p>
+
 
           </div>
 </div>

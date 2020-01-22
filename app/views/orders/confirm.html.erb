@@ -14,7 +14,7 @@
                 <tbody>
                   <tr>
                     <td scope="row">
-                      <%= attachment_image_tag cart_item.item, :image, :size=>"90x60" %>
+                      <%= attachment_image_tag cart_item.item, :image,:fill, 90, 60 %>
                       <%= cart_item.item.name %>
                     </td>
                     <td scope="row"><%= number_to_currency((BigDecimal(cart_item.item.price) * BigDecimal("1.08")).ceil) %></td>

@@ -2,14 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .admin-customer-index{
-	font-family: YuGothic;
+	// font-family: YuGothic;
 	h1{
 		text-align: center;
 	}
 }
 
 .admin-customer-edit{
-	font-family: YuGothic;
+	// font-family: YuGothic;
 	h1{
 		width: 100%;
 		text-align: center;
@@ -28,12 +28,20 @@
 }
 
 .customers-show{
-	font-family: YuGothic;
+	// font-family: YuGothic;
 	h1{
 		text-align: center;
 	}
 	.row{
 		padding-left: 250px;
+	}
+	.btn{
+		a{
+			&:hover{
+				color: white;
+				text-decoration: none;
+			}
+		}
 	}
 
 }
