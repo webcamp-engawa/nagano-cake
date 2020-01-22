@@ -33,7 +33,7 @@
 			</div>
 			<div class="field">
 				<label class="genre">ジャンル</label>
-				<%= f.collection_select :genre_id, @genres, :id, :name,{} %>
+				<%= f.collection_select :genre_id, @genres, :id, :name,{}%>
 			</div>
 			<div class="field">
 				<label class="price">税抜き価格</label>
@@ -41,7 +41,7 @@
 			</div>
 			<div class="field">
 				<label class="is_sold">販売ステータス</label>
-				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], :prompt=>"選択してください" %>
+				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], :prompt=>"選択してください" ,class:"custom-select col-3"%>
 			</div>
 			<div class="submit">
 				<%= f.submit "新規登録", class:"btn btn-outline-primary"%>

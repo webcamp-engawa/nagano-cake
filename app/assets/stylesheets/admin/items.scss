@@ -9,7 +9,7 @@
 }
 
 .admin-item-index{
-	font-family: YuGothic;
+	// font-family: YuGothic;
 	.flush {
 		color: #436676;
 		font-size: 20px;
@@ -27,12 +27,15 @@
 		}
 	}
 	.admin-item-search {
-		margin-top: 50px;
+		margin-top: 40px;
+		margin-bottom: 20px;
 	}
+
 }
 
+
 .admin-item-show{
-	font-family: YuGothic;
+	// font-family: YuGothic;
 	.flash {
 		padding-left: 250px;
 		margin-bottom: 20px;
@@ -65,7 +68,7 @@
 }
 
 .admin-item-edit {
-	font-family: YuGothic;
+	// font-family: YuGothic;
 	.error-box{
 		padding-left: 300px;
 	}
@@ -100,7 +103,7 @@
 }
 
 .admin-item-new {
-	font-family: YuGothic;
+	// font-family: YuGothic;
 	.errors{
 		#error_explanation{
 			margin: 0 auto;
