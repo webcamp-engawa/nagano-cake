@@ -1,0 +1,137 @@
+<div class="container admin-order-show">
+	<h1>注文詳細</h1>
+	<%= form_for(@order, url: {controller: "orders", action: "update"}, html:{name:"order_edit"}) do |f| %>
+	<div class="row customer_info">
+		<table>
+			<tbody>
+				<tr>
+					<td>購入者</td>
+					<td>
+						<%= link_to admin_customer_path(@order.customer) do %>
+							<%= @order.customer.last_name %><%= @order.customer.first_name %>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<td>配送先</td>
+					<td><%= @order.postcode %> <%= @order.address %><br><%= @order.address_name %></td>
+				</tr>
+				<tr>
+					<td>支払い方法</td>
+					<td><%= @order.payment %></td>
+				</tr>
+				<tr>
+					<td>注文ステータス</td>
+					<td>
+						<%= f.select :order_status, [["入金待ち","入金待ち"],["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]] , {}, {:id=>"order_status",:onchange=>'onChangeOrderStatus(this)'}%>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row admin-order-table">
+		<div class="col-8">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th>製作ステータス</th>
+				</tr>
+				<tbody>
+					<%= f.fields_for :order_items do |it| %>
+					<tr>
+						<td>
+							<%= it.object.item.name %>
+						</td>
+						<td>
+							<%= (BigDecimal(it.object.order_price) * BigDecimal("1.08")).ceil %>
+						</td>
+						<td>
+							<%= it.object.quantity %>
+						</td>
+						<td>
+							<%= (it.object.quantity * BigDecimal(it.object.order_price) * BigDecimal("1.08") ).ceil %>
+						</td>
+						<td>
+							<%= it.hidden_field :id %>
+								<%= it.select :cooking_status, [["着手不可","着手不可"],["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]] , {},{:class=>"cooking_status",:onchange=>'onChangeCookingStatus(this)'}%>
+						</td>
+					<% end %>
+					</tr>
+				</tbody>
+			</thead>
+		</table>
+		</div>
+		<div class="col-4">
+		<table>
+			<tbody>
+				<tr>
+					<td>商品合計</td>
+					<td>
+						<%= @order.total_price - @order.postage %>円
+					</td>
+				</tr>
+				<tr>
+					<td>送料</td>
+					<td>
+						<%= @order.postage %>円
+					</td>
+				</tr>
+				<tr>
+					<td>請求金額合計</td>
+					<td>
+						<%= @order.total_price %>円
+					</td>
+				</tr>
+			</tbody>
+		</table>
+			<%= f.submit "まとめて更新", class:"btn btn-outline-primary" %>
+		</div>
+	</div>
+	<% end %>
+</div>
+
+<script>
+function onChangeOrderStatus(elm){
+	console.log(elm.value);
+	if ( elm.value == "入金確認"){
+		var stsElem = document.getElementsByClassName('cooking_status');
+		for (var i = 0; i< stsElem.length; i++ ){
+			console.log(stsElem[i].value);
+			stsElem[i].value="製作待ち";
+		}
+
+	}
+	if ( elm.value == "......."){
+
+	}
+}
+function onChangeCookingStatus(elm){
+	console.log(elm.value);
+	if ( elm.value == "製作中"){
+		var stsOrder = document.getElementById('order_status');
+		console.log(stsOrder.value);
+		stsOrder.value ='製作中';
+	}
+
+
+	if ( elm.value == "製作完了"){
+		var stsElem = document.getElementsByClassName('cooking_status');
+		/* for分のループ処理。for (  初期値;  条件式;  増減値  ) */
+		for (var i = 0; i< stsElem.length; i++ ){
+			if (stsElem[i].value != "製作完了")
+				return;
+		}
+
+		var stsOrder = document.getElementById('order_status');
+		console.log(stsOrder.value);
+		stsOrder.value ='発送準備中';
+	}
+
+}
+
+
+</script>

@@ -1,3 +1,112 @@
-<h1>homes#about</h1>
-<p>ながのCAKEはミシュラン３つ星を取ります！</p>
-<%= link_to "TOP画面へ", root_path %>
+<div id="back">
+<div id="icon"></div>
+
+<h1 id="title" style="margin_bottom: 50px;">NAGANO<br>CAKE</h1>
+
+<div id="shops">
+  <h3>NAGANO CAKE 本店</h3>
+  <p>〒380-0841　長野市大門町515
+  TEL：026-266-0156 営業時間: 10：00 ～ 19：00</p>
+
+  <h3>NAGANO CAKE 南千歳店</h3>
+  <p>〒380-8543　長野市南千歳1-22-6
+  「MIDORI長野」2階　信州おみやげ参道「ORAHO」
+  TEL：026-219-1648 営業時間: 10：00 ～ 19：00</p>
+</div>
+  </div>
+
+<h2 id="map-title">MAP</h2>
+
+<div id="input">
+<!-- 地名入力用のinputを追加 -->
+<%= select_tag 'address', options_for_select([["本店","パティスリー平五郎 本店"], ["南千歳店","平五郎 MIDORI長野店"]]) %>
+<!-- buttonをクリックしたらcodeAddressを実行　-->
+<input type="button" value="詳細マップ" onclick="detailMap()">
+<input type="button" value="広域マップ" onclick="initMap()">
+</div>
+
+<div id='map'></div>
+
+<script>
+
+const data = [
+{ name: "ながのCAKE 本店", lat: 36.656792, lng: 138.187234 },
+{ name: "ながのCAKE 南千歳店", lat: 36.643203, lng: 138.18664 },
+];
+
+var map
+var geocoder
+
+  function initMap() {
+    // 日本の中央を表示する
+    const defaultSettings = {zoom: 14, center: {lat: 36.65, lng: 138.187234}};
+    map = new google.maps.Map(
+      document.querySelector('#map'),
+      defaultSettings
+    );
+
+    // 現在表示されているinfoWindowオブジェクト
+  let currentWindow;
+
+  data.map(d => {
+    // マーカーをつける
+    const marker = new google.maps.Marker({
+      position: {lat: d.lat, lng: d.lng},
+      map: map
+    });
+
+    // マーカークリックしたら地名をポップアップさせる
+    marker.addListener('click', () => {
+      currentWindow && currentWindow.close();
+      const infoWindow = new google.maps.InfoWindow({content: d.name});
+      infoWindow.open(map, marker);
+      currentWindow = infoWindow;
+    });
+  });
+
+  }
+
+  function detailMap() {
+    geocoder = new google.maps.Geocoder()
+
+    // 入力を取得
+    let inputAddress = document.getElementById('address').value;
+
+    // geocodingしたあとmapを移動
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        // map.setCenterで地図が移動
+        map.setCenter(results[0].geometry.location),
+        map.setZoom(17);
+      }
+      else {
+      alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+
+  $(function () {
+
+    var animation =lottie.loadAnimation({
+      container: document.getElementById('icon'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: '/14338-earth-rotation.json',
+    });
+
+    // window.addEventListener('scroll', event => {
+    //   var windowHeight = window.innerHeight;
+    //   var targetTop = document.getElementById('scroll-icon').getBoundingClientRect().top;
+    //   if(0 < targetTop && targetTop <= windowHeight - 200) {
+    //     animation.play();
+    //     window.removeEventListener('scroll');
+    //   }
+    // });
+  });
+
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ8t1dkVrouFMkp0ETy1e82JYr9s_GW14&callback=initMap" async defer></script>

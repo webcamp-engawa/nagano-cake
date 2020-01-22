@@ -1,12 +1,12 @@
 class CartItemsController < ApplicationController
-  def index
-    @cart_item = CartItem.where(customer_id: current_customer.id)
+  before_action :authenticate_customer!
 
-    @sum = 0
-      @cart_item.each do |cart_item|
-        @sum += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
-        puts @sum
-      end
+  def index
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @subtotal = 0
+    @cart_items.each do |cart_item|
+      @subtotal += BigDecimal(cart_item.item.price) * cart_item.quantity * BigDecimal("1.08")
+    end
 
   end
 
@@ -24,6 +24,9 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    @cart_item = CartItem.where(customer_id: current_customer.id)
+    @cart_item.find(params[:id]).update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   def destroy
@@ -33,6 +36,9 @@ class CartItemsController < ApplicationController
   end
 
   def empty_cart
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
     private

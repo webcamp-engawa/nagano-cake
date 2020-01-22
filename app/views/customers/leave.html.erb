@@ -7,4 +7,4 @@
 	退会する場合は、「退会する」をクリックしてください。
 </p>
 
-<%= link_to "退会しない" %> <%= link_to "退会する" %>
+<%= link_to "退会しない", customer_path %> <%= link_to "退会する",customer_registration_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class: "label label-danger" %>

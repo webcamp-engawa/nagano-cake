@@ -1,34 +1,61 @@
-<div class="container">
+<div class="container admin-item-edit">
+	<h1>商品編集</h1>
+<div class="error-box">
+	<% if @item.errors.any? %>
+         <h2><%= @item.errors.count %>件のエラーがあります</h2>
+            <ul>
+               <% @item.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+            </ul>
+    <% end %>
+</div>
 	<div class="row">
-		<h1>商品編集画面</h1>
 		<%= form_for(@item, url: {controller: "items", action: "update"}) do |f| %>
-		<div class="image">
-			<%= f.attachment_field :image, placeholder: "画像選択", class: "item-edit-form" %>
-			<div class="item_introduce">
-			<p class="name">
-				商品名
-				<%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"name" %>
-			</p>
-			<p class="introduction">
-				商品説明
-				<%= f.text_area :introduction, autofocus: true, class:"introduction" %>
-			</p>
-			<p class="genre">
-				ジャンル
-				<%= f.select :genre_id, [["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]], autofocus: true, class:"genre" %>
-			</p>
-			<p class="price">
-				税抜き価格
-				<%= f.number_field :price, autofocus: true, class:"price" %> 円
-			</p>
-			<p class ="is_sold">
-				販売ステータス
-				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], autofocus: true, class:"is_sold" %>
-			</p>
-			<%= f.submit "変更を保存" %>
-			</div>
+		<div class="image col-5">
+			<%= f.attachment_field :image, placeholder: "画像選択", class: "item-edit-form", id: :item_image %>
+			<% if @item.image.present? %>
+  				<%= attachment_image_tag @item, :image, :fill, 300, 250, id: :img_prev, size: "300x250"%>
 			<% end %>
+		</div>
+		<div class="item_introduce col-7">
+			<label class="name">商品名</label>
+				<%= f.text_field :name, autofocus: true, id:"inputEmail", placeholder:"name" %><br>
+			<label class="introduction">商品説明</label>
+				<%= f.text_area :introduction, autofocus: true %><br>
+			<label class="genre">ジャンル</label>
+				<%= f.select :genre_id, [["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]], autofocus: true %><br>
+			<label class="price">
+				税抜き価格
+				<%= f.text_field :price, autofocus: true %>円
+			</label><br>
+			<label class ="is_sold">販売ステータス</label>
+				<%= f.select :is_sold, [["販売中","true"],["売り切れ","false"]], autofocus: true %><br>
+			<div class="edit-btn">
+				<%= f.submit "変更を保存", class:"btn btn-outline-primary" %>
+			</div>
+		<% end %>
 		</div>
 	</div>
 </div>
+
+<script>
+	$(function() {
+    	function readURL(input) {
+        	if (input.files && input.files[0]) {
+        	var reader = new FileReader();
+        	reader.onload = function (e) {
+    	$('#img_prev').attr('src', e.target.result);
+        	}
+        	reader.readAsDataURL(input.files[0]);
+        	}
+    	}
+    	$("#item_image").change(function(){
+        	readURL(this);
+    	});
+ 	 });
+</script>
+
+
+
 

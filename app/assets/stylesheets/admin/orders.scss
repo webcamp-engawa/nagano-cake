@@ -1,3 +1,46 @@
 // Place all the styles related to the admin/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-order-index {
+	// font-family: YuGothic;
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	margin-bottom: 300px;
+}
+
+.admin-order-show {
+	// font-family: YuGothic;
+	.edit_order {
+		width: 100%;
+	}
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	form {
+		width: 100%;
+	}
+	.customer_info {
+		padding-left: 30px;
+		font-size: 20px;
+	}
+	.admin-order-table {
+		padding-top: 30px;
+	}
+	.col-8 {
+		float: left;
+	}
+	.col-4{
+		float: right;
+		padding-left: 80px;
+		font-size: 20px;
+	}
+	.btn{
+		margin-top: 20px;
+		margin-left: 20px;
+		font-size: 20px;
+	}
+}

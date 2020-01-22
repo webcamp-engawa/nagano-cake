@@ -4,34 +4,185 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p:700|M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+<!-- <div id="wrapper"> -->
     <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "ながのCAKE", root_path, id: "logo" %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <% if customer_signed_in? %>
-              <li><%= link_to "Top", root_path %></li>
-              <li><%= link_to "About", home_about_path %></li>
-              <li><%= link_to "カート", cart_items_path %></li>
-              <li><%= link_to "Log out", destroy_customer_session_path, method: :delete %></li>
-              <li><%= link_to "マイページ", '#' %></li>
-            <% else %>
-              <li><%= link_to "Top", root_path %></li>
-              <li><%= link_to "About", home_about_path %></li>
-              <li><%= link_to "Log in", new_customer_session_path %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
+
+          <div class ="jumbotron jumbotron-fluid">
+<!-- <div class="logo-box"> -->
+            <div class="title-cover">
+
+                    <div class ="logo">
+                      <% if admin_signed_in? %>
+                          <%= link_to admin_root_path, id: "logo" do%>
+                          <%= image_tag 'logo3.svg', :size=>"230x180"  %>
+                          <% end %>
+                      <% else %>
+                        <%= link_to root_path, id: "logo" do%>
+                          <%= image_tag 'logo3.svg', :size=>"230x180"  %>
+                        <% end %>
+                      <% end %>
+                    </div>
+
+                      <ul class="list-inline-item">
+                        <% if customer_signed_in? %>
+                          <li class ="list-inline-item">
+                            <%= link_to root_path do %>
+                              <i class="fas fa-home fa-3x"></i>
+                              <p>Top</p>
+                            <% end %>
+                            </li>
+                          <li class ="list-inline-item">
+                            <%= link_to home_about_path do %>
+                            <i class="fas fa-store fa-3x"></i>
+                            <p>About</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to cart_items_path do %>
+                              <i class="fas fa-shopping-cart fa-3x"></i>
+                              <p>Cart</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to destroy_customer_session_path, method: :delete do %>
+                              <i class="fas fa-door-open fa-3x"></i>
+                              <p>Logout</p>
+                              <% end %>
+                            </li>
+                            <div class="welcome">
+                          <li class ="list-inline-item">ようこそ <%= link_to current_customer.fullname.to_s, customer_path %> さん</li>
+                            </div>
+                          <% elsif admin_signed_in? %>
+
+                  <div class ="admin-links">
+                          <li class ="list-inline-item">
+                            <%= link_to admin_items_path do %>
+                            <i class="fas fa-cookie-bite fa-3x"></i>
+                            <p>商品管理</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_customers_path do %>
+                            <i class="fas fa-users fa-3x"></i>
+                            <p>会員一覧</p>
+                            <% end %>
+                            </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_orders_path do %>
+                            <i class="fas fa-list-ul fa-3x"></i>
+                            <p>注文一覧</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_genres_path do%>
+                            <i class="fas fa-tag fa-3x"></i>
+                            <p>ジャンル管理</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to destroy_admin_session_path, method: :delete do%>
+                            <i class="fas fa-sign-out-alt fa-3x"></i>
+                            <p>ログアウト</p>
+                            <% end %>
+                          </li>
+                  </div>
+                        <% else %>
+                          <li class ="list-inline-item">
+                            <%= link_to root_path do %>
+                              <i class="fas fa-home fa-3x"></i>
+                              <p>Top</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to home_about_path do %>
+                            <i class="fas fa-store fa-3x"></i>
+                            <p>About</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to new_customer_session_path do %>
+                            <i class="fas fa-sign-in-alt fa-3x"></i>
+                            <p>Login</p>
+                            <% end %>
+                            <div class="owner">
+                            <i class="fas fa-user"></i><%= link_to "管理者はこちら" ,new_admin_session_path %>
+                            </div>
+                        <% end %>
+                      </ul>
+
+
+                  <% if customer_signed_in? %>
+                        <dl class ="searchbox">
+                              <%= search_form_for @search, url: items_path do |f| %>
+                              <div class ="searching">
+                                <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索", id: :item_name %><%= f.submit ("search") , class: 'search-btn' %></dt>
+                              </div>
+                              <% end %>
+                        </dl>
+
+                  <% elsif admin_signed_in? %>
+
+                  <% else %>
+                        <dl class ="searchbox">
+                            <%= search_form_for @search, url: items_path do |f| %>
+                            <div class ="searching">
+                              <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索", id: :item_name %><%= f.submit ("search") , class: 'search-btn' %></dt>
+                            </div>
+                            <% end %>
+                        </dl>
+                  <% end %>
+            <!-- </div> -->
+            </div>
+<!-- </div> -->
+          </div>
     </header>
-      <div class="container">
+
+
+
         <%= yield %>
-      </div>
+  <div class="footer-border">
+      <footer class="footer">
+        <div class="container">
+          <h1 class="text-center">𝑁𝑎𝑔𝑎𝑛𝑜 𝐶𝑎𝑘𝑒</h1>
+        </div>
+      </footer>
+  </div>
+</div>
+        <script>
+          $(function() {
+            const dataList = function(request, response) {
+              $.ajax({
+                url: '/items/autocomplete_name/' + request.term,
+                dataType: 'json',
+                type: 'GET',
+                cache: true,
+                success: function(data) {
+                  response(data);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                  response(['']);
+                }
+              });
+            }
+
+            // #item_nameの部分は必要に応じてidなり指定してください
+            $('#item_name').autocomplete({
+              source: dataList,
+              autoFocus: true, // 自動的に先頭の項目にフォーカスするか
+              delay: 100, // 入力してからサジェストが動くまでの時間(ms)
+              minLength: 1 // 1文字入力しないとサジェストが動かない
+            })
+          });
+        </script>
+
   </body>
 </html>

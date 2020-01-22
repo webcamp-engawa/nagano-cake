@@ -5,16 +5,16 @@ before_action :authenticate_admin!
 
 	def index
 		@genre = Genre.new
-		@genres = Genre.all
+		@genres = Genre.page(params[:page])
 	end
 
 	def create
 		@genre = Genre.new(genre_params)
 		if @genre.save
 		redirect_to admin_genres_path
-		flash[:notice] = "ジャンルを追加しました！"
+		flash[:notice_genre] = "ジャンルを追加しました！"
 		else
-		@genres = Genre.all
+		@genres = Genre.page(params[:page])
 		render 'index'
 		end
 	end

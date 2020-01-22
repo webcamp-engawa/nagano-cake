@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCake</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+
+          <div class ="jumbotron jumbotron-fluid">
+<!-- <div class="logo-box"> -->
+            <div class="title-cover">
+
+                    <div class ="logo">
+                      <% if admin_signed_in? %>
+                          <%= link_to admin_root_path, id: "logo" do%>
+                          <%= image_tag 'logo3.svg', :size=>"230x180"  %>
+                          <% end %>
+                      <% else %>
+                        <%= link_to root_path, id: "logo" do%>
+                          <%= image_tag 'logo3.svg', :size=>"230x180"  %>
+                        <% end %>
+                      <% end %>
+                    </div>
+
+                      <ul class="list-inline-item">
+                        <% if customer_signed_in? %>
+                          <li class ="list-inline-item">
+                            <%= link_to root_path do %>
+                              <i class="fas fa-home fa-3x"></i>
+                              <p>Top</p>
+                            <% end %>
+                            </li>
+                          <li class ="list-inline-item">
+                            <%= link_to home_about_path do %>
+                            <i class="fas fa-store fa-3x"></i>
+                            <p>About</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to cart_items_path do %>
+                              <i class="fas fa-shopping-cart fa-3x"></i>
+                              <p>Cart</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to destroy_customer_session_path, method: :delete do %>
+                              <i class="fas fa-door-open fa-3x"></i>
+                              <p>Logout</p>
+                              <% end %>
+                            </li>
+                            <div class="welcome">
+                          <li class ="list-inline-item">ようこそ <%= link_to current_customer.fullname.to_s, customer_path %> さん</li>
+                            </div>
+                          <% elsif admin_signed_in? %>
+                  <div class ="admin-links">
+                          <li class ="list-inline-item">
+                            <%= link_to admin_items_path do %>
+                            <i class="fas fa-cookie-bite fa-3x"></i>
+                            <p>商品管理</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_customers_path do %>
+                            <i class="fas fa-users fa-3x"></i>
+                            <p>会員一覧</p>
+                            <% end %>
+                            </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_orders_path do %>
+                            <i class="fas fa-list-ul fa-3x"></i>
+                            <p>注文一覧</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to admin_genres_path do%>
+                            <i class="fas fa-tag fa-3x"></i>
+                            <p>ジャンル管理</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to destroy_admin_session_path, method: :delete do%>
+                            <i class="fas fa-sign-out-alt fa-3x"></i>
+                            <p>ログアウト</p>
+                            <% end %>
+                          </li>
+                  </div>
+                        <% else %>
+                          <li class ="list-inline-item">
+                            <%= link_to root_path do %>
+                              <i class="fas fa-home fa-3x"></i>
+                              <p>Top</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to home_about_path do %>
+                            <i class="fas fa-store fa-3x"></i>
+                            <p>About</p>
+                            <% end %>
+                          </li>
+                          <li class ="list-inline-item">
+                            <%= link_to new_customer_session_path do %>
+                            <i class="fas fa-sign-in-alt fa-3x"></i>
+                            <p>Login</p>
+                            <% end %>
+                            <div class="owner">
+                            <i class="fas fa-user"></i><%= link_to "管理者はこちら" ,new_admin_session_path %>
+                            </div>
+                        <% end %>
+                      </ul>
+
+
+                  <% if customer_signed_in? %>
+                        <dl class ="searchbox">
+                              <%= search_form_for @search, url: items_path do |f| %>
+                              <div class ="searching">
+                                <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索", id: :item_name %><%= f.submit ("search") , class: 'search-btn' %></dt>
+                              </div>
+                              <% end %>
+                        </dl>
+
+                  <% elsif admin_signed_in? %>
+
+                  <% else %>
+                        <dl class ="searchbox">
+                            <%= search_form_for @search, url: items_path do |f| %>
+                            <div class ="searching">
+                              <dt><%= f.search_field :name_cont ,placeholder: "キーワード検索", id: :item_name %><%= f.submit ("search") , class: 'search-btn' %></dt>
+                            </div>
+                            <% end %>
+                        </dl>
+                  <% end %>
+            <!-- </div> -->
+            </div>
+<!-- </div> -->
+          </div>
+    </header>
+
+<div class="alert-container">
+
+  <div class="alert">
+    <div><i class="fas fa-exclamation-triangle faa-flash animated fa-5x"></i></div>
+    <h1>　退会手続きを実行します。</h1>
+  </div>
+
+  <p class="alert-m">
+    退会すると、<br>
+    <strong class="strong">会員登録情報や、</strong>
+    <strong class="strong">購入履歴が</strong><strong id="red">閲覧できなくなります。</strong><br>
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
+
+    <div>
+      <%= link_to customer_registration_path, method: :delete, data: { confirm: '本当に退会しますか？' }, class: "label label-danger" do %>
+        <div class="btn btn-danger faa-horizontal animated-hover">
+          <i class="fas fa-sign-out-alt" style="color: white;"> 退会する</i>
+        </div>
+      <% end %>
+    </div>
+    <div id="btn2">
+      <%= link_to customer_path do %>
+        <div class="btn btn-dark faa-horizontal animated-hover">
+          <i class="fas fa-sign-in-alt" style="color: white;"> 退会しない</i>
+        </div>
+      <% end %>
+    </div>
+</div>

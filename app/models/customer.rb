@@ -4,10 +4,13 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  acts_as_paranoid
+ def active_for_authentication?
+    super && self.is_deleted == false
+  end
   has_many :shippings
   has_many :orders
   has_many :cart_items
+
 
   validates :last_name, presence: true
   validates :first_name, presence: true
@@ -25,6 +28,16 @@ class Customer < ApplicationRecord
       [:last_name, :last_name],
       [:first_name, :first_name]
     ]
+
+# フルネーム検索用
+ransacker :full_name do |parent|
+  Arel::Nodes::InfixOperation.new('||',
+    parent.table[:last_name], parent.table[:first_name])
+end
+
+
+
+
 end
 
 class FullName
@@ -38,4 +51,15 @@ class FullName
   def to_s
     [@last_name, @first_name].compact.join("")
   end
+
+
+
+
+
 end
+
+
+
+
+
+

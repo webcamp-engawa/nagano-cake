@@ -1,39 +1,50 @@
-<div class = "container" >
-	<div class = "col-md-12" >
-	<div class = "customers-index">
-		<h1>会員一覧画面</h1>
+<div class = "container admin-customer-index" >
+	<div class ="row">
+		<div class = "col-md-12">
+			<div class = "customers-index">
+			<h1>会員一覧</h1>
 
-			<table class = "table">
-				<thead>
-					<tr>
-						<th>会員ID</th>	<th>氏名</th> <th>メールアドレス</th>	<th>ステータス</th>
-					</tr>
-				</thead>
+			              <dl class ="searchbox">
+                            <%= search_form_for @search_c, url: admin_customers_path do |f| %>
+                            <div class ="searching">
+                              <dt><%= f.search_field :last_name_or_first_name_or_full_name_cont ,placeholder: "名前検索" %><%= f.submit ("検索") , class: 'search-btn' %></dt>
+                            </div>
+                            <% end %>
+                          </dl>
 
-				<tbody>
-					<% @customers.each do |customer| %>
+				<table class = "table">
+					<thead>
 						<tr>
-							<td>
- 								<%= customer.id %>
- 							</td>
- 							<td>
- 								<%= link_to "#{customer.last_name + customer.first_name}", admin_customer_path(customer.id) %>
- 							</td>
- 							<td>
- 								<%= customer.email %>
- 							</td>
- 							<td>
- 							<% if customer.is_deleted? %>
- 								<p>退会済み</p>
- 							<% else %>
- 								<p>有効</p>
- 							<% end %>
- 							</td>
- 						</tr>
-					<% end %>
-				</tbody>
-			</table>
+							<th>会員ID</th>	<th>氏名</th> <th>メールアドレス</th>	<th>ステータス</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% @customers.each do |customer| %>
+							<tr>
+								<td>
+ 									<%= customer.id %>
+ 								</td>
+ 								<td>
+ 									<%= link_to "#{customer.last_name + customer.first_name}", admin_customer_path(customer.id) %>
+ 								</td>
+ 								<td>
+ 									<%= customer.email %>
+ 								</td>
+ 								<td>
+ 									<% if customer.is_deleted? %>
+ 										<p>退会済み</p>
+ 									<% else %>
+ 									<p>有効</p>
+ 								<% end %>
+ 								</td>
+ 							</tr>
+						<% end %>
+					</tbody>
+				</table>
+
+				<%= paginate @customers, class: "paginate" %>
+			</div>
+		</div>
 	</div>
-	</div>
-<%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %>
 </div>
