@@ -83,4 +83,4 @@ gem 'jquery-ui-rails'
 
 gem 'font-awesome-sass', '~> 5.4.1'
 
-
+gem 'dotenv-rails'
